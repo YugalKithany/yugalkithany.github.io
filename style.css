@@ -56,9 +56,10 @@ h6 {
   align-items: center;
 }
 
- .parallax {
+/* .parallax {
   background-image: url("https://images.unsplash.com/photo-1558985040-ed4d5029dd50?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjIzODkxNjg&ixlib=rb-1.2.1&q=80"); 
 }
+*/
 .parallax1 {
   background-image: url("  https://lh3.googleusercontent.com/2xCJZ0O1OoO0eWdt9piiAQmloVQlW4l8b1T1oP_V_uxhE1DRJkz_L44xQF-whAZCwTKyUdYOLoB7-sZo5n0XnoLvIou2Obbvgkm9OJpGqEIaKB-pt3BgoZQ9OGJAIBoz8GcfuRf1beA=w2400");
 }
@@ -68,7 +69,9 @@ h6 {
 .parallax3 {
   background-image: url("https://lh3.googleusercontent.com/TanKfkxGDnbWGFKo7bKkxxWYWeOW_vLDoe-_BS-RfowcVzHcuIViBpbXC_llhH3kajn9UNj2BxqyMVQhS3WTNfLtyeZ6iFff5Ht19MJnDFEKRY8LiEf8uZtU-G9-K6LAxzPV3-wJMjA=w2400");
 }
-  
+.parallax {
+  background-image: url("images/ECEB.jpg"); 
+}
 
 .label p {
   margin: 75px;
