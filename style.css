@@ -1,0 +1,207 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* font-family: 'Roboto', sans-serif; */
+    /* overflow-y: hidden; /* Hide vertical scrollbar */
+    /* overflow-x: hidden; Hide horizontal scrollbar */    
+
+}
+
+h6 {
+  font-size: 75px;
+  float: initial;
+  color: whitesmoke;
+  position:  relative;
+  text-align: center;
+  
+}
+
+.section-background {
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.parallax {
+  background-image: url("https://images.unsplash.com/photo-1558985040-ed4d5029dd50?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjIzODkxNjg&ixlib=rb-1.2.1&q=80"); 
+}
+
+.parallax1 {
+  /* background-image: url("https://images.unsplash.com/photo-1610128114197-485d933885c5?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjIzOTA2Nzc&ixlib=rb-1.2.1&q=80"); */
+  background-image: url("  https://lh3.googleusercontent.com/2xCJZ0O1OoO0eWdt9piiAQmloVQlW4l8b1T1oP_V_uxhE1DRJkz_L44xQF-whAZCwTKyUdYOLoB7-sZo5n0XnoLvIou2Obbvgkm9OJpGqEIaKB-pt3BgoZQ9OGJAIBoz8GcfuRf1beA=w2400");
+
+}
+
+.parallax2 {
+  /* background-image: url("https://images.unsplash.com/photo-1562095241-8c6714fd4178?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjIzOTA5OTg&ixlib=rb-1.2.1&q=80"); */
+  background-image: url("https://lh3.googleusercontent.com/8-kLDAZgbhI0Nsi88uFyrTY660DfAWMjFFPe7RUcOTtJWk2pCeQVJvuf1KaL_TSXCWi_N2RzRz2jYTnz0qkx6_0folpcWVOLA87saZ3KbdZdr33JXFjBrrtVYPNqgdcZa2YOanceM_8=w2400");
+
+}
+
+.parallax3 {
+  /* background-image: url("https://images.unsplash.com/photo-1543722530-d2c3201371e7?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjIzOTExOTg&ixlib=rb-1.2.1&q=80"); */
+  background-image: url("https://lh3.googleusercontent.com/TanKfkxGDnbWGFKo7bKkxxWYWeOW_vLDoe-_BS-RfowcVzHcuIViBpbXC_llhH3kajn9UNj2BxqyMVQhS3WTNfLtyeZ6iFff5Ht19MJnDFEKRY8LiEf8uZtU-G9-K6LAxzPV3-wJMjA=w2400");
+
+}
+  
+  
+
+.text-bloc p {
+  margin: 75px;
+  font-size: 10px;
+}
+
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+
+
+/* Arrow on landing part */
+  .m_scroll_arrows
+  {
+    display: block;
+    /* width: 5px;
+    height: 5px; */
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+     
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    margin: 0 0 3px 4px;
+    
+    width: 16px;
+    height: 16px;
+    margin-left: 390px;
+    margin-right: 390px;
+  }
+  .unu, .doi, .trei
+  {
+      -webkit-animation: mouse-scroll 1s infinite;
+      -moz-animation: mouse-scroll 1s infinite;
+      animation: mouse-scroll 1s infinite;
+      
+  }
+  @-webkit-keyframes mouse-scroll {
+  
+    0%   { opacity: 0;}
+    50%  { opacity: .5;}
+    100% { opacity: 1;}
+  }
+
+  .fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+  }  
+  /* Add a hover effect if you want */
+  .fa:hover {
+    opacity: 0.7;
+  }
+  
+  /* Set a specific color for each brand */
+
+  .fa-linkedin {
+    background: #000000;
+    color: white;
+    margin-left: 100px;
+    margin-right: 100px;
+    /* margin: 0 50px 0 100px; */
+  }
+
+  .fa-github {
+    background: #000000;
+    color: white;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  
+  /* Twitter */
+  .fa-twitter {
+    background: #000000;
+    color: white;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+
+  .fa-instagram {
+    background: #000000;
+    color: white;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+
+  .fa-snapchat {
+    background: #000000;
+    color: white;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+
+
+
+
+
+
+
+  body {	
+	background: linear-gradient(to bottom, #B721FF, #2AF598, #fec051, #FEE140, #FA709A );
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+body:before{
+	content:'';
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	z-index: -1;
+	background: linear-gradient(to right bottom, rgba(255,255,255,0.2), #21D4FD 75%);
+}
+
+
+.typewriter h2 {
+    color: #fff;
+    font-size: 125px;
+    float: initial;
+    /* font-family: monospace; */
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid transparent; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .00em; /* Adjust as needed */
+    animation: 
+      typing 2.5s steps(30, end),
+      blink-caret .5s step-end 8;
+      
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange }
+  }
