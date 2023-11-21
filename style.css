@@ -1,3 +1,5 @@
+/* @import url("project.css"); */
+
 *{
   margin: 0;
   padding: 0;
@@ -21,10 +23,14 @@ h1{
 }
 
 body {	
-background: linear-gradient(to bottom, #B721FF, #2AF598, #fec051, #FEE140, #FA709A );
+/* background: linear-gradient(to bottom, #B721FF, #2AF598, #fec051, #FEE140, #FA709A ); */
+background: linear-gradient(to bottom,black );
 background-size: 100%;
 background-repeat: no-repeat;
-height: 100%;
+/* height: 200%; */
+height: 500vh; /* Change this to increase height of page*/
+
+
 }
 
 body:before{
@@ -34,7 +40,8 @@ top: 0;
 bottom: 0;
 width: 100%;
 z-index: -1;
-background: linear-gradient(to right bottom, rgba(255,255,255,0.2), #21D4FD 75%);
+/* background: linear-gradient(to right bottom, rgba(255,255,255,0.2), #21D4FD 75%); */
+background: linear-gradient(to right bottom, rgba(255,255,255,0.2), black 75%);
 }
 
 .section-background {
@@ -126,6 +133,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 white-space: nowrap;
+z-index: 1;
 
 }
 .canvas {
@@ -231,25 +239,18 @@ padding: 1em;
 
 
 /* ===== Scrollbar CSS ===== */
-/* Firefox */
-* {
-  scrollbar-width: auto;
-  scrollbar-color: #8f54a0 #1ca091;
+/* for scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-/* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 16px;
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-*::-webkit-scrollbar-track {
-  background: #1ca091;
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: #8f54a0;
-  border-radius: 10px;
-  border: 3px solid #ffffff;
+::-webkit-scrollbar-thumb {
+  background: #42badb;
+  border-radius: 15px;
 }
 
 
@@ -369,21 +370,6 @@ box-sizing: border-box;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .cm-wrapper .cm-navbar-btn {
 font-size: 18px;
 line-height: 28px;
@@ -426,18 +412,6 @@ bottom: -1px;
 border-bottom-width: inherit;
 animation: move4 1.8s infinite ease;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .cm-wrapper .cm-navbar-btn:hover {
@@ -513,24 +487,6 @@ transition: ease-in-out;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .container-about {
   display: flex;
   justify-content: center;
@@ -577,7 +533,7 @@ transition: ease-in-out;
   box-sizing: border-box;
 }
 
-.container-about .card:nth-of-type(1)::before {
+/* .container-about .card:nth-of-type(1)::before {
   filter: url(#wavy1);
 }
 
@@ -587,7 +543,7 @@ transition: ease-in-out;
 
 .container-about .card:nth-of-type(3)::before {
   filter: url(#wavy3);
-}
+} */
 
 .container-about .card .info {
   position:absolute;
@@ -602,17 +558,149 @@ transition: ease-in-out;
   color: #fff;
   line-height: 1.4;
   font-size: 20px;
-  opacity: 0;
+  opacity: 1;
   transition-duration: 1s;
   box-sizing: border-box;
   object-fit: fill;
 
 }
 
-.container-about .card:hover .info {
+/* .container-about .card:hover .info {
   box-sizing: border-box;
   opacity: 1;
   object-fit: fill;
+} */
+h5 {
+  font-family: 'Waiting for the Sunrise', cursive; 
+  font-size:60px;
+  /* color: #21D4FD; */
+  /* padding-top:10em; */
+  text-align: left;
 
 }
 
+* { text-decoration: none; color: white;}
+.title1 {
+  text-align: left;
+  color: #269CEB;
+  margin-top: 0px;
+  float: left;
+  clear: both;
+}
+
+.title2 {
+  color: #FF9D00;
+}
+
+
+
+.project-card-sm {
+/*   max-width: 600px; */
+  max-width: 1200px;
+  padding: 2.5px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center; /* Aligns the card horizontally in the middle of its container */
+  margin: 0 auto; /* Creates equal margins on the left and right sides of the card */
+  transition: transform 0.4s, box-shadow 0.4s ;
+
+  
+}
+
+.project-card-sm:hover {
+  transform: scale(1.025);
+  box-shadow: 0 0 100px -30px #6f45dc;  
+
+}
+
+.project-card-sm .card-border-gradient {
+  content: "";
+  position: absolute;
+  bottom: 50%;
+  height: 300%;
+  width: 10rem;
+  z-index: -1;
+  background: linear-gradient(to right, transparent, #9272e4, transparent);
+  
+  transition: opacity 0.3s ;
+  opacity: 0;
+    
+  animation: animate-border-gradient 5s infinite linear;
+}
+
+.project-card-sm:hover .card-border-gradient {
+  opacity: 1;
+}
+
+@keyframes animate-border-gradient {
+  0% {
+    transform: rotate(0deg);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: rotate(360deg) ;
+    transform-origin: bottom;
+  }
+}
+
+
+.project-card-sm .card-container {
+  display: grid;
+  grid-template-areas: "img img text text text";
+  gap: 1rem;
+  padding: 0.75rem;
+  border-radius: 12px;
+  background-color: hsl(0, 0%, 10%);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.card-container img {
+  grid-area: img;
+/*   height: 100%; */
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  border-radius: 8px;
+  
+  transition: transform 0.3s;
+}
+
+.card-container .wrapper {
+  grid-area: text;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.card-container .wrapper h1 {
+  font-size: 2.1rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.card-container .wrapper p {
+  font-size: 1.1rem;
+}
+.card-container .wrapper button {
+  background: none;
+  border: none;
+  
+  font: inherit;
+  color: #fff;
+/*   background-color: red; */
+  margin-top: 1.4rem;
+  
+}
+
+.card-container .wrapper button i {
+  margin-left: .5rem;
+  transition: margin 0.3s;
+}
+.card-container:hover button i {margin-left: 1rem;}
