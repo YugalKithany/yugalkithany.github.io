@@ -1,14 +1,12 @@
+/* ===== NAV BAR JS ===== */
   // Get the navigation bar element
   const navbar = document.getElementById('navbar');
-
   // Set initial visibility of the navigation bar
   navbar.style.display = 'none';
-  
   // Function to handle scroll event
   function handleScroll() {
     // Get the current scroll position
     const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-  
     // Check if the scroll position is past 1000 pixels
     if (scrollPosition > 750) {
       // Display the navigation bar
@@ -18,19 +16,16 @@
       navbar.style.display = 'none';
     }
   }
-  
   // Add scroll event listener to the window
   window.addEventListener('scroll', handleScroll);
-  
-  
-  
+  // scroll to top when refresh hit
   window.onbeforeunload = function () {
       window.scrollTo(0, 0);
     }
   
   
   
-  
+/* ===== I am a ... typing effect JS ===== */
   var TxtType = function(el, toRotate, period) {
     this.toRotate = toRotate;
     this.el = el;
@@ -88,11 +83,58 @@
     css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
     document.body.appendChild(css);
   };
-  
-  
-  
-  
-  
+
+
+
+/* ===== About me containers animation appearing up JS ===== */
+const containerAbout = document.querySelector('.container-about');
+const cards = document.querySelectorAll('.container-about .card');
+
+const observer = new IntersectionObserver((entries) => {
+  let isVisible = false;
+  for (const entry of entries) {
+    if (entry.isIntersecting) {
+      isVisible = true;
+      break;
+    }
+  }
+
+  if (isVisible) {
+    containerAbout.classList.add('visible');
+  }
+}, {
+  root: null,
+  threshold: 0,
+});
+
+for (const card of cards) {
+  observer.observe(card);
+}
+
+
+/* ===== Project containers animation slide right JS ===== */
+const projectCards = document.querySelectorAll('.project-card-sm');
+
+window.addEventListener('scroll', function() {
+  for (const projectCard of projectCards) {
+    const cardTop = projectCard.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (cardTop < windowHeight) {
+      projectCard.classList.add('visible');
+      projectCard.classList.remove('hover'); // Remove the hover class
+    } else {
+      projectCard.classList.remove('visible');
+      projectCard.classList.remove('hover'); // Remove the hover class
+    }
+  }
+});
+
+
+
+
+
+
   // //Scroll Down button
   // $(function() {
   //   $('a[href*=#about]').on('click', function(e) {
@@ -100,3 +142,7 @@
   //     $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
   //   });
   // });
+
+
+
+

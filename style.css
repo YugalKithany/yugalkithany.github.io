@@ -57,9 +57,12 @@ background-image: url("images/ECEB.jpg");
   text-align: center;
   text-decoration: none;
   border-radius: 50%;
-}  
+
+}
+
+
 /*hover effect */
-.fa:hover {
+.fa:hover { 
   opacity: 0.7;
 }
 /* color  */
@@ -108,111 +111,6 @@ from, to { border-color: transparent }
 }
 
 /* ===== Slideshow for Projects ===== */
-.slideshow {
-overflow: hidden;
-position: relative;
-border-radius: 0.5rem;
-scroll-behavior: smooth;
-display: flex;
-align-items: center;
-justify-content: center;
-white-space: nowrap;
-z-index: 1;
-}
-.canvas {
-width: 59rem;
-height: 38rem;
-gap: 10px;
-padding: 1rem;
-overflow-x: scroll;
-scroll-behavior: smooth;
-display: flex;
-}
-.page {
-flex-grow: 0;
-flex-shrink: 0;
-width: 58rem;
-height: 35rem;
-object-fit: cover;
-border: none;
-border-radius: 0.5rem;
-}
-.container {
-display: flex;
-justify-content: center;
-align-items: center;
-}
-input {
-position: absolute;
-opacity: 0;
-z-index: -1;
-background-position: center;
-}
-.row {
-display: flex;
-background-position: center;
-display: inline-block;
-text-align: center;
-}
-.row .col {
-flex: 1;
-}
-.row .col:last-child {
-margin-left: 1em;
-}
-/* Accordion styles */
-.tabs {
-border-radius: 8px;
-overflow: hidden;
-justify-content: center;
-}
-.tab {
-width: 100%;
-color: white;
-overflow: hidden;
-justify-content: center;
-}
-.tab-label {
-display: flex;
-justify-content: center;
-background-position: center;
-padding: 1em;
-background: #2c3e50;
-font-weight: bold;
-cursor: pointer;
-/* Icon */
-}
-.tab-label:hover {
-background: #1a252f;
-background-position: center;
-
-}
-.tab-label::after {
-content: "\276F";
-width: 1em;
-height: 1em;
-text-align: center;
-transition: all 0.35s;
-background-position: center;
-
-}
-.tab-content {
-max-height: 0;
-padding: 0 1em;
-color: #2c3e50;
-transition: all 0.35s;
-}
-
-input:checked + .tab-label {
-background: #1a252f;
-}
-input:checked + .tab-label::after {
-transform: rotate(90deg);
-}
-input:checked ~ .tab-content {
-max-height: 100vh;
-padding: 1em;
-}
 
 
 /* ===== Scrollbar CSS ===== */
@@ -237,9 +135,10 @@ top: 0;
 left: 0;
 width: 100%;
 background-color: #f5f5f5;
-display: none;
+display: block;
 justify-content: center;
 padding: 10px 0;
+z-index: 1000;
 }
 
 #navbar ul {
@@ -263,6 +162,7 @@ font-weight: bold;
 height: 2000px; /* Add some content to scroll */
 }
 
+/* Button on front picture for scrolling down */
 .demo a {
 position: absolute;
 bottom: 20px;
@@ -535,6 +435,40 @@ transition: ease-in-out;
   opacity: 1;
   object-fit: fill;
 } */
+
+
+.container-about {
+  transform: translateY(100%);
+  transition: transform 1s ease-in-out;
+}
+
+.container-about.visible {
+  transform: translateY(0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 h5 {
   font-family: 'Waiting for the Sunrise', cursive; 
   font-size:60px;
@@ -575,9 +509,26 @@ h5 {
   align-self: center; /* Aligns the card horizontally in the middle of its container */
   margin: 0 auto; /* Creates equal margins on the left and right sides of the card */
   transition: transform 0.4s, box-shadow 0.4s ;
-
-  
+  transition: transform 1s ease-in-out;
+  transform: translateX(100%);
+  animation: slide-in-right 0.5s ease-in-out forwards;
 }
+
+.project-card-sm.visible {
+  transform: translateX(0);
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 
 .project-card-sm:hover {
   transform: scale(1.025);
@@ -626,6 +577,9 @@ h5 {
   color: rgba(255, 255, 255, 0.7);
 }
 
+
+
+
 .card-container img {
   grid-area: img;
 /*   height: 100%; */
@@ -635,6 +589,9 @@ h5 {
   
   transition: transform 0.3s;
 }
+
+
+
 
 .card-container .wrapper {
   grid-area: text;
