@@ -8,7 +8,7 @@
     // Get the current scroll position
     const scrollPosition = window.scrollY || document.documentElement.scrollTop;
     // Check if the scroll position is past 1000 pixels
-    if (scrollPosition > 750) {
+    if (scrollPosition > 400) {
       // Display the navigation bar
       navbar.style.display = 'block';
     } else {
@@ -22,10 +22,10 @@
   window.onbeforeunload = function () {
       window.scrollTo(0, 0);
     }
-  
-  
-  
-/* ===== I am a ... typing effect JS ===== */
+
+
+
+  /* ===== I am a ... typing effect JS ===== */
   var TxtType = function(el, toRotate, period) {
     this.toRotate = toRotate;
     this.el = el;
@@ -86,33 +86,9 @@
 
 
 
-/* ===== About me containers animation appearing up JS ===== */
-const containerAbout = document.querySelector('.container-about');
-const cards = document.querySelectorAll('.container-about .card');
-
-const observer = new IntersectionObserver((entries) => {
-  let isVisible = false;
-  for (const entry of entries) {
-    if (entry.isIntersecting) {
-      isVisible = true;
-      break;
-    }
-  }
-
-  if (isVisible) {
-    containerAbout.classList.add('visible');
-  }
-}, {
-  root: null,
-  threshold: 0,
-});
-
-for (const card of cards) {
-  observer.observe(card);
-}
 
 
-/* ===== Project containers animation slide right JS ===== */
+  /* ===== Project containers animation slide right JS ===== */
 const projectCards = document.querySelectorAll('.project-card-sm');
 
 window.addEventListener('scroll', function() {
@@ -129,20 +105,6 @@ window.addEventListener('scroll', function() {
     }
   }
 });
-
-
-
-
-
-
-  // //Scroll Down button
-  // $(function() {
-  //   $('a[href*=#about]').on('click', function(e) {
-  //     e.preventDefault();
-  //     $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
-  //   });
-  // });
-
 
 
 
