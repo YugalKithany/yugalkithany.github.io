@@ -8,17 +8,19 @@
   justify-content: center;
   padding: 10px 0;
   z-index: 1000;
+  padding-left : 50px; /* Adjust padding as needed */
   }
   
   #navbar ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  padding-left : 50px;
   }
   
   #navbar ul li {
   display: inline-block;
-  margin-right: 15px;
+
   }
   
   #navbar ul li a {
@@ -26,8 +28,38 @@
   color: #333;
   font-weight: bold;
   }
+  .nav-logo {
+    margin-left: 10px;
+    margin-right: 10px;
+    float: left; /* Move the logo to the right side */
+    /* Adjust width and height for your logo image */
+    width: 30px;
+    height: 25px;  
+    top: 0; /* Position the logo at the top of the viewport */
+    padding: 5px 0;
+
+    position: fixed;
+  }
+  nav a {
+    /* Remove default underline */
+    text-decoration: none;
+    /* Add some padding for better spacing */
+    padding: 10px 20px;
+    /* Set a background color for hover effect */
+    background-color: #f2f2f2;
+    /* Set a color for the links */
+    color: #333;
+    /* Add a slight border for hover effect */
+    border-radius: 3px;
+  }
   
- 
+  /* Add a hover effect to change the link color */
+  nav a:hover {
+    background-color: #21D4FD;
+    color: #000;
+  }
+
+
 /* Codepen for quotes from MarkBoots   */
 blockquote {
   max-width: 40rem; /* Reduce max-width for smaller boxes */
@@ -267,7 +299,20 @@ blockquote.q-card > .author::before{
     margin-top: 0px;
     font-size: 28px;
   }
-  
+
+  h4 {
+    font-family: 'Waiting for the Sunrise', cursive; 
+    color: #21D4FD;
+    margin-top: 0px;
+    font-size: 42px;
+    text-align: center;
+    /* Add the following lines to center horizontally */
+    margin: 0 auto;
+    width: fit-content;
+    padding: 0;
+    border: none;
+  }
+
   /* * { text-decoration: none; color: white;} */
   .title1 {
     /* text-align: left; */
