@@ -2,10 +2,10 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  max-width: 100%;
   background-color: #f5f5f5;
-  display: block;
-  justify-content: center;
+  display: flex;
+  justify-content: space-between;
   padding: 10px 0;
   z-index: 1000;
   padding-left : 50px; /* Adjust padding as needed */
@@ -20,7 +20,6 @@
   
   #navbar ul li {
   display: inline-block;
-
   }
   
   #navbar ul li a {
@@ -33,31 +32,42 @@
     margin-right: 10px;
     float: left; /* Move the logo to the right side */
     /* Adjust width and height for your logo image */
-    width: 30px;
+    max-width: 30px;
     height: 25px;  
     top: 0; /* Position the logo at the top of the viewport */
     padding: 5px 0;
-
     position: fixed;
   }
+
+/* Add media query to stack links on mobile */
+@media only screen and (max-width: 768px) {
+  nav {
+    flex-direction: column; /* Stack links vertically */
+    align-items: center; /* Center links horizontally */
+  }
   nav a {
-    /* Remove default underline */
-    text-decoration: none;
-    /* Add some padding for better spacing */
-    padding: 10px 20px;
-    /* Set a background color for hover effect */
-    background-color: #f2f2f2;
-    /* Set a color for the links */
-    color: #333;
-    /* Add a slight border for hover effect */
-    border-radius: 3px;
+    margin-bottom: 10px; /* Add space between links */
   }
-  
-  /* Add a hover effect to change the link color */
-  nav a:hover {
-    background-color: #21D4FD;
-    color: #000;
-  }
+}
+
+nav a {
+  /* Remove default underline */
+  text-decoration: none;
+  /* Add some padding for better spacing */
+  padding: 10px 20px;
+  /* Set a background color for hover effect */
+  background-color: #f2f2f2;
+  /* Set a color for the links */
+  color: #333;
+  /* Add a slight border for hover effect */
+  border-radius: 3px;
+}
+
+/* Add a hover effect to change the link color */
+nav a:hover {
+  background-color: #21D4FD;
+  color: #000;
+}
 
 
 /* Codepen for quotes from MarkBoots   */
@@ -145,6 +155,7 @@ blockquote.q-card > .author::before{
   display: flex; /* Make the wrapper a flex container */
   gap: 1rem; /* Add spacing between the blocks */
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .q-card-container {
@@ -155,14 +166,11 @@ blockquote.q-card > .author::before{
 
 
 
-
-
-
 /* ==== Social Media Icons ====*/
 .fa {
   padding: 20px;
   font-size: 30px;
-  width: 20px;
+  max-width: 20px;
   text-align: center;
   text-decoration: none;
   border-radius: 50%;
@@ -253,7 +261,7 @@ blockquote.q-card > .author::before{
     position: absolute;
     bottom: 50%;
     height: 300%;
-    width: 10rem;
+    max-width: 10rem;
     z-index: -1;
     /* background: linear-gradient(to right, transparent, #9272e4, transparent); */
     background: linear-gradient(to right, transparent, #21D4FD, transparent);
@@ -308,7 +316,7 @@ blockquote.q-card > .author::before{
     text-align: center;
     /* Add the following lines to center horizontally */
     margin: 0 auto;
-    width: fit-content;
+    max-width: fit-content;
     padding: 0;
     border: none;
   }
@@ -483,8 +491,6 @@ blockquote.q-card > .author::before{
   }
 
 
-
-
   .container-about {
     display: flex;
     justify-content: center;
@@ -550,7 +556,13 @@ blockquote.q-card > .author::before{
     object-fit: fill; */
   
   }
-  
+@media (max-width: 767px) {
+
+  .container-about .card {
+    width: calc(50% - 20px); /* Adjust padding as needed */
+  margin: 15px; /* Adjust as needed */
+}
+}
 
 
   .container_mouse {
@@ -593,3 +605,10 @@ blockquote.q-card > .author::before{
       transform: translateY(20px);
     }
   }
+
+/* Hide button on screens smaller than 768px */
+@media only screen and (max-width: 768px) {
+  .container_mouse .mouse-btn {
+    display: none;
+  }
+}
