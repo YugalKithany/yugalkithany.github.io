@@ -612,3 +612,128 @@ blockquote.q-card > .author::before{
     display: none;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+.favorite-team-card {
+  margin: 15px auto;
+  padding: 16px;
+  border-radius: 4px;
+  background-color: var(--mdc-theme-surface-1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
+  width: calc(75vw);
+  display: flex;
+  flex-direction: column;
+}
+
+.favorite-team-card h2 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.player-selection-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow selections to wrap on multiple lines */
+  justify-content: space-between; /* Space selections horizontally */
+}
+
+.player-selection {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.player-selection label {
+  margin-right: 5px;
+  width: 80px; /* Fixed width for label */
+}
+
+.player-selection__input,
+.player-selection label {
+  padding: 3px 6px;
+  font-size: 14px;
+  max-height: 100px;
+  min-width: 300px;
+}
+
+/* Textbox styles */
+input[type="text"] {
+  outline: none;
+  border: none;
+  background-color: white;
+  border-radius: 4px;
+  padding: 5px 4px;
+  font-size: 14px;
+  width: 60%;
+  margin-top: 5px;
+  box-sizing: border-box;
+  color: rgb(30, 145, 254);
+}
+
+/* Hover effects remain the same */
+input[type="text"]:hover {
+  box-shadow: 0 1px 3px rgba(0, 0, 255, 0.12), 0 1px 2px rgba(0, 0, 255, 0.08);
+}
+
+/* Datalist options styles remain the same */
+datalist option {
+  background-color: white;
+  padding: 8px 12px;
+  color: rgb(30, 145, 254);
+}
+
+/* When suggestion is hovered */
+datalist option:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+.player-positions-container {
+  display: flex;
+  justify-content: flex-end; /* Align image to right */
+  padding: 10px;
+  position: relative; /* Allow absolute positioning of circles */
+
+}
+
+.soccer-pitch-image {
+  width: 75%;
+  height: 450px;
+  object-fit: contain;
+  margin-top: -280px; /* Adjust value for desired upward movement */
+
+}
+
+
+.player-circle {
+  position: absolute; /* Position circles on top of the image */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%; /* Create circle shape */
+  background-color: red; /* Change color as needed */
+  top: 50%; /* Adjust position (experiment in browser tools) */
+  left: 50%; /* Adjust position (experiment in browser tools) */
+  transform: translate(-50%, -50%); /* Center circle on coordinates */
+  z-index: 1; /* Ensure circles appear above the image */
+}
+
+.player-name-label {
+  position: absolute; /* Position labels near circles */
+  /* Adjust styles for label placement (top, left, etc.) */
+}
+
+#player-canvas {
+  position: absolute; /* Position canvas on top of image */
+  top: 0;
+  left: 0;
+  width: 100%; /* Match image dimensions */
+  height: 100%;
+  z-index: 1; /* Ensure canvas appears above the image */
+}

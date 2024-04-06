@@ -219,6 +219,168 @@
 
 
 
+<div class="favorite-team-card">
+  <h2>Create your 5-a-side Team</h2>
+  <div class="team-selection">
+    <div class="player-selection">
+      <div class="player-selection__input">
+        <label for="team">Team Name:   </label>
+        <input type="text" id="team" name="team" list="teams" placeholder="Enter Team name" >
+      </div>
+    </div>
+
+
+
+    <div class="player-selection">
+      <div class="player-selection__input">
+        <label for="defender1">Defender 1:   </label>
+        <input type="text" id="defender1" name="defender1" list="defenders" placeholder="Enter defender name" >
+      </div>
+    </div>
+
+    <div class="player-selection">
+      <div class="player-selection__input">
+        <label for="defender2">Defender 2:   </label>
+        <input type="text" id="defender2" name="defender2" list="defenders" placeholder="Enter defender name" >
+      </div>
+    </div>
+
+    <div class="player-selection">
+      <div class="player-selection__input">
+        <label for="midfielder1">Midfielder 1: </label>
+        <input type="text" id="midfielder1" name="midfielder1" list="midfielders" placeholder="Enter midfielder name" >
+      </div>
+    </div>
+
+    <div class="player-selection">
+      <div class="player-selection__input">
+        <label for="midfielder2">Midfielder 2: </label>
+        <input type="text" id="midfielder2" name="midfielder2" list="midfielders" placeholder="Enter midfielder name" >
+      </div>
+    </div>
+
+    <div class="player-selection">
+      <div class="player-selection__input">
+        <label for="forward1">CenterFrwd:  </label>
+        <input type="text" id="forward1" name="forward1" list="forwards" placeholder="Enter forward name">   
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <div class="player-positions-container" style="float: right;"> 
+    <img src="images/soccerpitch.png" alt="Soccer Pitch" class="soccer-pitch-image">
+    <canvas id="player-canvas"></canvas>
+  
+  </div>
+
+  <datalist id="teams"> </datalist>
+  <datalist id="defenders"> </datalist>
+  <datalist id="midfielders"> </datalist>
+  <datalist id="forwards"> </datalist>
+</div>
+
+
+
+<!-- <script>
+
+const canvas = document.getElementById('player-canvas');
+const ctx = canvas.getContext('2d');
+
+// Image object (replace with loading logic)
+const image = new Image();
+image.src = 'images/soccerpitch.png';
+
+image.onload = function() {
+  canvas.width = image.width;
+  canvas.height = image.height;
+
+  // Draw image onto canvas
+  ctx.drawImage(image, 0, 0);
+
+  // Function to draw the three dots
+  function drawDots() {
+    // Clear existing dots (if needed)
+    // ctx.clearRect(0, 0, canvas.width, canvas.height); // Uncomment to clear previous dots
+
+    const dotRadius = 5; // Adjust dot size as needed
+    const dotColor = 'blue'; // Change color as desired
+
+    // Top dot
+    const topY = canvas.height * 0.1; // Adjust position (10% from top)
+    const topX = canvas.width / 2; // Centered horizontally
+    ctx.beginPath();
+    ctx.arc(topX, topY, dotRadius, 0, 2 * Math.PI);
+    ctx.fillStyle = dotColor;
+    ctx.fill();
+
+    // Middle dot
+    const middleY = canvas.height / 2; // Centered vertically
+    const middleX = topX; // Centered horizontally
+    ctx.beginPath();
+    ctx.arc(middleX, middleY, dotRadius, 0, 2 * Math.PI);
+    ctx.fillStyle = dotColor;
+    ctx.fill();
+
+    // Bottom dot
+    const bottomY = canvas.height * 0.9; // Adjust position (90% from top)
+    const bottomX = topX; // Centered horizontally
+    ctx.beginPath();
+    ctx.arc(bottomX, bottomY, dotRadius, 0, 2 * Math.PI);
+    ctx.fillStyle = dotColor;
+    ctx.fill();
+  }
+
+  // Draw dots initially
+  drawDots();
+};
+
+</script> -->
+
+
+
+
+
+
+<script>
+  // Event listener to detect user interaction with dropdown arrow
+  var input = document.getElementById("team");
+  input.addEventListener("mousedown", function(event) {
+    if (event.target.matches(".datalist-arrow")) {
+      resetDropdown();
+    }
+  });
+  const teams = ["FC Barcelona", "Manchester City", "Bayern Munich", "Liverpool", "Chelsea", "Real Madrid", "Inter Milan", "Paris Saint-Germain",
+                 "Atletico Madrid", "Juventus", "Tottenham Hotspur", "Arsenal", "Borussia Dortmund", "RB Leipzig", "Napoli", "Lazio", "Atalanta", "Ajax",
+                 "Benfica", "Sporting CP", "Manchester United", "Leicester City", "West Ham United", "Everton", "AS Roma", "Fiorentina", "Villarreal",
+                 "Real Sociedad", "Sevilla", "Athletic Bilbao", "Valencia CF", "Olympique Lyonnais", "Olympique de Marseille", "AS Monaco", "LOSC Lille",
+                 "FC Porto", "SC Braga", "PSV Eindhoven", "Feyenoord", "Shakhtar Donetsk", "Dynamo Kyiv", "Zenit Saint Petersburg", "Celtic", "Rangers", "Galatasaray"];
+
+  const defenders = ["Roberto Carlos", "Paolo Maldini", "Sergio Ramos", "Virgil van Dijk"];
+  const midfielders = ["Xavi Hernandez", "Andres Iniesta", "Luka Modric", "Kevin De Bruyne"];
+  const forwards = ["Lionel Messi", "Cristiano Ronaldo", "Kylian Mbappé", "Robert Lewandowski"];
+
+  const teamDatalist = document.getElementById('teams');
+  const defenderDatalist = document.getElementById('defenders');
+  const midfielderDatalist = document.getElementById('midfielders');
+  const forwardDatalist = document.getElementById('forwards');
+
+  populateDatalist(teamDatalist, teams);
+  populateDatalist(defenderDatalist, defenders);
+  populateDatalist(midfielderDatalist, midfielders);
+  populateDatalist(forwardDatalist, forwards);
+
+  function populateDatalist(datalist, players) {
+    players.forEach(player => {
+      const option = document.createElement('option');
+      option.value = player;
+      option.textContent = player;
+      datalist.appendChild(option);
+    });}
+</script>
+
 
 <script src="script.js"></script>
 
