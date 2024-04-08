@@ -613,16 +613,6 @@ blockquote.q-card > .author::before{
   }
 }
 
-
-
-
-
-
-
-
-
-
-
 .favorite-team-card {
   margin: 15px auto;
   padding: 16px;
@@ -709,24 +699,6 @@ datalist option:hover {
   object-fit: contain;
   margin-top: -280px; /* Adjust value for desired upward movement */
 
-}
-
-
-.player-circle {
-  position: absolute; /* Position circles on top of the image */
-  width: 20px;
-  height: 20px;
-  border-radius: 50%; /* Create circle shape */
-  background-color: red; /* Change color as needed */
-  top: 50%; /* Adjust position (experiment in browser tools) */
-  left: 50%; /* Adjust position (experiment in browser tools) */
-  transform: translate(-50%, -50%); /* Center circle on coordinates */
-  z-index: 1; /* Ensure circles appear above the image */
-}
-
-.player-name-label {
-  position: absolute; /* Position labels near circles */
-  /* Adjust styles for label placement (top, left, etc.) */
 }
 
 #player-canvas {

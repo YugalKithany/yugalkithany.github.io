@@ -222,6 +222,7 @@
 <div class="favorite-team-card">
   <h2>Create your 5-a-side Team</h2>
   <div class="team-selection">
+
     <div class="player-selection">
       <div class="player-selection__input">
         <label for="team">Team Name:   </label>
@@ -229,7 +230,12 @@
       </div>
     </div>
 
-
+    <!-- <div class="player-selection">
+      <div class="player-selection__input">
+        <label for="team">Formation:   </label>
+        <input type="text" id="formation" name="formation" list="formations" placeholder="Enter Formation" >
+      </div>
+    </div> -->
 
     <div class="player-selection">
       <div class="player-selection__input">
@@ -237,6 +243,8 @@
         <input type="text" id="defender1" name="defender1" list="defenders" placeholder="Enter defender name" >
       </div>
     </div>
+
+
 
     <div class="player-selection">
       <div class="player-selection__input">
@@ -262,84 +270,24 @@
     <div class="player-selection">
       <div class="player-selection__input">
         <label for="forward1">CenterFrwd:  </label>
-        <input type="text" id="forward1" name="forward1" list="forwards" placeholder="Enter forward name">   
+        <input type="text" id="forward1" name="forward1" list="forwards" placeholder="Enter forward name" >   
       </div>
     </div>
-
-
-
   </div>
 
   <div class="player-positions-container" style="float: right;"> 
-    <img src="images/soccerpitch.png" alt="Soccer Pitch" class="soccer-pitch-image">
-    <canvas id="player-canvas"></canvas>
-  
-  </div>
+    <img class="soccer-pitch-image" src="images/field.svg" alt="Soccer Pitch">
+
+  </div> 
+
 
   <datalist id="teams"> </datalist>
   <datalist id="defenders"> </datalist>
   <datalist id="midfielders"> </datalist>
   <datalist id="forwards"> </datalist>
+  <datalist id="formations"> </datalist>
+
 </div>
-
-
-
-<!-- <script>
-
-const canvas = document.getElementById('player-canvas');
-const ctx = canvas.getContext('2d');
-
-// Image object (replace with loading logic)
-const image = new Image();
-image.src = 'images/soccerpitch.png';
-
-image.onload = function() {
-  canvas.width = image.width;
-  canvas.height = image.height;
-
-  // Draw image onto canvas
-  ctx.drawImage(image, 0, 0);
-
-  // Function to draw the three dots
-  function drawDots() {
-    // Clear existing dots (if needed)
-    // ctx.clearRect(0, 0, canvas.width, canvas.height); // Uncomment to clear previous dots
-
-    const dotRadius = 5; // Adjust dot size as needed
-    const dotColor = 'blue'; // Change color as desired
-
-    // Top dot
-    const topY = canvas.height * 0.1; // Adjust position (10% from top)
-    const topX = canvas.width / 2; // Centered horizontally
-    ctx.beginPath();
-    ctx.arc(topX, topY, dotRadius, 0, 2 * Math.PI);
-    ctx.fillStyle = dotColor;
-    ctx.fill();
-
-    // Middle dot
-    const middleY = canvas.height / 2; // Centered vertically
-    const middleX = topX; // Centered horizontally
-    ctx.beginPath();
-    ctx.arc(middleX, middleY, dotRadius, 0, 2 * Math.PI);
-    ctx.fillStyle = dotColor;
-    ctx.fill();
-
-    // Bottom dot
-    const bottomY = canvas.height * 0.9; // Adjust position (90% from top)
-    const bottomX = topX; // Centered horizontally
-    ctx.beginPath();
-    ctx.arc(bottomX, bottomY, dotRadius, 0, 2 * Math.PI);
-    ctx.fillStyle = dotColor;
-    ctx.fill();
-  }
-
-  // Draw dots initially
-  drawDots();
-};
-
-</script> -->
-
-
 
 
 
@@ -358,19 +306,40 @@ image.onload = function() {
                  "Real Sociedad", "Sevilla", "Athletic Bilbao", "Valencia CF", "Olympique Lyonnais", "Olympique de Marseille", "AS Monaco", "LOSC Lille",
                  "FC Porto", "SC Braga", "PSV Eindhoven", "Feyenoord", "Shakhtar Donetsk", "Dynamo Kyiv", "Zenit Saint Petersburg", "Celtic", "Rangers", "Galatasaray"];
 
-  const defenders = ["Roberto Carlos", "Paolo Maldini", "Sergio Ramos", "Virgil van Dijk"];
-  const midfielders = ["Xavi Hernandez", "Andres Iniesta", "Luka Modric", "Kevin De Bruyne"];
-  const forwards = ["Lionel Messi", "Cristiano Ronaldo", "Kylian Mbappé", "Robert Lewandowski"];
+  const defenders = [ "Roberto Carlos", "Paolo Maldini", "Sergio Ramos", "Virgil van Dijk", "Cafu", "Franz Beckenbauer", "Giacinto Facchetti", "Fabio Cannavaro", "Alessandro Nesta",
+                      "Lilian Thuram", "Dani Alves", "Ashley Cole", "John Terry", "Rio Ferdinand", "Marcel Desailly", "Laurent Blanc", "Javier Zanetti", "Philipp Lahm", "Carlos Puyol",
+                      "Nemanja Vidic", "Raphaël Varane", "Alessandro Costacurta", "Gaetaano Scirea", "Franco Baresi", "Bobby Moore", "Ronald Koeman", "Daniel Passarella", "Carlos Alberto",
+                      "Djalma Santos", "Nilton Santos", "Antonio Valencia", "João Cancelo", "Trent Alexander-Arnold", "Achraf Hakimi", "João Cancelo", "Thiago Silva", "Marquinhos",
+                      "Kalidou Koulibaly", "Matthijs de Ligt", "Ruben Dias", "Aymeric Laporte", "Eder Militão", "Jules Koundé", "Gerard Piqué", "Ronald Koeman", "Migueli", "Juliano Belletti",
+                      "Oleguer Presas", "Rafael Márquez", "Sylvinho", "Clément Lenglet"];
 
+
+
+  const midfielders = ["Xavi Hernández", "Andrés Iniesta", "Sergio Busquets", "Xabi Alonso", "Andrea Pirlo", "Lothar Matthäus", "Johan Cruyff", "Kevin De Bruyne", "Toni Kroos", "Luka Modrić",
+                      "Marco Verratti", "Jorginho", "Paul Pogba", "N'Golo Kanté", "Ilkay Gündoğan", "Kai Havertz", "Bruno Fernandes", "Mason Mount", "Phil Foden", "Jude Bellingham",
+                      "Steven Gerrard", "Frank Lampard", "Michael Carrick", "David Silva", "Yaya Touré", "Mesut Özil", "Thiago Alcântara", "Christian Eriksen", "Casemiro", "Fernandinho",
+                      "James Rodríguez", "David Beckham", "Clarence Seedorf", "Roy Keane", "Patrick Vieira", "Ilkay Gündoğan", "Bruno Guimarães", "Federico Valverde", "Rodri", "Fabinho",
+                      "Frenkie de Jong", "Bernardo Silva", "Thomas Müller", "Marco Reus", "Dani Parejo", "Christian Eriksen (2nd stint)", "Youri Tielemans", "Nicolo Barella", "Federico Chiesa",
+                        "Jack Grealish"];
+
+  const forwards = ["Lionel Messi", "Kylian Mbappé", "Robert Lewandowski", "Erling Haaland", "Karim Benzema", "Mohamed Salah", "Kevin De Bruyne", "Neymar", "Sadio Mané", "Son Heung-Min",
+                    "Harry Kane","Virgil van Dijk", "Lautaro Martínez", "Luis Suárez", "Romelu Lukaku", "João Félix","Trent Alexander-Arnold", "Bruno Fernandes", "Vinícius Júnior", "Joshua Kimmich",
+                    "Jadon Sancho","Lorenzo Insigne", "Dusan Vlahović", "Cristiano Ronaldo", "Thierry Henry", "Ronaldo Nazário","Pelé", "Diego Maradona", "Marco van Basten", "Alfredo Di Stéfano",
+                    "Franz Beckenbauer","Gerd Müller", "Kenny Dalglish", "George Best", "Zinédine Zidane", "Michel Platini", "Garrincha","Johan Cruyff", "Gabriel Batistuta", "Dennis Bergkamp", "Rivaldo",
+                    "Ronaldinho", "Raúl González Blanco","David Beckham", "Zlatan Ibrahimović"];
+  const formations = ["2-2-1", "3-2", "2-1-2"];
+  
   const teamDatalist = document.getElementById('teams');
   const defenderDatalist = document.getElementById('defenders');
   const midfielderDatalist = document.getElementById('midfielders');
   const forwardDatalist = document.getElementById('forwards');
+  const formationsDatalist = document.getElementById('formations');
 
   populateDatalist(teamDatalist, teams);
   populateDatalist(defenderDatalist, defenders);
   populateDatalist(midfielderDatalist, midfielders);
   populateDatalist(forwardDatalist, forwards);
+  populateDatalist(formationsDatalist, formations);
 
   function populateDatalist(datalist, players) {
     players.forEach(player => {
@@ -378,11 +347,108 @@ image.onload = function() {
       option.value = player;
       option.textContent = player;
       datalist.appendChild(option);
+
     });}
+
+// Function to update SVG text content (new)
+async function updateSvgText(playerId, chosenPlayer) {
+  const svgUrl = "images/field.svg"; // Replace with your actual SVG file path
+  console.log(svgUrl); 
+  try {
+    const response = await fetch(svgUrl);
+    const svgContent = await response.text();
+
+    // Modify SVG content (replace logic based on your actual element structure)
+    const updatedSvgContent = svgContent.replace(
+      new RegExp(`<text id="${playerId}">.+?</text>`, 'g'),
+      `<text id="${playerId}">${chosenPlayer}</text>`
+    );
+
+    // Create a new SVG element
+    const newSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    newSvg.innerHTML = updatedSvgContent;
+
+    // Replace existing SVG element (replace with your element selector)
+    const existingSvg = document.querySelector('.soccer-pitch-image'); // Adjust selector
+    existingSvg.parentNode.replaceChild(newSvg, existingSvg);
+  } catch (error) {
+    console.error('Error fetching or updating SVG:', error);
+  }
+}
+
+// Event listener for player selection (updated)
+const playerSelections = document.querySelectorAll('.player-selection__input input');
+playerSelections.forEach((input, index) => {
+  input.addEventListener('change', function(event) {
+    const chosenPlayer = event.target.value;
+    const playerId = input.id; // Assuming player ID matches input ID
+
+    // Update separate label content (optional, uncomment if using)
+    // chosenPlayerLabels[index].textContent = chosenPlayer;
+
+    // Update SVG text content based on selection
+    updateSvgText(playerId, chosenPlayer);
+  });
+});
+
+
+
+
+
+
+//   const circle1 = document.getElementById("circle1");
+//   const circle2 = document.getElementById("circle2");
+//   const circle3 = document.getElementById("circle3");
+
+//   // Define formation data (example for 4-3-3)
+//   const formationData = {
+//     "2-2-1": {
+//     circle1: { x: 228, y: 161.33 },
+//     circle2: { x: 456, y: 161.33 },
+//     circle3: { x: 342, y: 322.67 }
+//   },
+//   "3-2": {
+//     circle1: { x: 136.8, y: 161.33 },
+//     circle2: { x: 273.6, y: 161.33 },
+//     circle3: { x: 547.2, y: 161.33 },
+//     circle4: { x: 228, y: 322.67 },
+//     circle5: { x: 456, y: 322.67 }
+//   },
+//   "2-1-2": {
+//     circle1: { x: 228, y: 161.33 },
+//     circle2: { x: 456, y: 161.33 },
+//     circle3: { x: 342, y: 322.67 },
+//     circle4: { x: 171, y: 363 },
+//     circle5: { x: 513, y: 363 }
+//   }
+//   };
+
+//   // Function to update circle positions
+//   function updateFormation(formation) {
+//   const positions = formationData[formation];
+//   console.log(positions);  // Add this line
+//   document.getElementById("circle1").setAttribute("cx", positions.circle1.x);
+//   document.getElementById("circle1").setAttribute("cy", positions.circle1.y);
+//   // Update other circles similarly using their IDs
+//   document.getElementById("circle1").setAttribute("visibility", "visible");
+
+// }
+//   formationsDatalist.addEventListener("change", (event) => {
+//   const selectedFormation = event.target.value;
+//   updateFormation(selectedFormation);
+// });
 </script>
 
-
 <script src="script.js"></script>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 
 </body>
