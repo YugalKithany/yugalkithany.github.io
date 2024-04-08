@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(240, 238, 231);
+}
+
 #navbar {
   position: fixed;
   top: 0;
@@ -622,6 +626,9 @@ blockquote.q-card > .author::before{
   width: calc(75vw);
   display: flex;
   flex-direction: column;
+  z-index: 1;
+  background: linear-gradient(215deg, #87cddd, #e6e6e6);
+  box-shadow: 7px 7px 21px #bdbdbd, -7px -7px 21px #21D4FD;
 }
 
 .favorite-team-card h2 {
