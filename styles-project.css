@@ -1,0 +1,236 @@
+/* Reset and Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+
+
+body {
+  background-color: rgb(15, 15, 15);
+  font-family: 'Quicksand', sans-serif;
+  color: white;
+}
+
+/* Header with Logo and Navigation */
+header {
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 5px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+
+.logo {
+  margin-left: 0;
+  /* Ensure logo is fully left-aligned */
+}
+
+.logo img {
+  width: 50px;
+  height: auto;
+  margin-top: 0;
+  /* Optional: adjust top margin to move it closer to the top */
+  margin-bottom: 0;
+}
+
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 20px 20px 0 0;
+  /* margin: 0; */
+  padding: 0;
+
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  position: relative;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  left: 0;
+  bottom: -5px;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  transform: scaleX(1);
+}
+
+
+
+
+
+
+
+
+
+.project-card-sm {
+  /*   max-width: 600px; */
+  max-width: 1200px;
+  padding: 2.5px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  /* Aligns the card horizontally in the middle of its container */
+  margin: 0 auto;
+  /* Creates equal margins on the left and right sides of the card */
+  transition: transform 0.4s, box-shadow 0.4s;
+  transition: transform 1s ease-in-out;
+  transform: translateX(100%);
+  animation: slide-in-right 0.5s ease-in-out forwards;
+}
+
+.project-card-sm.visible {
+  transform: translateX(0);
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+.project-card-sm:hover {
+  transform: scale(1.025);
+  /* box-shadow: 0 0 100px -30px #6f45dc;   */
+  box-shadow: 0 0 100px -30px #21D4FD;
+
+
+}
+
+.project-card-sm .card-border-gradient {
+  content: "";
+  position: absolute;
+  bottom: 50%;
+  height: 300%;
+  max-width: 10rem;
+  z-index: -1;
+  /* background: linear-gradient(to right, transparent, #9272e4, transparent); */
+  background: linear-gradient(to right, transparent, #21D4FD, transparent);
+
+
+  transition: opacity 0.3s;
+  opacity: 0;
+
+  animation: animate-border-gradient 5s infinite linear;
+}
+
+.project-card-sm:hover .card-border-gradient {
+  opacity: 1;
+}
+
+@keyframes animate-border-gradient {
+  0% {
+    transform: rotate(0deg);
+    transform-origin: bottom;
+  }
+
+  100% {
+    transform: rotate(360deg);
+    transform-origin: bottom;
+  }
+}
+
+
+.project-card-sm .card-container {
+  display: grid;
+  grid-template-areas: "img img text text text";
+  gap: 1rem;
+  padding: 0.75rem;
+  border-radius: 12px;
+  background-color: hsl(0, 0%, 10%);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.project-image img {
+  max-width: 300px;
+  /* Adjust the value as needed */
+  min-width: 300px;
+  /* Adjust the value as needed */
+
+  min-height: 200px;
+  /* Automatically scales height based on width */
+  max-height: 300px;
+  /* Automatically scales height based on width */
+
+}
+
+h5 {
+  font-family: 'Waiting for the Sunrise', cursive;
+  color: #21D4FD;
+  margin-top: 0px;
+  font-size: 28px;
+}
+
+h4 {
+  font-family: 'Waiting for the Sunrise', cursive;
+  color: #21D4FD;
+  margin-top: 0px;
+  font-size: 42px;
+  text-align: center;
+  /* Add the following lines to center horizontally */
+  margin: 0 auto;
+  max-width: fit-content;
+  padding: 0;
+  border: none;
+}
+
+p {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+h1{
+  margin-bottom: 30px;
+}
+
+
+
+@media (max-width: 768px) {
+  .project-card-sm .card-container {
+    display: block;
+    text-align: center;
+  }
+
+  .project-image img {
+    width: 100%;
+    height: auto;
+    max-width: none;
+  }
+
+  .wrapper {
+    margin-top: 15px;
+  }
+}

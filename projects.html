@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="styles-project.css">
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="styles-about.css"> -->
+  <link rel="shortcut icon" href="images/phoenix.ico" type="image/x-icon" />
+
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <!-- Logo acting as Home button -->
+  <header>
+    <a href="/" class="logo">
+      <img src="images/phoenix_logo.svg" alt="Logo">
+    </a>
+
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="about">Bio</a></li>
+<!--         <li><a href="#">Other</a></li> -->
+      </ul>
+    </nav>
+  </header>
+
+
+
+  <main>
+
+    <section id="projects">
+      <p>&ensp;</p>
+      <p>&ensp;</p>
+      <p>&ensp;</p>
+      <h4>Projects</h4>
+      <p>&ensp;</p>
+      <p>&ensp;</p>
+
+      <section class="projects">
+
+        <div class="project-card-sm">
+          <div class="card-border-gradient"></div>
+          <div class="card-container">
+            <div class="project-image">
+              <img src="images/rsc5.png" alt="" height="300" width="400" />
+            </div>
+            <div class="wrapper">
+              <h1>Multi-Cycle RISC-V Processor</h1>
+              <p>
+                • Designed multi-cycle processor using the RISC-V instruction set
+                and standard CPU data path using Verilog and Verdi.
+              </p>
+              <p>
+                • Implemented register-immediate instructions, load and store
+                memory instructions, conditional branch operations.
+              </p>
+              <p>
+                • Developed test bench to run sequence of instructions, and to run
+                RISC-V assembly. Verified design using RVFI monitor
+              </p>
+              <!-- <button>view project<i class="fa-solid fa-arrow-right"></i></button> -->
+            </div>
+          </div>
+        </div>
+
+
+
+        <p>&ensp;</p>
+
+        <div class="project-card-sm">
+          <div class="card-border-gradient"></div>
+          <div class="slide-in-right"></div>
+          <div class="card-container">
+            <div class="project-image">
+              <img src="images/LC3.jpg" alt="" height="300" width="400" />
+            </div>
+            <div class="wrapper">
+              <h1>System Verilog Projects</h1>
+              <p>
+                • Designed and built digital systems with TTL and FPGAs. Debugged
+                on Model Sim and Signal Tap Logic Analyzer.
+              </p>
+              <p>
+                • Replicated classical Tetris with NIOS II and SOC, using 32-bit
+                modified Harvard RISC-V architecture. The game was outputted on
+                monitor via VGA output. Utilized Electronic Design Automation to
+                synthesize logic.
+              </p>
+              <p>
+                • Developed three-stage (fetch, decode, execute) SLC3 processor
+                for LC3 ISA (ADD, NOT, BR, STR, LDR). Created CPU, SRAM, IR of
+                processor on breadboard. A software implementation done on Quartus
+                Prime with System Verilog.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p>&ensp;</p>
+
+        <div class="project-card-sm">
+          <div class="card-border-gradient"></div>
+          <div class="card-container">
+            <div class="project-image">
+              <img src="images/tux.png" alt="" height="300" width="400" />
+            </div>
+            <div class="wrapper">
+              <h1>Unix-based OS, Computer Systems Engineering</h1>
+              <p>
+                • Implemented device drivers for keyboard, RTC, Terminal, TUX
+                controller, Process Control Blocks in x86 Assembly.
+              </p>
+              <p>
+                • Introduced compatibility for Linux commands shell, ls, cat, and
+                grep on operating system's command line terminal.
+              </p>
+              <p>
+                • Developed elements for single core kernel with virtual RTC.
+                Instantiated memory segmentation, paging, file system.
+              </p>
+              <p>
+                • Created illusion of multiple processors with Round-Robin
+                Scheduling, allowing for non-preemptive context switching.
+              </p>
+              <!-- <button>view project<i class="fa-solid fa-arrow-right"></i></button> -->
+            </div>
+          </div>
+        </div>
+
+        <p>&ensp;</p>
+
+
+        <div class="project-card-sm">
+          <div class="card-border-gradient"></div>
+          <div class="card-container">
+            <div class="project-image">
+              <img src="images/Cuda.png" alt="" height="300" width="400" />
+            </div>
+            <div class="wrapper">
+              <h1>Convolution Neural Network for Image Classification</h1>
+              <p>
+                • Optimizing forward-pass of convolution layers using NVIDIA Cuda Platform. Developed software for
+                processors with massively parallel computing resources.
+              </p>
+              <p>
+                • Evaluated performance with Nsight systems/computer profiling tools to refine CUDA kernel for optimal
+                execution. Implementing modified LeNet5
+                architecture for working with Fashion MNIST dataset
+              </p>
+              <p>
+                • First, used the unroll and shared-memory matrix multiply method to optimize the kernel. Then, tried to
+                conduct kernel fusion for unrolling and multiply to speed up more.
+                Third, sweep CUDA parameters to ﬁnd best values. Finally, realize different implementation in kernels
+                with different layer sizes.
+              <p>
+            </div>
+          </div>
+        </div>
+
+        <p>&ensp;</p>
+
+
+        <div class="project-card-sm">
+          <div class="card-border-gradient"></div>
+          <div class="card-container">
+            <!-- <img src="images/ECEB.jpg" alt=""> -->
+            <div class="project-image">
+              <video loop="" controls="" width="347" height="347">
+                <source type="video/mp4" src="images/486.mov" height="300" width="400" />
+              </video>
+            </div>
+            <div class="wrapper">
+              <h1>Nonlinear Underactuated System, Control Systems</h1>
+              <p>
+                • Utilized two optical encoders to measure required angles to
+                calculate swing velocity and saturation of the Reaction Wheel
+                Pendulum. Developed 6 controllers to stabilize and implement all
+                components of the final robotic arm.
+              </p>
+              <p>
+                • Simulated a three-state feedback controller to stabilize the
+                velocity of rotor on MATLAB Simulink, used error control to
+                instantiate controller onto RWP. Design process included system
+                identification, model validation, and design validation.
+              </p>
+              <!-- <button>view project<i class="fa-solid fa-arrow-right"></i></button> -->
+            </div>
+          </div>
+        </div>
+
+        <p>&ensp;</p>
+
+        <div class="project-card-sm">
+          <div class="card-border-gradient"></div>
+          <div class="card-container">
+            <div class="project-image">
+              <img src="images/210.jpg" alt="" />
+            </div>
+            <div class="wrapper">
+              <h1>Superheterodyne AM Receiver, Analog Signal Processing</h1>
+              <p>
+                • Built receiver on breadboard with RF/IF amplifier, Mixer,
+                Demodulator, local oscillator, and audio amplifier elements.
+              </p>
+              <p>
+                • Designed digital filter to demodulate AM signal, replace IF signal
+                with soundcard-based sampler receiver, and play audio on speakers
+                for software radio. Measured AM receiver performance, sensitivity to
+                noise, and image rejection.
+              </p>
+              <!-- <button>view project<i class="fa-solid fa-arrow-right"></i></button> -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+
+  </main>
+</body>
+
+</html>
