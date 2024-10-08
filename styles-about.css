@@ -55,9 +55,12 @@ nav ul {
   display: flex;
   gap: 20px;
   margin: 20px 20px 0 0;
-  /* margin: 0; */
   padding: 0;
+}
 
+nav ul li {
+  /* Ensure each list item has a consistent layout */
+  display: inline-block; /* This helps with scaling */
 }
 
 nav ul li a {
@@ -65,22 +68,14 @@ nav ul li a {
   text-decoration: none;
   font-size: 16px;
   position: relative;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+  display: inline-block; /* Ensure the link itself can scale */
+  transform-origin: center; /* Center the scaling */
 }
 
-nav ul li a::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background-color: white;
-  left: 0;
-  bottom: -5px;
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-nav ul li a:hover::after {
-  transform: scaleX(1);
+nav ul li a:hover {
+  transform: scale(1.5); /* Increase scale-up effect */
+  text-shadow: 0 0 15px rgba(255, 255, 255, 1); /* Stronger glow effect */
 }
 
 
