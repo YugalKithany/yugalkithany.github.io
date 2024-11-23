@@ -99,6 +99,7 @@ nav ul li a:hover {
   transition: transform 1s ease-in-out;
   transform: translateX(100%);
   animation: slide-in-right 0.5s ease-in-out forwards;
+  flex-direction: column; 
 }
 
 .project-card-sm.visible {
@@ -162,7 +163,9 @@ nav ul li a:hover {
 
 .project-card-sm .card-container {
   display: grid;
-  grid-template-areas: "img img text text text";
+  grid-template-areas:
+    "img img text text text"
+    "pdf pdf pdf pdf pdf"; /* Add a new row for the PDF */  
   gap: 1rem;
   padding: 0.75rem;
   border-radius: 12px;
@@ -170,6 +173,10 @@ nav ul li a:hover {
   color: rgba(255, 255, 255, 0.7);
 }
 
+
+.project-card-sm .wrapper {
+  grid-area: text; /* Keep this mapped to the text area */
+}
 .project-image img {
   max-width: 300px;
   /* Adjust the value as needed */
@@ -230,3 +237,90 @@ h1{
     margin-top: 15px;
   }
 }
+
+
+.project-card-sm .wrapper {
+  display: flex;
+  flex-direction: column; /* Ensure text and button are stacked */
+  /* align-items: center; */
+  gap: 1rem;
+}
+
+.project-card-sm .pdf-container {
+  grid-area: pdf; /* Place the PDF in its own row below */
+  display: none; /* Initially hidden */
+  margin-top: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.project-card-sm.expanded .pdf-container {
+  display: block; /* Show when expanded */
+}
+
+.project-card-sm .expand-btn {
+  display: inline-block; /* Makes the button fit its content */
+  padding: 0.3rem 1rem; /* Smaller padding for a shorter width */
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #21d4fd;
+  color: #fff;
+  border: none;
+  border-radius: 20px; /* Rounded button */
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  max-width: 300px; /* Ensure it doesn't get too small */
+  box-shadow: 0 5px 15px rgba(33, 212, 253, 0.3);
+  text-align: center; /* Keep the text centered */
+  margin: 0 auto; /* Centers the button horizontally */
+  /* padding-left: -145px; */
+  /* margin-left: -1px;  */
+  transform: translateX(-150px); /* Move the button 10px to the left */
+}
+
+.project-card-sm .expand-btn:hover {
+  background: linear-gradient(45deg, #21d4fd, #b721ff); /* Cool gradient effect */
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(183, 33, 255, 0.5);
+}
+
+.project-card-sm .pdf-container embed {
+  width: 100%;
+  height: 300px; /* Adjust height as needed */
+}
+
+
+
+.project-card-sm .tools {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.project-card-sm .tools h3 {
+  color: #21d4fd;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-card-sm .tools-icons {
+  display: flex;
+  flex-direction: column; /* Stack icons vertically */
+  gap: 0.5rem;
+  align-items: center; /* Centers icons horizontally */
+}
+
+.project-card-sm .tools-icons img {
+  width: 60px;
+  height: 50px;
+  transition: transform 0.3s;
+}
+
+.project-card-sm .tools-icons img:hover {
+  transform: scale(1.2);
+}
+
+

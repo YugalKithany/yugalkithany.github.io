@@ -4,12 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
+  <title>Projects</title>
   <link rel="stylesheet" href="styles-project.css">
   <!-- <link rel="stylesheet" href="styles.css"> -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
   <!-- <link rel="stylesheet" href="styles-about.css"> -->
   <link rel="shortcut icon" href="images/phoenix.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="styles-stack.css">
 
   <script src="script.js"></script>
 </head>
@@ -24,8 +25,8 @@
     <nav>
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="about">Bio</a></li>
-<!--         <li><a href="#">Other</a></li> -->
+        <li><a href="about">About Me</a></li>
+        <!--         <li><a href="#">Other</a></li> -->
       </ul>
     </nav>
   </header>
@@ -43,6 +44,52 @@
       <p>&ensp;</p>
 
       <section class="projects">
+
+
+        <div class="project-card-sm">
+          <div class="card-border-gradient"></div>
+          <div class="card-container">
+            <div class="project-image">
+              <img src="images/rsc5.png" alt="" height="300" width="400" />
+            </div>
+            <div class="wrapper">
+              <h1>Speculative Out-of-Order RISC-V Processor</h1>
+              <p>
+                • Designing and verifying ERR out-of-order processor, implementing RV32IM ISA with FP and Mult
+                extensions.
+              </p>
+              <p>
+                • Developed arbiter for Icache and Dcache, stride prefetchers, and cacheline adapter for efficient two
+                stage cache-DRAM integration.
+              </p>
+              <p>
+                • Optimizing design with early branch recovery, Perceptron branch predictor with BTB, and split
+                load-store queue.
+              </p>
+              <p>
+                • Below is a VERY high level overview of the system.
+              </p>
+
+              <button class="expand-btn" onclick="toggleExpand(this)">Expand PDF</button>
+            </div>
+
+            <div class="tools">
+              
+              <div class="tools-icons">
+                <img src="images/sv.ico" alt="SystemVerilog" title="SystemVerilog" />
+                <img src="images/synopsys.ico" alt="Synopsys" title="Synopsys" />
+                <img src="images/verilator.ico" alt="Verilator" title="Verilator" />
+                <!-- Add more icons as needed -->
+              </div>
+          </div>
+          <div class="pdf-container">
+            <embed src="images/ERR block diagram.pdf" type="application/pdf" />
+          </div>
+
+          </div>
+        </div>
+
+        <p>&ensp;</p>
 
         <div class="project-card-sm">
           <div class="card-border-gradient"></div>
@@ -62,10 +109,19 @@
               </p>
               <p>
                 • Developed test bench to run sequence of instructions, and to run
-                RISC-V assembly. Verified design using RVFI monitor
+                RISC-V assembly. Verified design using RVFI monitor and SPIKE
               </p>
               <!-- <button>view project<i class="fa-solid fa-arrow-right"></i></button> -->
             </div>
+            <div class="tools">
+              
+              <div class="tools-icons">
+                <img src="images/sv.ico" alt="SystemVerilog" title="SystemVerilog" />
+                <img src="images/synopsys.ico" alt="Synopsys" title="Synopsys" />
+                <!-- Add more icons as needed -->
+              </div>
+          </div>
+
           </div>
         </div>
 
@@ -81,7 +137,7 @@
               <img src="images/LC3.jpg" alt="" height="300" width="400" />
             </div>
             <div class="wrapper">
-              <h1>System Verilog Projects</h1>
+              <h1>System Verilog Projects on DE10-Lite FPGA board</h1>
               <p>
                 • Designed and built digital systems with TTL and FPGAs. Debugged
                 on Model Sim and Signal Tap Logic Analyzer.
@@ -99,6 +155,15 @@
                 Prime with System Verilog.
               </p>
             </div>
+            <div class="tools">
+              
+              <div class="tools-icons">
+                <img src="images/sv.ico" alt="SystemVerilog" title="SystemVerilog" />
+                <img src="images/quartus.ico" alt="Quartus Prime" title="Quartus Prime" />
+                <img src="images/model.ico" alt="ModelSim" title="ModelSim" />
+                <!-- Add more icons as needed -->
+              </div>
+          </div>
           </div>
         </div>
 
@@ -111,26 +176,31 @@
               <img src="images/tux.png" alt="" height="300" width="400" />
             </div>
             <div class="wrapper">
-              <h1>Unix-based OS, Computer Systems Engineering</h1>
+              <h1>Single Core Unix x86 Kernel</h1>
               <p>
                 • Implemented device drivers for keyboard, RTC, Terminal, TUX
                 controller, Process Control Blocks in x86 Assembly.
               </p>
-              <p>
-                • Introduced compatibility for Linux commands shell, ls, cat, and
-                grep on operating system's command line terminal.
+              <p> 
+                • Introduced compatibility for Linux commands shell (&lt;10 concurrent), ls, cat, and grep on Posix style shell with keyboard comparability.
               </p>
               <p>
-                • Developed elements for single core kernel with virtual RTC.
-                Instantiated memory segmentation, paging, file system.
+                • Designed paging-based virtual memory, context switching, read only filesystem, round-robin scheduler.
               </p>
-              <p>
-                • Created illusion of multiple processors with Round-Robin
-                Scheduling, allowing for non-preemptive context switching.
               </p>
               <!-- <button>view project<i class="fa-solid fa-arrow-right"></i></button> -->
             </div>
+            <div class="tools">
+              
+              <div class="tools-icons">
+                <img src="images/c.ico" alt="C97" title="C97" />
+                <img src="images/qemu.ico" alt="Qemu" title="Qemu" />
+                <img src="images/86.ico" alt="x86 Assembly" title="x86 Assembly" />
+                <!-- Add more icons as needed -->
+              </div>
           </div>
+
+        </div>
         </div>
 
         <p>&ensp;</p>
@@ -160,7 +230,15 @@
                 with different layer sizes.
               <p>
             </div>
+            <div class="tools">
+              
+              <div class="tools-icons">
+                <img src="images/cu.ico" alt="Nvidia Cuda C" title="Nvidia Cuda C" />
+                <!-- Add more icons as needed -->
+              </div>
           </div>
+
+        </div>
         </div>
 
         <p>&ensp;</p>
@@ -171,12 +249,12 @@
           <div class="card-container">
             <!-- <img src="images/ECEB.jpg" alt=""> -->
             <div class="project-image">
-              <video loop="" controls="" width="347" height="347">
+              <video loop="" controls="" width="300" height="300">
                 <source type="video/mp4" src="images/486.mov" height="300" width="400" />
               </video>
             </div>
             <div class="wrapper">
-              <h1>Nonlinear Underactuated System, Control Systems</h1>
+              <h1>Nonlinear Underactuated System</h1>
               <p>
                 • Utilized two optical encoders to measure required angles to
                 calculate swing velocity and saturation of the Reaction Wheel
@@ -191,7 +269,15 @@
               </p>
               <!-- <button>view project<i class="fa-solid fa-arrow-right"></i></button> -->
             </div>
+            <div class="tools">
+              
+              <div class="tools-icons">
+                <img src="images/matlab.ico" alt="Matlab" title="Matlab" />
+                <img src="images/simulink.ico" alt="Simulink" title="Simulink" />
+              </div>
           </div>
+
+        </div>
         </div>
 
         <p>&ensp;</p>
@@ -203,7 +289,7 @@
               <img src="images/210.jpg" alt="" />
             </div>
             <div class="wrapper">
-              <h1>Superheterodyne AM Receiver, Analog Signal Processing</h1>
+              <h1>Superheterodyne AM Receiver</h1>
               <p>
                 • Built receiver on breadboard with RF/IF amplifier, Mixer,
                 Demodulator, local oscillator, and audio amplifier elements.
@@ -214,12 +300,111 @@
                 for software radio. Measured AM receiver performance, sensitivity to
                 noise, and image rejection.
               </p>
-              <!-- <button>view project<i class="fa-solid fa-arrow-right"></i></button> -->
             </div>
           </div>
         </div>
+
+        <p>&ensp;</p>
+
+        <div class="project-card-sm">
+          <div class="card-border-gradient"></div>
+          <div class="card-container">
+            <div class="project-image">
+              <img src="images/oflights.png" alt="" height="300" width="400" />
+            </div>
+            <div class="wrapper">
+              <h1>Open Flights Airplane Path Optimization</h1>
+              <p>
+                • Developed a program to find the shortest path between airports using the OpenFlights dataset
+              </p>
+              <p>
+                • Created a weighted directed graph using adjacency lists, with distances between vertices calculated from routes.dat
+              </p>
+
+              <p>
+                • Implemented both Floyd-Warshall and A* algorithms to efficiently find shortest paths
+              </p>
+              <p>
+                • Performed data cleaning and graph construction using DFS to validate path existence between airports
+              </p>
+            </div>
+            <div class="tools">
+              
+              <div class="tools-icons">
+                <img src="images/cpp.ico" alt="C++" title="C++" />
+                <img src="images/docker.ico" alt="Docker" title="Docker" />
+                <!-- Add more icons as needed -->
+              </div>
+          </div>
+
+          </div>
+        </div>
+
+
+
       </section>
     </section>
+
+    <p>&ensp;</p>
+    <p>&ensp;</p>
+
+
+
+    <div class="stackwrapper">
+      <h1>Languages and Tools</h1>
+      <div class="prisms-container">
+        <div class="stackcontainer">
+          <div id="prism">
+
+
+        <div class="side8">
+          <img src="images/86.ico" alt="x86 Assembly">
+        </div>
+        <div class="side8">
+          <img src="images/sv.ico" alt="SystemVerilog">
+        </div>
+        <div class="side8">
+          <img src="images/sqldeveloper.svg" alt="sqldeveloper">
+        </div>
+        <div class="side8">
+          <img src="images/python.svg" alt="Python">
+        </div>
+        <div class="side8">
+          <img src="images/java.svg" alt="Java">
+        </div>
+        <div class="side8">
+          <img src="images/c.ico" alt="C">
+        </div>
+        <div class="side8">
+          <img src="images/cpp.ico" alt="C++">
+        </div>
+        <div class="side8">
+          <img src="images/ros.svg" alt="ROS">
+        </div>
+        </div>
+      </div>
+  
+
+    <div class="stackcontainer">
+      <div id="prism">
+        <div class="side">
+          <img src="images/gitlab.svg" alt="GitLab">
+        </div>
+        <div class="side">
+          <img src="images/bitbucket.svg" alt="Bitbucket">
+        </div>
+        <div class="side">
+          <img src="images/azuredevops.svg" alt="ADO">
+        </div>
+        <div class="side">
+          <img src="images/github.svg" alt="GitHub">
+        </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
 
 
   </main>

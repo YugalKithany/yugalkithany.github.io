@@ -1,0 +1,97 @@
+.stackwrapper {
+  width: 100%;
+  max-width: 1200px; /* Increased to accommodate both prisms */
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  padding: 20px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.prisms-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 400px; /* Space between prisms */
+  width: 100%;
+}
+
+.stackcontainer {
+  width: 200px;
+  height: 100px;
+  position: relative;
+  perspective: 1000px;
+  margin: 100px 0; /* Changed from auto to 0 */
+  transform: translateX(0); /* Remove individual container transform */
+  left: 0; /* Remove individual container left */
+}
+
+#prism {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  animation: rotate 15s infinite linear;
+  left: 50%;
+  transform-origin: 0 50%;
+}
+
+@keyframes rotate {
+  from { transform: translateX(-50%) rotateY(0) rotateX(15deg); }
+  to { transform: translateX(-50%) rotateY(360deg) rotateX(15deg); }
+}
+
+.side8 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  transform-origin: 50% 50% -100px;
+}
+
+.side8 img {
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Position the 8 sides of the prism */
+.side8:nth-child(1) { transform: rotateY(0deg) translateZ(120px); background: rgba(255, 87, 34, 0.9); }
+.side8:nth-child(2) { transform: rotateY(45deg) translateZ(120px); background: rgba(33, 150, 243, 0.9); }
+.side8:nth-child(3) { transform: rotateY(90deg) translateZ(120px); background: rgba(240, 219, 79, 0.9); }
+.side8:nth-child(4) { transform: rotateY(135deg) translateZ(120px); background: rgba(51, 51, 51, 0.9); }
+.side8:nth-child(5) { transform: rotateY(180deg) translateZ(120px); background: rgba(0, 121, 107, 0.9); }
+.side8:nth-child(6) { transform: rotateY(225deg) translateZ(120px); background: rgba(63, 81, 181, 0.9); }
+.side8:nth-child(7) { transform: rotateY(270deg) translateZ(120px); background: rgba(156, 39, 176, 0.9); }
+.side8:nth-child(8) { transform: rotateY(315deg) translateZ(120px); background: rgba(255, 152, 0, 0.9); }
+
+.side {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  transform-origin: 50% 50% -100px;
+}
+
+.side img {
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Position the 4 sides of the prism */
+.side:nth-child(1) { transform: rotateY(0deg) translateZ(120px); background: rgba(255, 87, 34, 0.9); }
+.side:nth-child(2) { transform: rotateY(90deg) translateZ(120px); background: rgba(33, 150, 243, 0.9); }
+.side:nth-child(3) { transform: rotateY(180deg) translateZ(120px); background: rgba(240, 219, 79, 0.9); }
+.side:nth-child(4) { transform: rotateY(270deg) translateZ(120px); background: rgba(51, 51, 51, 0.9); }
