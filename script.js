@@ -108,3 +108,10 @@ window.addEventListener('scroll', function() {
 
 
 
+
+
+function toggleExpand(button) {
+  const card = button.closest(".project-card-sm");
+  card.classList.toggle("expanded");
+  button.textContent = card.classList.contains("expanded") ? "Collapse" : "Expand Again";
+}

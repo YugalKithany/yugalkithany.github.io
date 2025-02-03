@@ -1,6 +1,11 @@
 body {
   background-color: rgb(240, 238, 231);
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 #navbar {
   position: fixed;
@@ -202,33 +207,167 @@ blockquote.q-card>.author::before {
 
 /* color  */
 .fa-linkedin {
-  background: #000000;
-  color: white;
+  /* background: #000000; */
+  color: black;
   margin-left: 100;
   margin-right: 100;
 }
 
 .fa-github {
-  background: #000000;
-  color: white;
+  /* background: #000000; */
+  color: black;
   margin-left: 100;
   margin-right: 100;
 }
 
 .fa-envelope {
-  background: #000000;
-  color: white;
+  /* background: #000000; */
+  color: black;
   margin-left: 100;
   margin-right: 100;
 }
 
-.social-icons {
-  /* New class for the wrapper */
-  display: flex;
-  /* Make the wrapper a flex container */
-  gap: 100px;
-  /* Add a 10px gap between icons */
 
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Center the icons vertically */
+  list-style-type: none;
+  /* Remove default list styling */
+  padding: 0;
+  margin: 0;
+}
+
+.social-icons li {
+  margin: 0 15px;
+  /* Space between icons */
+  animation: wave 2s infinite;
+  /* Apply the wave animation */
+}
+
+@keyframes wave {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    /* Start and end at original position */
+  }
+
+  20% {
+    transform: translateY(-10px);
+    /* Move up */
+  }
+
+  40% {
+    transform: translateY(5px);
+    /* Move down slightly */
+  }
+
+  60% {
+    transform: translateY(-5px);
+    /* Move up slightly */
+  }
+
+  80% {
+    transform: translateY(0);
+    /* Back to original */
+  }
+}
+
+/* Adding delay for a wave effect */
+.social-icons li:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.social-icons li:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.social-icons li:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.social-icons li {
+  animation-iteration-count: 2;
+}
+
+
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+
+
+div {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2rem;
+}
+
+p,
+a {
+  text-align: center;
+  /* margin-top: 5%; */
+  margin-bottom: 2rem;
+  color: blue;
+}
+
+.social-icons ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0;
+  list-style-type: none;
+  font-size: 2rem;
+}
+
+.social-icons ul li {
+  padding: 1rem;
+}
+
+.fab {
+  font-size: 2rem;
+}
+
+/* transition for social icon hover animation */
+.fa-linkedin,
+/* .fa-twitter, */
+.fa-github,
+.fa-envelope {
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+/* social media icons hover color */
+.fa-linkedin:hover,
+.fa-linkedin:focus {
+  color: #0A66C2;
+  transform: scale(1.1);
+}
+
+/* .fa-twitter:hover,
+.fa-twitter:focus {
+  color: #1da1f2;
+  transform: scale(1.1);
+} */
+
+.fa-github:hover,
+.fa-github:focus {
+  color: white;
+  transform: scale(1.1);
+}
+
+.fa-github:hover,
+.fa-github:focus {
+  color: white;
+  transform: scale(1.1);
+}
+
+
+.fa-envelope:hover,
+.fa-envelope:focus {
+  color: #b3001b;
+  /* Your chosen hover color */
+  transform: scale(1.1);
 }
 
 
@@ -257,6 +396,7 @@ blockquote.q-card>.author::before {
   transition: transform 1s ease-in-out;
   transform: translateX(100%);
   animation: slide-in-right 0.5s ease-in-out forwards;
+  flex-direction: column; 
 }
 
 .project-card-sm.visible {
@@ -320,7 +460,9 @@ blockquote.q-card>.author::before {
 
 .project-card-sm .card-container {
   display: grid;
-  grid-template-areas: "img img text text text";
+  grid-template-areas:
+    "img img text text text"
+    "pdf pdf pdf pdf pdf"; /* Add a new row for the PDF */  
   gap: 1rem;
   padding: 0.75rem;
   border-radius: 12px;
@@ -328,24 +470,201 @@ blockquote.q-card>.author::before {
   color: rgba(255, 255, 255, 0.7);
 }
 
+
+.project-card-sm .wrapper {
+  grid-area: text; /* Keep this mapped to the text area */
+}
 .project-image img {
-  max-width: 300px; /* Adjust the value as needed */
-  min-width: 300px; /* Adjust the value as needed */
+  max-width: 300px;
+  /* Adjust the value as needed */
+  min-width: 300px;
+  /* Adjust the value as needed */
+  min-height: 200px;
+  /* Automatically scales height based on width */
+  max-height: 300px;
+  /* Automatically scales height based on width */
 
-  min-height: 200px; /* Automatically scales height based on width */
-  max-height: 300px; /* Automatically scales height based on width */
-
+}
+.project-image img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: contain; /* Prevents cropping */
 }
 
 h5 {
-  font-family: 'Waiting for the Sunrise', cursive;
+  font-family: 'Quicksand', sans-serif;
   color: #21D4FD;
   margin-top: 0px;
   font-size: 28px;
 }
 
 h4 {
-  font-family: 'Waiting for the Sunrise', cursive;
+  font-family: 'Quicksand', sans-serif;
+  color: #21D4FD;
+  margin-top: 0px;
+  font-size: 42px;
+  text-align: center;
+  /* Add the following lines to center horizontally */
+  margin: 0 auto;
+  max-width: fit-content;
+  padding: 0;
+  border: none;
+}
+
+p {
+  font-size: .5em;
+  margin-bottom: 10px;
+  color: white;
+  text-align: left;
+}
+
+h1{
+  margin-bottom: 30px;
+  font-size: .65em;
+}
+
+h6{
+  font-weight: normal; 
+  font-family: 'Quicksand', sans-serif;
+  color: black;
+  margin-top: 10px;
+  font-size: 1em;
+  margin-bottom: 10px;
+  
+}
+
+
+@media (max-width: 768px) {
+  .project-card-sm .card-container {
+    display: block;
+    text-align: center;
+  }
+
+  .project-image img {
+    width: 100%; 
+    height: auto;
+    max-width: 300px;
+    object-fit: contain; 
+  }
+
+  .wrapper {
+    margin-top: 15px;
+  }
+}
+
+
+.project-card-sm .wrapper {
+  display: flex;
+  flex-direction: column; /* Ensure text and button are stacked */
+  /* align-items: center; */
+  gap: 1rem;
+}
+
+.project-card-sm .pdf-container {
+  grid-area: pdf; /* Place the PDF in its own row below */
+  display: none; /* Initially hidden */
+  margin-top: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.project-card-sm.expanded .pdf-container {
+  display: block; /* Show when expanded */
+}
+
+.project-card-sm .expand-btn {
+  display: inline-block; /* Makes the button fit its content */
+  padding: 0.3rem 1rem; /* Smaller padding for a shorter width */
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #21d4fd;
+  color: #fff;
+  border: none;
+  border-radius: 20px; /* Rounded button */
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  max-width: 300px; /* Ensure it doesn't get too small */
+  box-shadow: 0 5px 15px rgba(33, 212, 253, 0.3);
+  text-align: center; /* Keep the text centered */
+  margin: 0 auto; /* Centers the button horizontally */
+  /* padding-left: -145px; */
+  /* margin-left: -1px;  */
+  transform: translateX(-150px); /* Move the button 10px to the left */
+}
+
+.project-card-sm .expand-btn:hover {
+  background: linear-gradient(45deg, #21d4fd, #b721ff); /* Cool gradient effect */
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(183, 33, 255, 0.5);
+}
+
+.form-container {
+  display: flex;
+  justify-content: center; /* Horizontally centers the form */
+  align-items: center;     /* Vertically centers the form */
+}
+
+
+.project-card-sm .pdf-container embed {
+  width: 100%;
+  height: 300px; /* Adjust height as needed */
+}
+
+
+
+.project-card-sm .tools {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.project-card-sm .tools h3 {
+  color: #21d4fd;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-card-sm .tools-icons {
+  display: flex;
+  flex-direction: column; /* Stack icons vertically */
+  gap: 3rem;
+  align-items: center; /* Centers icons horizontally */
+}
+
+.project-card-sm .tools-icons img {
+  max-width: 60px;
+  max-height: 50px;
+  min-width: 30px;
+  min-height: 30px;
+  /* transition: transform 0.3s; */
+}
+
+.project-card-sm .tools-icons img:hover {
+  transform: scale(1.2);
+}
+
+.project-card-sm .tools-icons img {
+  width: 100%;
+  max-width: 80px;
+  height: auto;
+  object-fit: contain; /* Prevents cropping */
+}
+
+
+
+h5 {
+  font-family: 'Quicksand', sans-serif;
+  color: black;
+  margin-top: 0px;
+  font-size: 20px;
+}
+
+h4 {
+  font-family: 'Quicksand', sans-serif;
   color: #21D4FD;
   margin-top: 0px;
   font-size: 42px;
@@ -381,7 +700,7 @@ img {
 }
 
 * {
-  font-family: "Nunito", sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .container-landing {
@@ -428,6 +747,12 @@ img {
   font-size: 55px;
   color: #21D4FD;
   font-weight: 700;
+}
+
+
+.about-me-title {
+  text-align: left; /* Ensure it's aligned */
+  margin-left: 10%; /* Adjust as needed */
 }
 
 @media (max-width: 500px) {
@@ -484,15 +809,23 @@ img {
 
 .about-me-flex-container-landing .about-me-image .black-image {
   z-index: -2;
-  position: absolute;
-  left: 10px;
+  /* position: absolute; */
+  /* left: 10px; */
   bottom: 10px;
+  /* height: 100%; */
+  position: relative;
+  left: 0;
+  width: 100%;
   height: 100%;
+
+
 }
 
 .about-me-flex-container-landing .about-me-image .black-image img {
   height: 100%;
-}
+  width: 100%;
+  /* height: 100%; */
+  object-fit: cover;}
 
 .about-me-flex-container-landing .about-me-image .main-image {
   width: 70%;
@@ -523,12 +856,82 @@ img {
   transform: scale(1);
 }
 
+.about-me-content {
+  padding-left: 10px; /* Fine-tune spacing */
+}
 .about-me-flex-container-landing .about-me-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 50px;
   flex: 0 0 40%;
+}
+
+.about-me-image {
+  transform: scale(0.5) translateY(-30%);
+  transform-origin: center; /* Ensure it scales from the center */
+}
+.about-me-image .main-image:hover {
+  transform: scale(1.5);
+}
+
+.about-me-image .main-image:hover {
+  transform: scale(1.25); /* Smaller growth factor */
+}
+
+
+.about-me-flex-container-landing {
+  margin-top: -25px;
+  margin-left: 150px;
+  left: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Mobile adjustments */
+@media (max-width: 1000px) {
+  .about-me-flex-container-landing {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    left: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-me-flex-container-landing .about-me-image {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 30px;  /* Add space between image and text */
+  }
+
+  .about-me-flex-container-landing .about-me-content {
+    width: 100%;
+    margin-left: 0;
+    padding: 0 20px;
+  }
+
+  .about-me-content {
+    margin-left: 0;  /* Reset the negative margin */
+  }
+
+  .about-me-flex-container-landing .about-me-content .text {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+/* Ensure the black image is correctly sized */
+.black-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Keep it covering as intended */
+}
+
+.black-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Keep it covering as intended */
 }
 
 @media (max-width: 960px) {
@@ -606,9 +1009,10 @@ img {
   transform: translate(10px, 10px);
   text-align: center;
   /* background-color: rgba(0, 0, 0, 0.5); */
-  color: black;
-  line-height: 1.4;
-  font-size: 16px;
+  font-family: 'Quicksand', sans-serif;
+  /* margin-top: 0px; */
+  font-size: .5em;
+  font-weight: 5; 
   opacity: 1;
   /* transition-duration: 1s; */
   /* box-sizing: border-box;
@@ -675,111 +1079,85 @@ img {
   }
 }
 
-.favorite-team-card {
-  margin: 15px auto;
-  padding: 16px;
-  border-radius: 4px;
-  background-color: var(--mdc-theme-surface-1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
-  width: calc(75vw);
+
+h3 {
+  font-family: 'Quicksand', sans-serif;
+  color: black;
+  margin-top: 0px;
+  font-size: .5em;
+}
+
+.bio {
+  font-size: .5em;
+  margin-top: 10px;
+  font-weight: normal;
+  text-align: left; /* Ensure left alignment */
+  margin-left: -230px; /* Reduce left margin to shift text left */}
+
+.typewrite {
+  font-size: 1em;
+  font-weight: normal;
+  text-align: left;
+  max-width: 80%; /* Match bio */
+  margin-left: -230px; /* Reduce left margin to shift text left */
+  /* padding-left: 40px; */ /* Remove this if causing unwanted shift */
+  /* margin: 0 auto; */
+  text-align: center;
+  max-width: 100%;
+  /* padding: 0 20px; */
+  display: block;}
+
+.typewrite>.wrap {
+  border-right: 0.08em solid white;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 24px;
+  color: #21D4FD;
+}
+
+.container {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  z-index: 1;
-  background: linear-gradient(215deg, #87cddd, #e6e6e6);
-  box-shadow: 7px 7px 21px #bdbdbd, -7px -7px 21px #21D4FD;
-}
-
-.favorite-team-card h2 {
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.player-selection-container {
-  display: flex;
-  flex-wrap: wrap;
-  /* Allow selections to wrap on multiple lines */
-  justify-content: space-between;
-  /* Space selections horizontally */
-}
-
-.player-selection {
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-}
-
-.player-selection label {
-  margin-right: 5px;
-  width: 80px;
-  /* Fixed width for label */
-}
-
-.player-selection__input,
-.player-selection label {
-  padding: 3px 6px;
-  font-size: 14px;
-  max-height: 100px;
-  min-width: 300px;
-}
-
-/* Textbox styles */
-input[type="text"] {
-  outline: none;
-  border: none;
-  background-color: white;
-  border-radius: 4px;
-  padding: 5px 4px;
-  font-size: 14px;
-  width: 60%;
-  margin-top: 5px;
-  box-sizing: border-box;
-  color: rgb(30, 145, 254);
-}
-
-/* Hover effects remain the same */
-input[type="text"]:hover {
-  box-shadow: 0 1px 3px rgba(0, 0, 255, 0.12), 0 1px 2px rgba(0, 0, 255, 0.08);
-}
-
-/* Datalist options styles remain the same */
-datalist option {
-  background-color: white;
-  padding: 8px 12px;
-  color: rgb(30, 145, 254);
-}
-
-/* When suggestion is hovered */
-datalist option:hover {
-  background-color: rgb(240, 240, 240);
-}
-
-.player-positions-container {
-  display: flex;
-  justify-content: flex-end;
-  /* Align image to right */
-  padding: 10px;
-  position: relative;
-  /* Allow absolute positioning of circles */
+  align-items: flex-start; /* Ensure left alignment */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
 
 }
 
-.soccer-pitch-image {
-  width: 75%;
-  height: 450px;
-  object-fit: contain;
-  margin-top: -280px;
-  /* Adjust value for desired upward movement */
+@media (max-width: 1000px) {
+  .bio, .typewrite {
+    margin-left: 0;
+    text-align: center;
+    padding: 0 20px;
+  }
+}
+/* For mobile screens (width below 768px) */
+@media (max-width: 768px) {
+  .bio, .typewrite {
+    max-width: 100%;  /* Allow text to take the full width */
+  }
 
+  /* Add a large buffer between navbar and content */
+  header {
+    margin-bottom: 50px; /* Add space below the navbar */
+  }
+
+  .container-about {
+    flex-direction: column; /* Stack the cards vertically */
+    align-items: center;
+    margin-top: 50px; /* Add spacing between navbar and content */
+  }
+
+  .container-about .card {
+    width: 70%; /* Make the cards wider on mobile */
+    margin: 20px 0; /* Increase space between cards */
+  }
+
+  .about-title {
+        margin-top: 2000px; /* Add space between the title and the navbar */
+  }
 }
 
-#player-canvas {
-  position: absolute;
-  /* Position canvas on top of image */
-  top: 0;
-  left: 0;
-  width: 100%;
-  /* Match image dimensions */
-  height: 100%;
-  z-index: 1;
-  /* Ensure canvas appears above the image */
-}
+
+
