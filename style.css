@@ -50,6 +50,8 @@ body {
   /* Position the logo at the top of the viewport */
   padding: 5px 0;
   position: fixed;
+  max-width: 30px;
+  height: auto;
 }
 
 /* Add media query to stack links on mobile */
