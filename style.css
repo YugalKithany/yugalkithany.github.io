@@ -966,7 +966,7 @@ img {
 
 .container-about .card {
   position: relative;
-  width: 280px;
+  width: 320px;
   height: 350px;
   margin: 30px;
   box-sizing: border-box;
@@ -991,7 +991,7 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  width: 255px;
+  width: 295px;
   height: 325px;
   border: 1px solid #21D4FD;
   z-index: 1;
