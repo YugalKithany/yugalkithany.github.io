@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MazeGest</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="shortcut icon" href="/images/phoenix.ico" type="image/x-icon">
+  <script src="https://kit.fontawesome.com/1630846f6f.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Name/Logo/Social icons moved to be halfway between left edge and maze center -->
+  <div class="name-container">
+    <div class="about-me-image">
+      <img src="/images/phoenix_logo.svg" alt="Phoenix Logo">
+    </div>
+    <div class="about-me-title">
+      Yugal <br> Kithany
+    </div>
+    <div class="social-icons">
+      <ul>
+        <li>
+          <a href="https://github.com/yugalkithany" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://linkedin.com/in/yugalkithany" target="_blank">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:yugalkithany@gmail.com">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Maze game centered -->
+  <div class="maze-container">
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+  </div>
+
+  <!-- Camera feedback in top right (twice as large) -->
+  <div class="camera-container">
+    <video id="videoElement" class="inverted" autoplay playsinline></video>
+    <div id="videoControls">
+      <label>
+        <input type="checkbox" id="invertCheckbox" checked> Inverted Camera
+      </label>
+    </div>
+  </div>
+
+  <!-- Popup if camera access is denied -->
+  <div id="cameraPopup" class="popup hidden">
+    <div class="popup-content">
+      <p>Camera access is required for gesture control. Please enable camera access in your browser settings.</p>
+      <button id="closePopup">Close</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>
+        MazeGest is powered by 
+        <a href="https://developers.google.com/mediapipe" target="_blank">MediaPipe Hands</a>, 
+        built using HTML5, CSS3, and JavaScript and deployed on GitHub Pages</a>.
+      </p>
+    <button onclick="window.location.href='https://yugalkithany.github.io/';">← Back to Portfolio</button>
+  </footer>
+
+  <!-- MediaPipe Hands and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+  
+  <script src="main.js"></script>
+</body>
+</html>
