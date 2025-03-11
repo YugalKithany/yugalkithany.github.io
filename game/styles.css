@@ -158,3 +158,170 @@ body {
 button:hover {
     background-color: #1aabd6;
 }
+
+
+
+/* ==== Social Media Icons ====*/
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  max-width: 20px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  display: inline-block;
+
+}
+
+/*hover effect */
+.fa:hover {
+  opacity: 0.7;
+}
+
+/* color  */
+.fa-linkedin {
+  /* background: #000000; */
+  color: black;
+  margin-left: 100;
+  margin-right: 100;
+}
+
+.fa-github {
+  /* background: #000000; */
+  color: black;
+  margin-left: 100;
+  margin-right: 100;
+}
+
+.fa-envelope {
+  /* background: #000000; */
+  color: black;
+  margin-left: 100;
+  margin-right: 100;
+}
+
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Center the icons vertically */
+  list-style-type: none;
+  /* Remove default list styling */
+  padding: 0;
+  margin: 0;
+}
+
+.social-icons li {
+  margin: 0 15px;
+  /* Space between icons */
+  animation: wave 2s infinite;
+  /* Apply the wave animation */
+}
+
+@keyframes wave {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    /* Start and end at original position */
+  }
+
+  20% {
+    transform: translateY(-10px);
+    /* Move up */
+  }
+
+  40% {
+    transform: translateY(5px);
+    /* Move down slightly */
+  }
+
+  60% {
+    transform: translateY(-5px);
+    /* Move up slightly */
+  }
+
+  80% {
+    transform: translateY(0);
+    /* Back to original */
+  }
+}
+
+/* Adding delay for a wave effect */
+.social-icons li:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.social-icons li:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.social-icons li:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.social-icons li {
+  animation-iteration-count: 2;
+}
+
+
+.social-icons ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0;
+  list-style-type: none;
+  font-size: 2rem;
+}
+
+.social-icons ul li {
+  padding: 1rem;
+}
+
+.fab {
+  font-size: 2rem;
+}
+
+/* transition for social icon hover animation */
+.fa-linkedin,
+/* .fa-twitter, */
+.fa-github,
+.fa-envelope {
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+/* social media icons hover color */
+.fa-linkedin:hover,
+.fa-linkedin:focus {
+  color: #0A66C2;
+  transform: scale(1.1);
+}
+
+/* .fa-twitter:hover,
+.fa-twitter:focus {
+  color: #1da1f2;
+  transform: scale(1.1);
+} */
+
+.fa-github:hover,
+.fa-github:focus {
+  color: white;
+  transform: scale(1.1);
+}
+
+.fa-github:hover,
+.fa-github:focus {
+  color: white;
+  transform: scale(1.1);
+}
+
+
+.fa-envelope:hover,
+.fa-envelope:focus {
+  color: #b3001b;
+  /* Your chosen hover color */
+  transform: scale(1.1);
+}
