@@ -6,11 +6,36 @@
 <script src="https://kit.fontawesome.com/1630846f6f.js" crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
 <link rel="shortcut icon" href="images/phoenix.ico" type="image/x-icon" />
+<style>
+.portfolio-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    height: 0;
+    padding-bottom: 80%;
+    overflow: hidden;
+  }
+
+.portfolio-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none; /* Remove default iframe border */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 8px;
+}
+</style>
+
 
 <nav id="navbar">
   <ul>
     <li><a href="#landing"> &ensp; Home</a></li>
     <li><a href="#about"> About</a></li>
+    <li><a href="#yugopoloy"> YUGOPOLY</a></li>
     <li><a href="#projects"> Projects</a></li>
 
   </ul>
@@ -43,10 +68,10 @@
                 <div class="typewrite" data-type='["Research Assistant", "Software Developer", "Embedded Engineer"]' data-period="1000">
                 </div>
                 <h3 class="bio">
-                  Masters in ECE: Jan 2025 - May 2026.<br>
+                  Masters in ECE: Jan 2025 - Dec 2025.<br>
                   Thesis in <em>Control Algorithms for Vision-Based Navigation.</em> Advised by <a href="https://mitras.ece.illinois.edu/">Sayan Mitra</a> <br>
                   Current Courses: Adv Computer Architecture, Machine Learning, Networks.<br>
-                  Industries: Embedded Systems, Systems Engineering, Microarchitectures, Computer Vision,
+                  Industries: AI/ML, Embedded Systems, Systems Engineering, Microarchitectures, Computer Vision,
                   Robotics/Autonomous Systems<br>
 
 
@@ -152,14 +177,34 @@
 </section>
 
 <h6 style="text-align: center; display: block; margin-top: 20px;">
-  Generate your own Latin Quotes <a href="https://latinllm.onrender.com//">here.</a>
+  Generate your own Latin Quotes (~30 sec to render website) <a href="https://latinllm.onrender.com//">here.</a>
 </h6>
+
+
+
+<section id="yugopoloy">
+  <!-- <h2>My Interactive Portfolio</h2>
+  <p>Explore my skills and projects using the interactive Monopoly board below!</p> -->
+    <p>&ensp;</p>
+    <p>&ensp;</p>
+    <p>&ensp;</p>
+
+  <h4>YUGOPOLY</h4>
+<h6 style="text-align: center; display: block; margin-top: 20px;">
+  Click a Property to learn more!</a>
+</h6>
+
+  <div class="portfolio-container">
+      <iframe src="sbx/index.html" class="portfolio-iframe" title="My Interactive Portfolio"></iframe>
+  </div>
+
+  <p>Thank you for visiting my portfolio!</p>
+</section>
+
+
+
 <section id="projects">
-  <p>&ensp;</p>
-  <p>&ensp;</p>
   <h4>Projects</h4>
-  <p>&ensp;</p>
-  <p>&ensp;</p>
   <section class="projects">
 
 
@@ -281,7 +326,7 @@
             • Developed a full-stack application using Node.js (Express.js) for the backend and Railway for secure and scalable deployment.
           </p>
         <form action="https://latinllm.onrender.com//" target="_blank" class="form-container">
-          <button class="expand-btn" type="submit">Latin LLM</button>
+          <button class="expand-btn" type="submit">Latin LLM (~30 sec to render website)</button>
         </form>
       </div>
 
