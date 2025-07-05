@@ -208,7 +208,7 @@ div {
     background: #ed1b24;
     position: absolute;
     /* Adjusted transform for better alignment within the center square */
-    transform: rotateZ(-45deg) translateX(-32%) translateY(390%);
+    transform: rotateZ(-45deg) translateX(-32%) translateY(310%);
     border: 3px solid black;
     text-align: center;
     box-shadow: inset 0px 2px 12px 0px white;
@@ -246,7 +246,7 @@ div {
 .card-orange {
     background: linear-gradient(#f99120, #f57420);
     /* Adjusted translateY to bring it on screen and position correctly */
-    transform: rotateZ(-45deg) translateX(-33%) translateY(315%);
+    transform: rotateZ(-45deg) translateX(-33%) translateY(355%);
     /* transform: rotateZ(-45deg) translateX(-13%) translateY(550%); */
 }
 

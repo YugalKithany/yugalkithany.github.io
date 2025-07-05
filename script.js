@@ -1,117 +1,165 @@
-/* ===== NAV BAR JS ===== */
-  // Get the navigation bar element
-  const navbar = document.getElementById('navbar');
-  // Set initial visibility of the navigation bar
-  navbar.style.display = 'none';
-  // Function to handle scroll event
-  function handleScroll() {
-    // Get the current scroll position
-    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-    // Check if the scroll position is past 1000 pixels
-    if (scrollPosition > 400) {
-      // Display the navigation bar
-      navbar.style.display = 'block';
-    } else {
-      // Hide the navigation bar
-      navbar.style.display = 'none';
-    }
-  }
-  // Add scroll event listener to the window
-  window.addEventListener('scroll', handleScroll);
-  // scroll to top when refresh hit
-  window.onbeforeunload = function () {
-      window.scrollTo(0, 0);
+// Typewriter Effect
+class TypeWriter {
+    constructor(element, words, wait = 3000) {
+        this.element = element;
+        this.words = words;
+        this.txt = '';
+        this.wordIndex = 0;
+        this.wait = parseInt(wait, 10);
+        this.type();
+        this.isDeleting = false;
     }
 
+    type() {
+        const current = this.wordIndex % this.words.length;
+        const fullTxt = this.words[current];
 
-
-  /* ===== I am a ... typing effect JS ===== */
-  var TxtType = function(el, toRotate, period) {
-    this.toRotate = toRotate;
-    this.el = el;
-    this.loopNum = 0;
-    this.period = parseInt(period, 10) || 1000;
-    this.txt = '';
-    this.tick();
-    this.isDeleting = false;
-  };
-  
-  TxtType.prototype.tick = function() {
-    var i = this.loopNum % this.toRotate.length;
-    var fullTxt = this.toRotate[i];
-  
-    if (this.isDeleting) {
-    this.txt = fullTxt.substring(0, this.txt.length - 1);
-    } else {
-    this.txt = fullTxt.substring(0, this.txt.length + 1);
-    }
-  
-    this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-  
-    var that = this;
-    var delta = 200 - Math.random() * 100;
-  
-    if (this.isDeleting) { delta /= 2; }
-  
-    if (!this.isDeleting && this.txt === fullTxt) {
-    delta = this.period;
-    this.isDeleting = true;
-    } else if (this.isDeleting && this.txt === '') {
-    this.isDeleting = false;
-    this.loopNum++;
-    delta = 500;
-    }
-  
-    setTimeout(function() {
-    that.tick();
-    }, delta);
-  };
-  
-  window.onload = function() {
-    var elements = document.getElementsByClassName('typewrite');
-    for (var i=0; i<elements.length; i++) {
-        var toRotate = JSON.parse(elements[i].getAttribute('data-type'));
-        toRotate = Object.values(toRotate); // Convert parsed JSON object to array of strings
-        var period = elements[i].getAttribute('data-period');
-        if (toRotate) {
-          new TxtType(elements[i], toRotate, period);
+        if (this.isDeleting) {
+            this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+            this.txt = fullTxt.substring(0, this.txt.length + 1);
         }
+
+        this.element.innerHTML = `<span class="txt">${this.txt}</span>`;
+
+        let typeSpeed = 100;
+
+        if (this.isDeleting) {
+            typeSpeed /= 2;
+        }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+            typeSpeed = this.wait;
+            this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+            this.isDeleting = false;
+            this.wordIndex++;
+            typeSpeed = 200;
+        }
+
+        setTimeout(() => this.type(), typeSpeed);
     }
-    // INJECT CSS
-    var css = document.createElement("style");
-    // css.type = "text/css";
-    css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #000}";
-    document.body.appendChild(css);
-  };
+}
 
-
-
-
-
-  /* ===== Project containers animation slide right JS ===== */
-const projectCards = document.querySelectorAll('.project-card-sm');
-
-window.addEventListener('scroll', function() {
-  for (const projectCard of projectCards) {
-    const cardTop = projectCard.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-
-    if (cardTop < windowHeight) {
-      projectCard.classList.add('visible');
-      projectCard.classList.remove('hover'); // Remove the hover class
-    } else {
-      projectCard.classList.remove('visible');
-      projectCard.classList.remove('hover'); // Remove the hover class
-    }
-  }
+// Initialize typewriter
+document.addEventListener('DOMContentLoaded', function() {
+    const typeWriterElement = document.getElementById('typewriter');
+    const words = ['Research Assistant', 'Software Developer', 'Systems Engineer', 'AI/ML Enthusiast'];
+    new TypeWriter(typeWriterElement, words, 2000);
 });
 
+// Navbar scroll effect
+window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
 
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
 
+// Intersection Observer for fade-in animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+};
 
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
 
-function toggleExpand(button) {
-  const card = button.closest(".project-card-sm");
-  card.classList.toggle("expanded");
-  button.textContent = card.classList.contains("expanded") ? "Collapse" : "Expand Again";
+// Observe all fade-in elements
+document.querySelectorAll('.fade-in').forEach(el => {
+    observer.observe(el);
+});
+
+// Parallax effect for background orbs
+window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const parallax1 = document.querySelector('.orb-1');
+    const parallax2 = document.querySelector('.orb-2');
+    
+    if (parallax1) {
+        parallax1.style.transform = `translateY(${scrolled * 0.5}px)`;
+    }
+    if (parallax2) {
+        parallax2.style.transform = `translateY(${scrolled * -0.3}px)`;
+    }
+});
+
+// Dynamic cursor effect (optional enhancement)
+document.addEventListener('mousemove', function(e) {
+    const cursor = document.querySelector('.cursor');
+    if (cursor) {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    }
+});
+
+// Add loading animation
+window.addEventListener('load', function() {
+    document.body.classList.add('loaded');
+});
+
+// Easter egg - Konami code
+let konamiCode = [];
+const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+
+document.addEventListener('keydown', function(e) {
+    konamiCode.push(e.keyCode);
+    if (konamiCode.length > konamiSequence.length) {
+        konamiCode.shift();
+    }
+    if (konamiCode.join(',') === konamiSequence.join(',')) {
+        // Easter egg triggered
+        document.body.style.filter = 'hue-rotate(180deg)';
+        setTimeout(() => {
+            document.body.style.filter = 'none';
+        }, 3000);
+    }
+});
+
+// Performance optimization - throttle scroll events
+function throttle(func, limit) {
+    let lastFunc;
+    let lastRan;
+    return function() {
+        const context = this;
+        const args = arguments;
+        if (!lastRan) {
+            func.apply(context, args);
+            lastRan = Date.now();
+        } else {
+            clearTimeout(lastFunc);
+            lastFunc = setTimeout(function() {
+                if ((Date.now() - lastRan) >= limit) {
+                    func.apply(context, args);
+                    lastRan = Date.now();
+                }
+            }, limit - (Date.now() - lastRan));
+        }
+    };
 }
+
+// Apply throttling to scroll events
+window.addEventListener('scroll', throttle(function() {
+    // Scroll-dependent animations can be added here
+}, 16)); // ~60fps

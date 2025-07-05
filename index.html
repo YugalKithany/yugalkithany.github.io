@@ -1,721 +1,453 @@
 <!DOCTYPE html>
-<html>
-<link rel="stylesheet" href="style.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-<title>Yugal Kithany's Portfolio</title>
-<script src="https://kit.fontawesome.com/1630846f6f.js" crossorigin="anonymous"></script>
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
-<link rel="shortcut icon" href="images/phoenix.ico" type="image/x-icon" />
-<style>
-.portfolio-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 20px auto;
-    aspect-ratio: 1 / 1;
-    position: relative;
-    height: 0;
-    padding-bottom: 80%;
-    overflow: hidden;
-  }
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yugal Kithany - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/phoenix.ico" type="image/x-icon" />
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
 
-.portfolio-iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none; /* Remove default iframe border */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    border-radius: 8px;
-}
-</style>
-
-
-<nav id="navbar">
-  <ul>
-    <li><a href="#landing"> &ensp; Home</a></li>
-    <li><a href="#about"> About</a></li>
-    <li><a href="#yugopoloy"> YUGOPOLY</a></li>
-    <li><a href="#projects"> Projects</a></li>
-
-  </ul>
-  <img src="images/phoenix.ico" alt="Phoenix" class="nav-logo" />
-</nav>
-
-<section id="landing">
-  <section class="about-me" id="landing">
-    <div class="container-landing">
-      <div class="about-me-container-landing">
-        <div class="about-me-title">
-          Yugal <br />
-          Kithany
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+              <a href="#home" class="nav-logo">
+                  <img src="images/phoenix_logo.svg" alt="Yugal Kithany Logo" class="logo-svg">
+              </a>
+              <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#yugopoly">Yugopoly</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
         </div>
-        <div class="about-me-flex-container-landing">
-          <div class="about-me-image">
-            <div class="black-image">
-              <img src="images/phoenix_logo.svg" alt="black" />
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">Yugal Kithany</h1>
+            <p class="hero-subtitle">Masters in ECE • UIUC • Jan 2025 - Dec 2025</p>
+            <div class="typewriter" id="typewriter" data-type='["Research Assistant", "Software Developer", "Embedded Engineer"]' data-period="1000"></div>
+            <div class="hero-bio">
+                Thesis in <em>Control Algorithms for Vision-Based Navigation.</em> Advised by <a href="https://mitras.ece.illinois.edu/" target="_blank">Sayan Mitra</a> <br>
+                Current Courses: Adv Computer Architecture, Machine Learning, Networks.<br>
+                Industries: AI/ML, Embedded Systems, Systems Engineering, Microarchitectures, Computer Vision,
+                Robotics/Autonomous Systems
             </div>
-            <div class="main-image">
-              <img src="images/phoenix_logo.svg" alt="smit" />
+            <div class="social-links">
+                <a href="https://github.com/yugalkithany" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/yugalkithany" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:yugalkithany@gmail.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
             </div>
-          </div>
-          <div class="about-me-content">
-            <div class="text">
-              <!-- <h5 class="title1">About Me:&ensp;</h5> -->
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
 
-
-              <div class="container">
-                <div class="typewrite" data-type='["Research Assistant", "Software Developer", "Embedded Engineer"]' data-period="1000">
-                </div>
-                <h3 class="bio">
-                  Masters in ECE: Jan 2025 - Dec 2025.<br>
-                  Thesis in <em>Control Algorithms for Vision-Based Navigation.</em> Advised by <a href="https://mitras.ece.illinois.edu/">Sayan Mitra</a> <br>
-                  Current Courses: Adv Computer Architecture, Machine Learning, Networks.<br>
-                  Industries: AI/ML, Embedded Systems, Systems Engineering, Microarchitectures, Computer Vision,
-                  Robotics/Autonomous Systems<br>
-
-
-                  <div class="social-icons">
-                    <ul>
-                      <li><a href="https://github.com/yugalkithany" target="_blank">
-                          <i class="fab fa-github" tabindex="0"></i>
-                        </a></li>
-                      <li><a href="https://linkedin.com/in/yugalkithany" target="_blank">
-                          <i class="fab fa-linkedin" tabindex="0"></i>
-                        </a></li>
-                      <li><a href="mailto:yugalkithany@gmail.com">
-                          <i class="fas fa-envelope" tabindex="0"></i>
-                        </a></li>
-                    </ul>
-                  </div>
-                </h3>
-
-
-              </div>
+    <section class="section" id="about">
+        <h2 class="section-title">About</h2>
+        <div class="about-cards">
+            <div class="card fade-in">
+                <h3>Education</h3>
+                <ul>
+                    <li>CompE @ UIUC Masters Fa'25</li>
+                    <li>CompE @ UIUC BS Fa'24</li>
+                    <li>Software Dev in Prof. Sayan Mitra's Reliable Autonomy Group</li>
+                    <li>RTL Research Assistant in Prof. Dong Kai Wang's Architecture Optimization Lab</li>
+                </ul>
             </div>
-          </div>
-        </div>
-        <div class="container_mouse">
-          <a href="#about">
-            <span class="mouse-btn">
-              <span class="mouse-scroll"></span> </span></a>
-        </div>
-      </div>
-    </div>
-  </section>
-</section>
-
-<section id="about">
-  <p>&ensp;</p>
-  <p>&ensp;</p>
-  <div class="container-about">
-    <div class="card">
-      <div class="image"></div>
-      <div class="info">
-        <h2>CompE @ UIUC Masters Fa'25</h2>
-  <p>&ensp;</p>
-
-        <h2>CompE @ UIUC BS Fa'24</h2>
-        <h6>
-          Software Dev in Prof. Sayan Mitra's Reliable Autonomy Group
-        </h6>
-        <h6>
-          RTL Research Assistant in Prof. Dong Kai Wang's Architecture
-          Optimization Lab
-        </h6>
-      </div>
-    </div>
-    <div class="card">
-      <div class="image"></div>
-      <div class="info">
-        <h2>Personal</h2>
-        <p>
-        <h6>Books: The Giver, 1984, The Thief Lord, The Alchemist</h6>
-        <h6>Movies: Star Wars, Hercule Poirot Mysteries</h6>
-        <h6>
-          Sports: Soccer (Barcelona), Football (Buccaneers), Basketball
-          (Bucks)
-        </h6>
-      </div>
-    </div>
-    <div class="card">
-      <div class="image"></div>
-      <div class="info">
-        <h2>Past XP</h2>
-        <h6>
-          Firmware Engineering Intern, Milwaukee Tool, Batteries & Chargers
-          (Summer '24) </h6>
-        <h6> Operating Systems Course Assistant, UIUC
-          (2023-2024)</h6>
-
-        <h6>
-          SWE Intern, Federated Hermes, Global Trading & Technology
-          (Summer '23)
-        </h6>
-      </div>
-    </div>
-  </div>
-
-  <div class="q-card-container">
-    <div class="q-card-wrapper">
-      <blockquote class="q-card q-card-color-1">
-        <div class="content">Carpe Noctem</div>
-        <div class="author">Horace</div>
-      </blockquote>
-
-      <blockquote class="q-card q-card-color-2">
-        <div class="content">Audentes Fortuna Iuvat</div>
-        <div class="author">Virgil</div>
-      </blockquote>
-
-      <blockquote class="q-card q-card-color-3">
-        <div class="content">Esto Quod Es</div>
-        <div class="author">Aurelius</div>
-      </blockquote>
-    </div>
-  </div>
-</section>
-
-<h6 style="text-align: center; display: block; margin-top: 20px;">
-  Generate your own Latin Quotes (~30 sec to render website) <a href="https://latinllm.onrender.com//">here.</a>
-</h6>
-
-
-
-<section id="yugopoloy">
-  <!-- <h2>My Interactive Portfolio</h2>
-  <p>Explore my skills and projects using the interactive Monopoly board below!</p> -->
-    <p>&ensp;</p>
-    <p>&ensp;</p>
-    <p>&ensp;</p>
-
-  <h4>YUGOPOLY</h4>
-<h6 style="text-align: center; display: block; margin-top: 20px;">
-  Click a Property to learn more!</a>
-</h6>
-
-  <div class="portfolio-container">
-      <iframe src="sbx/index.html" class="portfolio-iframe" title="My Interactive Portfolio"></iframe>
-  </div>
-
-  <p>Thank you for visiting my portfolio!</p>
-</section>
-
-
-
-<section id="projects">
-  <h4>Projects</h4>
-  <section class="projects">
-
-
-    <section id="THESIS">
-    <div class="project-card-sm">
-      <div class="card-border-gradient"></div>
-      <div class="card-container">
-        <div class="project-image">
-          <!-- <img src="images/Airsim_env.png" alt="Microsoft AirSim ADRL Environments" height="300" width="400" /> -->
-          <!-- <source type="video/" src="images/499.mov" height="300" width="400" /> -->
-            <video loop="" controls="" width="300" height="300">
-              <source type="video/mp4" src="images/499.mp4" height="400" width="500" />
-            </video>
-  
-        </div>
-        <div class="wrapper">
-          <h1>Control Algorithms for Vision-Based Navigation. <small>Advisor: Sayan Mitra</small></h1>
-          <p>
-            • Conducted two key drone experiments: (1) <strong>Drone tracking</strong>—an Ego drone followed a Target
-            drone using a controller
-            with trajectory tracking and YOLO-8-based perception for dynamic adaptation. (2) <strong>Gate
-              navigation</strong>—compared PID and
-            MPC controllers for optimal race performance, using both ground truth and relative gate positions.
-          </p>
-          <p>
-            • Developed a predictive drone navigation algorithm using Model Predictive Control (MPC), optimizing flight
-            paths and reducing trajectory deviation by 25% over PID controllers. Implemented in the CasADi framework
-            with
-            IPOPT solver for real-time drone racing scenarios.
-          </p>
-          <p>
-            • Integrated Microsoft AirSim for high-fidelity testing of navigation algorithms and efficient dynamic pose
-            estimation. Utilized <a href="https://msl.stanford.edu/papers/madaan_airsim_2020.pdf/">"AirSim Drone Racing Lab"</a> (Madaan et al. 2020) as base environment for gate racing.
-          </p>
-          <form action="https://github.com/YugalKithany/Undergraduate-Thesis" target="_blank" class="form-container">
-            <button class="expand-btn" type="submit">GitHub Repo</button>
-          </form>
-
+            <div class="card fade-in">
+                <h3>Personal</h3>
+                <ul>
+                    <li>Books: The Giver, 1984, The Thief Lord, The Alchemist</li>
+                    <li>Movies: Star Wars, Hercule Poirot Mysteries</li>
+                    <li>Sports: Soccer (Barcelona), Football (Buccaneers), Basketball (Bucks)</li>
+                </ul>
+            </div>
+            <div class="card fade-in">
+                <h3>Experience</h3>
+                <ul>
+                    <li>Firmware Engineering Intern, Milwaukee Tool, Batteries & Chargers (Summer '24)</li>
+                    <li>Operating Systems Course Assistant, UIUC (2023-2024)</li>
+                    <li>SWE Intern, Federated Hermes, Global Trading & Technology (Summer '23)</li>
+                </ul>
+            </div>
         </div>
         
-        <div class="tools">
-
-          <div class="tools-icons">
-            <img src="images/python.svg" alt="Python" title="Python" />
-            <img src="images/yolo.svg" alt="Yolov8" title="Yolov8" />
-            <img src="images/casadi.svg" alt="CasADi" title="CasADi" />
-            <!-- Add more icons as needed -->
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <p>&ensp;</p>
-  </section>
-
-  <section id="OOO">
-    <div class="project-card-sm">
-      <div class="card-border-gradient"></div>
-      <div class="card-container">
-        <div class="project-image">
-          <img src="images/rsc5.png" alt="" height="300" width="400" />
-        </div>
-        <div class="wrapper">
-          <h1>Speculative Out-of-Order RISC-V Processor</h1>
-          <p>
-            • Designing and verifying ERR out-of-order processor, implementing RV32IM ISA with FP and Mult
-            extensions.
-          </p>
-          <p>
-            • Developed arbiter for Icache and Dcache, stride prefetchers, and cacheline adapter for efficient two
-            stage cache-DRAM integration.
-          </p>
-          <p>
-            • Optimizing design with early branch recovery, Perceptron branch predictor with BTB, and split
-            load-store queue.
-          </p>
-          <p>
-            • Below is a VERY high level overview of the system.
-          </p>
-
-          <button class="expand-btn" onclick="toggleExpand(this)">Expand PDF</button>
-        </div>
-
-        <div class="tools">
-
-          <div class="tools-icons">
-            <img src="images/sv.ico" alt="SystemVerilog" title="SystemVerilog" />
-            <img src="images/synopsys.ico" alt="Synopsys" title="Synopsys" />
-            <img src="images/verilator.ico" alt="Verilator" title="Verilator" />
-            <!-- Add more icons as needed -->
-          </div>
-        </div>
-        <div class="pdf-container">
-          <embed src="images/ERR block diagram.pdf" type="application/pdf" />
-        </div>
-
-      </div>
-    </div>
-  </section>
-  <p>&ensp;</p>
-
-
-  <section id="LLM">
-    <div class="project-card-sm">
-      <div class="card-border-gradient"></div>
-      <div class="card-container">
-        <div class="project-image">
-          <img src="images/hf-logo.svg" alt="" height="300" width="400" />
-        </div>
-        <div class="wrapper">
-          <h1>YuLatin: Latin Quote LLM </h1>
-          <p>
-            • Developed YuLatin LLM, an AI-powered model that analyzes emotions from user input and generates relevant Latin quotes based on detected sentiment.
-          </p>
-          <p>
-            • Utilized Hugging Face's <a href="https://huggingface.co/SamLowe/roberta-base-go_emotions/">roberta-base-go_emotions</a> as a base model to classify emotions from user input, ensuring accurate sentiment detection, and match to Latin Quote.
-          </p>
-          <p>
-            • Developed a full-stack application using Node.js (Express.js) for the backend and Railway for secure and scalable deployment.
-          </p>
-        <form action="https://latinllm.onrender.com//" target="_blank" class="form-container">
-          <button class="expand-btn" type="submit">Latin LLM (~30 sec to render website)</button>
-        </form>
-      </div>
-
-
-        <div class="tools">
-          <div class="tools-icons">
-            <img src="images/nodejs.svg" alt="Node.Js" title="Node.Js" />
-            <img src="images/railway.svg" alt="Railway" title="Railway" />
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-    <p>&ensp;</p>
-
-    <section id="MAZE">
-      <div class="project-card-sm">
-        <div class="card-border-gradient"></div>
-        <div class="card-container">
-          <div class="project-image">
-            <img src="images/maze.png" alt="" height="300" width="400" />
-          </div>
-          <div class="wrapper">
-            <h1>MazeGest: Gesture-controlled Maze Game </h1>
-            <p>
-              •   Developed MazeGest, an interactive maze game that leverages real-time hand gesture recognition using <a href="https://chuoling.github.io/mediapipe/solutions/hands.html/">MediaPipe Hands</a> to control in-game movement              
-            </p>
-            <p>
-              • Utilized HTML5, CSS3, and vanilla JavaScript to dynamically generate maze layouts and implement responsive, collision-aware gameplay 
-            </p>
-          <form action="game/index.html" target="_blank" class="form-container">
-            <button class="expand-btn" type="submit">MazeGest</button>
-          </form>
-
-        </div>
-  
-  
-          <div class="tools">
-            <div class="tools-icons">
-              <img src="images/mediapipe_small.ico" alt="MediaPipe" title="MediaPipe" />
+        <div class="quote-section">
+            <div class="quote-card fade-in">
+                <div class="quote-text">Carpe Noctem</div>
+                <div class="quote-author">- Horace</div>
             </div>
-          </div>
-  
+            <div class="quote-card fade-in">
+                <div class="quote-text">Audentes Fortuna Iuvat</div>
+                <div class="quote-author">- Virgil</div>
+            </div>
+            <div class="quote-card fade-in">
+                <div class="quote-text">Esto Quod Es</div>
+                <div class="quote-author">- Aurelius</div>
+            </div>
         </div>
-      </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <p style="color: var(--text-gray);">
+                Generate your own Latin Quotes (~30 sec to render website) 
+                <a href="https://latinllm.onrender.com/" target="_blank" style="color: var(--primary-color);">here</a>.
+            </p>
+        </div>
     </section>
-  
-      <p>&ensp;</p>
-  
 
-    <section id="PIPELINED">
-    <div class="project-card-sm">
-      <div class="card-border-gradient"></div>
-      <div class="card-container">
-        <div class="project-image">
-          <img src="images/rsc5.png" alt="" height="300" width="400" />
+    <section class="section" id="yugopoly">
+        <h2 class="section-title">YUGOPOLY</h2>
+        <p style="text-align: center; color: var(--text-gray); margin-bottom: 2rem;">
+            Click a Property to learn more!
+        </p>
+        <div class="yugopoly-container fade-in">
+            <iframe src="sbx/index.html" class="yugopoly-iframe" title="Yugopoly Interactive Portfolio"></iframe>
         </div>
-        <div class="wrapper">
-          <h1>Multi-Cycle RISC-V Processor</h1>
-          <p>
-            • Designed multi-cycle processor using the RISC-V instruction set
-            and standard CPU data path using Verilog and Verdi.
-          </p>
-          <p>
-            • Implemented register-immediate instructions, load and store
-            memory instructions, conditional branch operations.
-          </p>
-          <p>
-            • Developed test bench to run sequence of instructions, and to run
-            RISC-V assembly. Verified design using RVFI monitor and SPIKE
-          </p>
-          <!-- <button>view project<i class="fa-solid fa-arrow-right"></i></button> -->
+        <p style="text-align: center; margin-top: 2rem; color: var(--text-light);">
+            <!-- Thank you for visiting my portfolio! -->
+        </p>
+    </section>
+
+    <section class="section" id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card fade-in">
+                <video class="project-media" controls loop muted>
+                    <source src="images/499.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="project-content">
+                    <h3 class="project-title">Control Algorithms for Vision-Based Navigation<small> Advisor: Sayan Mitra</small></h3>
+                    <p class="project-description">
+                        • Conducted two key drone experiments: (1) <strong>Drone tracking</strong>—an Ego drone followed a Target
+                        drone using a controller
+                        with trajectory tracking and YOLO-8-based perception for dynamic adaptation. (2) <strong>Gate
+                            navigation</strong>—compared PID and
+                        MPC controllers for optimal race performance, using both ground truth and relative gate positions.
+                    </p>
+                    <p class="project-description">
+                        • Developed a predictive drone navigation algorithm using Model Predictive Control (MPC), optimizing flight
+                        paths and reducing trajectory deviation by 25% over PID controllers. Implemented in the CasADi framework
+                        with
+                        IPOPT solver for real-time drone racing scenarios.
+                    </p>
+                    <p class="project-description">
+                        • Integrated Microsoft AirSim for high-fidelity testing of navigation algorithms and efficient dynamic pose
+                        estimation. Utilized <a href="https://msl.stanford.edu/papers/madaan_airsim_2020.pdf/" target="_blank">"AirSim Drone Racing Lab"</a> (Madaan et al. 2020) as base environment for gate racing.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">YOLOv8</span>
+                        <span class="tech-tag">CasADi</span>
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">Control Systems</span>
+                    </div>
+                    <a href="https://github.com/YugalKithany/Undergraduate-Thesis" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i>
+                        GitHub Repo
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <img class="project-media" src="images/rsc5.png" alt="Speculative Out-of-Order RISC-V Processor">
+                <div class="project-content">
+                    <h3 class="project-title">Speculative Out-of-Order RISC-V Processor</h3>
+                    <p class="project-description">
+                        • Designing and verifying ERR out-of-order processor, implementing RV32IM ISA with FP and Mult
+                        extensions.
+                    </p>
+                    <p class="project-description">
+                        • Developed arbiter for Icache and Dcache, stride prefetchers, and cacheline adapter for efficient two
+                        stage cache-DRAM integration.
+                    </p>
+                    <p class="project-description">
+                        • Optimizing design with early branch recovery, Perceptron branch predictor with BTB, and split
+                        load-store queue.
+                    </p>
+                    <p class="project-description">
+                        • Below is a VERY high level overview of the system.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">SystemVerilog</span>
+                        <span class="tech-tag">Synopsys</span>
+                        <span class="tech-tag">Verilator</span>
+                    </div>
+                    <button class="project-link" onclick="window.open('images/ERR block diagram.pdf', '_blank')">
+                        Expand PDF
+                    </button>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <img class="project-media" src="images/hf-logo.svg" alt="YuLatin: Latin Quote LLM">
+                <div class="project-content">
+                    <h3 class="project-title">YuLatin: Latin Quote LLM</h3>
+                    <p class="project-description">
+                        • Developed YuLatin LLM, an AI-powered model that analyzes emotions from user input and generates relevant Latin quotes based on detected sentiment.
+                    </p>
+                    <p class="project-description">
+                        • Utilized Hugging Face's <a href="https://huggingface.co/SamLowe/roberta-base-go_emotions/" target="_blank">roberta-base-go_emotions</a> as a base model to classify emotions from user input, ensuring accurate sentiment detection, and match to Latin Quote.
+                    </p>
+                    <p class="project-description">
+                        • Developed a full-stack application using Node.js (Express.js) for the backend and Railway for secure and scalable deployment.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express.js</span>
+                        <span class="tech-tag">Railway</span>
+                        <span class="tech-tag">Hugging Face</span>
+                    </div>
+                    <a href="https://latinllm.onrender.com/" target="_blank" class="project-link">
+                        Latin LLM (~30 sec to render website)
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <img class="project-media" src="images/maze.png" alt="MazeGest: Gesture-controlled Maze Game">
+                <div class="project-content">
+                    <h3 class="project-title">MazeGest: Gesture-controlled Maze Game</h3>
+                    <p class="project-description">
+                        • Developed MazeGest, an interactive maze game that leverages real-time hand gesture recognition using <a href="https://chuoling.github.io/mediapipe/solutions/hands.html/" target="_blank">MediaPipe Hands</a> to control in-game movement.
+                    </p>
+                    <p class="project-description">
+                        • Utilized HTML5, CSS3, and vanilla JavaScript to dynamically generate maze layouts and implement responsive, collision-aware gameplay.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">MediaPipe Hands</span>
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                    <a href="game/index.html" target="_blank" class="project-link">
+                        MazeGest
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <img class="project-media" src="images/rsc5.png" alt="Multi-Cycle RISC-V Processor">
+                <div class="project-content">
+                    <h3 class="project-title">Multi-Cycle RISC-V Processor</h3>
+                    <p class="project-description">
+                        • Designed multi-cycle processor using the RISC-V instruction set
+                        and standard CPU data path using Verilog and Verdi.
+                    </p>
+                    <p class="project-description">
+                        • Implemented register-immediate instructions, load and store
+                        memory instructions, conditional branch operations.
+                    </p>
+                    <p class="project-description">
+                        • Developed test bench to run sequence of instructions, and to run
+                        RISC-V assembly. Verified design using RVFI monitor and SPIKE.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">SystemVerilog</span>
+                        <span class="tech-tag">Synopsys</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <img class="project-media" src="images/LC3.jpg" alt="System Verilog Projects on DE10-Lite FPGA board">
+                <div class="project-content">
+                    <h3 class="project-title">System Verilog Projects on DE10-Lite FPGA board</h3>
+                    <p class="project-description">
+                        • Designed and built digital systems with TTL and FPGAs. Debugged
+                        on Model Sim and Signal Tap Logic Analyzer.
+                    </p>
+                    <p class="project-description">
+                        • Replicated classical Tetris with NIOS II and SOC, using 32-bit
+                        modified Harvard RISC-V architecture. The game was outputted on
+                        monitor via VGA output. Utilized Electronic Design Automation to
+                        synthesize logic.
+                    </p>
+                    <p class="project-description">
+                        • Developed three-stage (fetch, decode, execute) SLC3 processor
+                        for LC3 ISA (ADD, NOT, BR, STR, LDR). Created CPU, SRAM, IR of
+                        processor on breadboard. A software implementation done on Quartus
+                        Prime with System Verilog.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">SystemVerilog</span>
+                        <span class="tech-tag">Quartus Prime</span>
+                        <span class="tech-tag">ModelSim</span>
+                        <span class="tech-tag">FPGA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <img class="project-media" src="images/tux.png" alt="Single Core Unix x86 Kernel">
+                <div class="project-content">
+                    <h3 class="project-title">Single Core Unix x86 Kernel</h3>
+                    <p class="project-description">
+                        • Implemented device drivers for keyboard, RTC, Terminal, TUX
+                        controller, Process Control Blocks in x86 Assembly.
+                    </p>
+                    <p class="project-description">
+                        • Introduced compatibility for Linux commands shell (&lt;10 concurrent), ls, cat, and grep on Posix style
+                        shell with keyboard comparability.
+                    </p>
+                    <p class="project-description">
+                        • Designed paging-based virtual memory, context switching, read only filesystem, round-robin scheduler.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">C99</span>
+                        <span class="tech-tag">Qemu</span>
+                        <span class="tech-tag">x86 Assembly</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <img class="project-media" src="images/Cuda.png" alt="Convolution Neural Network for Image Classification">
+                <div class="project-content">
+                    <h3 class="project-title">Convolution Neural Network for Image Classification</h3>
+                    <p class="project-description">
+                        • Optimizing forward-pass of convolution layers using NVIDIA Cuda Platform. Developed software for
+                        processors with massively parallel computing resources.
+                    </p>
+                    <p class="project-description">
+                        • Evaluated performance with Nsight systems/computer profiling tools to refine CUDA kernel for optimal
+                        execution. Implementing modified LeNet5
+                        architecture for working with Fashion MNIST dataset.
+                    </p>
+                    <p class="project-description">
+                        • First, used the unroll and shared-memory matrix multiply method to optimize the kernel. Then, tried to
+                        conduct kernel fusion for unrolling and multiply to speed up more.
+                        Third, sweep CUDA parameters to ﬁnd best values. Finally, realize different implementation in kernels
+                        with different layer sizes.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Nvidia CUDA C</span>
+                        <span class="tech-tag">CNN</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <video class="project-media" controls loop muted>
+                    <source src="images/KnightsProblem470.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="project-content">
+                    <h3 class="project-title">UR3 Robotic Knight's Tour</h3>
+                    <p class="project-description">
+                        • Implemented an Open Knight's Tour on a physical board using a modified Hamiltonian 
+                        Path Algorithm with a heuristic prioritizing moves with the fewest remaining options,
+                        optimizing for linear time complexity.
+                    </p>
+                    <p class="project-description">
+                        • Integrated UR3 robot control with inverse kinematics, manually mapped XYZ positions for 
+                        precise movement, and used blob detection with a suction mechanism to identify and manipulate the knight.
+                    </p>
+                    <p class="project-description">
+                        • Utilized ROS and ROS Bags for real-time execution, synchronized motion control,
+                        and data logging, ensuring accurate tracking and debugging of robotic operations.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">ROS</span>
+                        <span class="tech-tag">UR3 Robot</span>
+                        <span class="tech-tag">Robotics</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <video class="project-media" controls loop muted>
+                    <source src="images/486.mov" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="project-content">
+                    <h3 class="project-title">Nonlinear Underactuated System</h3>
+                    <p class="project-description">
+                        • Utilized two optical encoders to measure required angles to
+                        calculate swing velocity and saturation of the Reaction Wheel
+                        Pendulum. Developed 6 controllers to stabilize and implement all
+                        components of the final robotic arm.
+                    </p>
+                    <p class="project-description">
+                        • Simulated a three-state feedback controller to stabilize the
+                        velocity of rotor on MATLAB Simulink, used error control to
+                        instantiate controller onto RWP. Design process included system
+                        identification, model validation, and design validation.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">MATLAB</span>
+                        <span class="tech-tag">Simulink</span>
+                        <span class="tech-tag">Control Systems</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <img class="project-media" src="images/210.jpg" alt="Superheterodyne AM Receiver">
+                <div class="project-content">
+                    <h3 class="project-title">Superheterodyne AM Receiver</h3>
+                    <p class="project-description">
+                        • Built receiver on breadboard with RF/IF amplifier, Mixer,
+                        Demodulator, local oscillator, and audio amplifier elements.
+                    </p>
+                    <p class="project-description">
+                        • Designed digital filter to demodulate AM signal, replace IF signal
+                        with soundcard-based sampler receiver, and play audio on speakers
+                        for software radio. Measured AM receiver performance, sensitivity to
+                        noise, and image rejection.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Analog Circuits</span>
+                        <span class="tech-tag">Radio Frequency</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <img class="project-media" src="images/oflights.png" alt="Open Flights Airplane Path Optimization">
+                <div class="project-content">
+                    <h3 class="project-title">Open Flights Airplane Path Optimization</h3>
+                    <p class="project-description">
+                        • Developed a program to find the shortest path between airports using the OpenFlights dataset.
+                    </p>
+                    <p class="project-description">
+                        • Created a weighted directed graph using adjacency lists, with distances between vertices calculated from
+                        routes.dat.
+                    </p>
+                    <p class="project-description">
+                        • Implemented both Floyd-Warshall and A* algorithms to efficiently find shortest paths.
+                    </p>
+                    <p class="project-description">
+                        • Performed data cleaning and graph construction using DFS to validate path existence between airports.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Graph Algorithms</span>
+                    </div>
+                    <a href="https://github.com/YugalKithany/OpenFlights" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i>
+                        GitHub Repo
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="tools">
+    </section>
 
-          <div class="tools-icons">
-            <img src="images/sv.ico" alt="SystemVerilog" title="SystemVerilog" />
-            <img src="images/synopsys.ico" alt="Synopsys" title="Synopsys" />
-            <!-- Add more icons as needed -->
-          </div>
-        </div>
+    <script src="script.js"></script>
 
-      </div>
-    </div>
-  </section>
-
-
-
-    <p>&ensp;</p>
-    <section id="FPGA">
-    <div class="project-card-sm">
-      <div class="card-border-gradient"></div>
-      <div class="slide-in-right"></div>
-      <div class="card-container">
-        <div class="project-image">
-          <img src="images/LC3.jpg" alt="" height="300" width="400" />
-        </div>
-        <div class="wrapper">
-          <h1>System Verilog Projects on DE10-Lite FPGA board</h1>
-          <p>
-            • Designed and built digital systems with TTL and FPGAs. Debugged
-            on Model Sim and Signal Tap Logic Analyzer.
-          </p>
-          <p>
-            • Replicated classical Tetris with NIOS II and SOC, using 32-bit
-            modified Harvard RISC-V architecture. The game was outputted on
-            monitor via VGA output. Utilized Electronic Design Automation to
-            synthesize logic.
-          </p>
-          <p>
-            • Developed three-stage (fetch, decode, execute) SLC3 processor
-            for LC3 ISA (ADD, NOT, BR, STR, LDR). Created CPU, SRAM, IR of
-            processor on breadboard. A software implementation done on Quartus
-            Prime with System Verilog.
-          </p>
-        </div>
-        <div class="tools">
-
-          <div class="tools-icons">
-            <img src="images/sv.ico" alt="SystemVerilog" title="SystemVerilog" />
-            <img src="images/quartus.ico" alt="Quartus Prime" title="Quartus Prime" />
-            <img src="images/model.ico" alt="ModelSim" title="ModelSim" />
-            <!-- Add more icons as needed -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-    <p>&ensp;</p>
-
-    <section id="OS">
-      <div class="project-card-sm">
-      <div class="card-border-gradient"></div>
-      <div class="card-container">
-        <div class="project-image">
-          <img src="images/tux.png" alt="" height="300" width="400" />
-        </div>
-        <div class="wrapper">
-          <h1>Single Core Unix x86 Kernel</h1>
-          <p>
-            • Implemented device drivers for keyboard, RTC, Terminal, TUX
-            controller, Process Control Blocks in x86 Assembly.
-          </p>
-          <p>
-            • Introduced compatibility for Linux commands shell (&lt;10 concurrent), ls, cat, and grep on Posix style
-            shell with keyboard comparability.
-          </p>
-          <p>
-            • Designed paging-based virtual memory, context switching, read only filesystem, round-robin scheduler.
-          </p>
-          </p>
-          <!-- <button>view project<i class="fa-solid fa-arrow-right"></i></button> -->
-        </div>
-        <div class="tools">
-
-          <div class="tools-icons">
-            <img src="images/c.ico" alt="C99" title="C99" />
-            <img src="images/qemu.ico" alt="Qemu" title="Qemu" />
-            <img src="images/86.ico" alt="x86 Assembly" title="x86 Assembly" />
-            <!-- Add more icons as needed -->
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-    <p>&ensp;</p>
-
-
-    <section id="NEURALNETWORK">
-      <div class="project-card-sm">
-      <div class="card-border-gradient"></div>
-      <div class="card-container">
-        <div class="project-image">
-          <img src="images/Cuda.png" alt="" height="300" width="900" />
-        </div>
-        <div class="wrapper">
-          <h1>Convolution Neural Network for Image Classification</h1>
-          <p>
-            • Optimizing forward-pass of convolution layers using NVIDIA Cuda Platform. Developed software for
-            processors with massively parallel computing resources.
-          </p>
-          <p>
-            • Evaluated performance with Nsight systems/computer profiling tools to refine CUDA kernel for optimal
-            execution. Implementing modified LeNet5
-            architecture for working with Fashion MNIST dataset
-          </p>
-          <p>
-            • First, used the unroll and shared-memory matrix multiply method to optimize the kernel. Then, tried to
-            conduct kernel fusion for unrolling and multiply to speed up more.
-            Third, sweep CUDA parameters to ﬁnd best values. Finally, realize different implementation in kernels
-            with different layer sizes.
-          <p>
-        </div>
-        <div class="tools">
-
-          <div class="tools-icons">
-            <img src="images/cu.ico" alt="Nvidia Cuda C" title="Nvidia Cuda C" />
-            <!-- Add more icons as needed -->
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-    <p>&ensp;</p>
-
-
-
-    <section id="ROBOTICS">
-    <div class="project-card-sm">
-      <div class="card-border-gradient"></div>
-      <div class="card-container">
-        <!-- <img src="images/ECEB.jpg" alt=""> -->
-        <div class="project-image">
-          <video loop="" controls="" width="300" height="300">
-            <source type="video/mp4" src="images/KnightsProblem470.mp4" height="300" width="400" />
-          </video>
-        </div>
-        <div class="wrapper">
-          <h1>UR3 Robotic Knight's Tour</h1>
-          <p>
-            • Implemented an Open Knight's Tour on a physical board using a modified Hamiltonian 
-              Path Algorithm with a heuristic prioritizing moves with the fewest remaining options,
-              optimizing for linear time complexity.
-          </p>
-          <p>
-            • Integrated UR3 robot control with inverse kinematics, manually mapped XYZ positions for 
-            precise movement, and used blob detection with a suction mechanism to identify and manipulate the knight.
-          </p>
-
-          <p>
-            • Utilized ROS and ROS Bags for real-time execution, synchronized motion control,
-             and data logging, ensuring accurate tracking and debugging of robotic operations
-          </p>
-          <!-- <button>view project<i class="fa-solid fa-arrow-right"></i></button> -->
-        </div>
-        <div class="tools">
-
-          <div class="tools-icons">
-            <img src="images/python.svg" alt="Python" title="Python" />
-            <img src="images/ros.svg" alt="ROS" title="ROS" />
-            <img src="images/ur3.png" alt="UR3 Robot" title="UR3 Robot" />
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <p>&ensp;</p>
-
-
-    <section id="CONTROLSYSTEMS">
-    <div class="project-card-sm">
-      <div class="card-border-gradient"></div>
-      <div class="card-container">
-        <!-- <img src="images/ECEB.jpg" alt=""> -->
-        <div class="project-image">
-          <video loop="" controls="" width="300" height="300">
-            <source type="video/mp4" src="images/486.mov" height="300" width="400" />
-          </video>
-        </div>
-        <div class="wrapper">
-          <h1>Nonlinear Underactuated System</h1>
-          <p>
-            • Utilized two optical encoders to measure required angles to
-            calculate swing velocity and saturation of the Reaction Wheel
-            Pendulum. Developed 6 controllers to stabilize and implement all
-            components of the final robotic arm.
-          </p>
-          <p>
-            • Simulated a three-state feedback controller to stabilize the
-            velocity of rotor on MATLAB Simulink, used error control to
-            instantiate controller onto RWP. Design process included system
-            identification, model validation, and design validation.
-          </p>
-          <!-- <button>view project<i class="fa-solid fa-arrow-right"></i></button> -->
-        </div>
-        <div class="tools">
-
-          <div class="tools-icons">
-            <img src="images/matlab.ico" alt="Matlab" title="Matlab" />
-            <img src="images/simulink.ico" alt="Simulink" title="Simulink" />
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-    <p>&ensp;</p>
-
-    <section id="RADIO">
-      <div class="project-card-sm">
-      <div class="card-border-gradient"></div>
-      <div class="card-container">
-        <div class="project-image">
-          <img src="images/210.jpg" alt="" />
-        </div>
-        <div class="wrapper">
-          <h1>Superheterodyne AM Receiver</h1>
-          <p>
-            • Built receiver on breadboard with RF/IF amplifier, Mixer,
-            Demodulator, local oscillator, and audio amplifier elements.
-          </p>
-          <p>
-            • Designed digital filter to demodulate AM signal, replace IF signal
-            with soundcard-based sampler receiver, and play audio on speakers
-            for software radio. Measured AM receiver performance, sensitivity to
-            noise, and image rejection.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-    <p>&ensp;</p>
-    <section id="OPENFLIGHTS">
-    <div class="project-card-sm">
-      <div class="card-border-gradient"></div>
-      <div class="card-container">
-        <div class="project-image">
-          <img src="images/oflights.png" alt="" height="300" width="400" />
-        </div>
-        <div class="wrapper">
-          <h1>Open Flights Airplane Path Optimization</h1>
-          <p>
-            • Developed a program to find the shortest path between airports using the OpenFlights dataset
-          </p>
-          <p>
-            • Created a weighted directed graph using adjacency lists, with distances between vertices calculated from
-            routes.dat
-          </p>
-
-          <p>
-            • Implemented both Floyd-Warshall and A* algorithms to efficiently find shortest paths
-          </p>
-          <p>
-            • Performed data cleaning and graph construction using DFS to validate path existence between airports
-          </p>
-          <form action="https://github.com/YugalKithany/OpenFlights" target="_blank" class="form-container">
-            <button class="expand-btn" type="submit">GitHub Repo</button>
-          </form>
-        </div>
-        <div class="tools">
-
-          <div class="tools-icons">
-            <img src="images/cpp.ico" alt="C++" title="C++" />
-            <img src="images/docker.ico" alt="Docker" title="Docker" />
-            <!-- Add more icons as needed -->
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-
-  </section>
-</section>
-
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-
-
-
-<script src="script.js"></script>
-
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-
+</body>
 </html>
