@@ -220,9 +220,7 @@ function populateTables() {
 }
 
 function updateComparisonStats() {
-    if (!predictedData2425 || !actualData2425) {
-        return;
-    }
+    if (!predictedData2425 || !actualData2425) return;
 
     const scenarioKey = Object.keys(predictedData2425)[0];
     const scenario2425 = predictedData2425[scenarioKey];
@@ -230,7 +228,6 @@ function updateComparisonStats() {
     const predictedTop4 = scenario2425.standings.slice(0, 4);
     const actualTop4 = actualData2425.slice(0, 4);
 
-    // Update top 4 displays
     document.getElementById('predictedTop4').innerHTML = predictedTop4.map(team => 
         `<p>${team.pos}. ${team.team} (${team.pts} pts)</p>`
     ).join('');
@@ -239,29 +236,31 @@ function updateComparisonStats() {
         `<p>${team.pos}. ${team.team} (${team.pts} pts)</p>`
     ).join('');
 
-    // Calculate accuracy metrics
-    let exactPositions = 0;
+    // Updated metrics
+    let withinTwoPositions = 0;
     let totalPointsDiff = 0;
     let top4Correct = 0;
-    
+
     actualData2425.forEach(actualTeam => {
         const predictedTeam = scenario2425.standings.find(p => p.team === actualTeam.team);
         if (predictedTeam) {
-            if (actualTeam.pos === predictedTeam.pos) exactPositions++;
+            const posDiff = Math.abs(actualTeam.pos - predictedTeam.pos);
+            if (posDiff <= 2) withinTwoPositions++;
             totalPointsDiff += Math.abs(actualTeam.pts - predictedTeam.pts);
             if (actualTeam.pos <= 4 && predictedTeam.pos <= 4) top4Correct++;
         }
     });
 
-    const positionAccuracy = Math.round((exactPositions / actualData2425.length) * 100);
+    const positionAccuracy = Math.round((withinTwoPositions / actualData2425.length) * 100);
     const avgPointsDiff = Math.round(totalPointsDiff / actualData2425.length);
     const championCorrect = actualData2425[0].team === scenario2425.standings[0].team;
 
-    document.getElementById('positionAccuracy').textContent = positionAccuracy + '%';
+    document.getElementById('positionAccuracy').textContent = positionAccuracy + '% within ±2';
     document.getElementById('pointsDiff').textContent = avgPointsDiff;
     document.getElementById('top4Accuracy').textContent = top4Correct + '/4';
     document.getElementById('championCorrect').textContent = championCorrect ? '✅' : '❌';
 }
+
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', function() {
