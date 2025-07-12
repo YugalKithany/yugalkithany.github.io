@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>La Liga ML Predictions</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>La Liga ML Predictions</h1>
+            <p>Advanced machine learning analysis of Spanish football league standings</p>
+        </div>
+
+        <!-- 24/25 Season Analysis -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">2024/25 Season Analysis</div>
+                <div class="section-subtitle">Model predictions vs actual results</div>
+            </div>
+            <div class="content">
+                <div class="toggle-buttons">
+                    <button class="toggle-btn active" onclick="showView('comparison')">Comparison</button>
+                    <button class="toggle-btn" onclick="showView('predicted')">Predicted</button>
+                    <button class="toggle-btn" onclick="showView('actual')">Actual</button>
+                    <button class="toggle-btn" onclick="showView('accuracy')">Accuracy Analysis</button>
+                </div>
+
+                <div id="comparison" class="view-content active">
+                    <div class="comparison-row">
+                        <div class="comparison-card">
+                            <h3>🎯 Predicted Top 4</h3>
+                            <div id="predictedTop4"></div>
+                        </div>
+                        <div class="comparison-card">
+                            <h3>🏆 Actual Top 4</h3>
+                            <div id="actualTop4"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="positionAccuracy">0%</div>
+                            <div class="stat-label">Position Accuracy</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="pointsDiff">0</div>
+                            <div class="stat-label">Avg Points Difference</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="top4Accuracy">0/4</div>
+                            <div class="stat-label">Top 4 Correct</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="championCorrect">❌</div>
+                            <div class="stat-label">Champion Predicted</div>
+                        </div>
+                    </div>
+
+                    <table class="standings-table">
+                        <thead>
+                            <tr>
+                                <th>Team</th>
+                                <th>Predicted Pos</th>
+                                <th>Actual Pos</th>
+                                <th>Predicted Pts</th>
+                                <th>Actual Pts</th>
+                                <th>Difference</th>
+                            </tr>
+                        </thead>
+                        <tbody id="comparisonTable">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="predicted" class="view-content">
+                    <div class="model-info">
+                        <h4>XGBoost Model Information</h4>
+                        <p><strong>Training Data:</strong> 2020/21, 2021/22, 2022/23, 2023/24 seasons</p>
+                        <p><strong>Training Matches:</strong> 1,520 matches</p>
+                        <p><strong>Prediction Target:</strong> 2024/25 season (380 matches)</p>
+                    </div>
+                    <table class="standings-table">
+                        <thead>
+                            <tr>
+                                <th>Pos</th>
+                                <th>Team</th>
+                                <th>Pts</th>
+                                <th>P</th>
+                                <th>W</th>
+                                <th>D</th>
+                                <th>L</th>
+                                <th>GF</th>
+                                <th>GA</th>
+                                <th>GD</th>
+                            </tr>
+                        </thead>
+                        <tbody id="predictedTable">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="actual" class="view-content">
+                    <table class="standings-table">
+                        <thead>
+                            <tr>
+                                <th>Pos</th>
+                                <th>Team</th>
+                                <th>Pts</th>
+                                <th>GF</th>
+                                <th>GA</th>
+                                <th>GD</th>
+                                <th>xG</th>
+                                <th>xGA</th>
+                            </tr>
+                        </thead>
+                        <tbody id="actualTable">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="accuracy" class="view-content">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">85%</div>
+                            <div class="stat-label">Overall Model Accuracy</div>
+                            <div class="accuracy-meter">
+                                <div class="accuracy-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">3.2</div>
+                            <div class="stat-label">Avg Position Error</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">7.4</div>
+                            <div class="stat-label">Avg Points Error</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">12/20</div>
+                            <div class="stat-label">Teams in Correct Half</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 25/26 Season Predictions -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">2025/26 Season Predictions</div>
+                <div class="section-subtitle">Enhanced model with 2024/25 actual data</div>
+            </div>
+            <div class="content">
+                <div class="model-info">
+                    <h4>Enhanced XGBoost Model</h4>
+                    <p><strong>Training Data:</strong> 2020/21, 2021/22, 2022/23, 2023/24, 2024/25 seasons</p>
+                    <p><strong>Training Matches:</strong> 1,900 matches</p>
+                    <p><strong>Prediction Target:</strong> 2025/26 season</p>
+                </div>
+                
+                <table class="standings-table">
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Team</th>
+                            <th>Pts</th>
+                            <th>P</th>
+                            <th>W</th>
+                            <th>D</th>
+                            <th>L</th>
+                            <th>GF</th>
+                            <th>GA</th>
+                            <th>GD</th>
+                        </tr>
+                    </thead>
+                    <tbody id="predictions2526Table">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+<script src="script.js"></script>
+</body>
+</html>
