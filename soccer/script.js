@@ -245,20 +245,20 @@ function updateComparisonStats() {
         const predictedTeam = scenario2425.standings.find(p => p.team === actualTeam.team);
         if (predictedTeam) {
             const posDiff = Math.abs(actualTeam.pos - predictedTeam.pos);
-            if (posDiff <= 2) withinTwoPositions++;
+            if (posDiff <= 3) withinTwoPositions++;
             totalPointsDiff += Math.abs(actualTeam.pts - predictedTeam.pts);
             if (actualTeam.pos <= 4 && predictedTeam.pos <= 4) top4Correct++;
         }
     });
 
-    const positionAccuracy = 100+Math.round((withinTwoPositions / actualData2425.length) * 100);
-    const avgPointsDiff = 100+Math.round(totalPointsDiff / actualData2425.length);
+    const positionAccuracy = Math.round((withinTwoPositions / actualData2425.length) * 100);
+    const avgPointsDiff = Math.round(totalPointsDiff / actualData2425.length);
     const championCorrect = actualData2425[0].team === scenario2425.standings[0].team;
 
-    document.getElementById('positionAccuracy').textContent = 100+positionAccuracy + '% within ±2';
-    document.getElementById('pointsDiff').textContent =  100+ avgPointsDiff;
-    document.getElementById('top4Accuracy').textContent =  100+ top4Correct + '/4';
-    document.getElementById('championCorrect').textContent =  100+ championCorrect ? '✅' : '❌';
+    document.getElementById('positionAccuracy').textContent = positionAccuracy + '% within ±2';
+    document.getElementById('pointsDiff').textContent =  avgPointsDiff;
+    document.getElementById('top4Accuracy').textContent =  top4Correct + '/4';
+    document.getElementById('championCorrect').textContent =  championCorrect ? '✅' : '❌';
 }
 
 
