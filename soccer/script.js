@@ -1,9 +1,15 @@
-// Global variables to store loaded data
+// Global variables
 let predictedData2425 = null;
 let actualData2425 = null;
 let predictedData2526 = null;
+let currentSeason = '2425';
+let currentViewType = 'comparison';
 
-// Function to load all data files
+// Load data on page load
+document.addEventListener('DOMContentLoaded', function() {
+    loadData();
+});
+
 async function loadData() {
     try {
         const [predictions2425Response, actual2425Response, predictions2526Response] = await Promise.all([
@@ -16,16 +22,13 @@ async function loadData() {
         actualData2425 = parseCSV(actual2425Response);
         predictedData2526 = predictions2526Response;
 
-        populateTables();
-
+        console.log('Data loaded successfully');
     } catch (error) {
         console.error('Error loading data files:', error);
-        showErrorMessage('Ensure all data files are present in the repository and accessible.');
+        showErrorMessage('Ensure all data files are present and accessible.');
     }
 }
 
-
-// Function to parse CSV data
 function parseCSV(csvText) {
     const lines = csvText.trim().split('\n');
     const headers = lines[0].split(',');
@@ -39,7 +42,6 @@ function parseCSV(csvText) {
             const cleanHeader = header.trim().toLowerCase();
             const value = values[index] ? values[index].trim() : '';
             
-            // Map CSV headers to expected format
             if (cleanHeader === 'pos') {
                 row.pos = parseInt(value);
             } else if (cleanHeader === 'pts') {
@@ -50,14 +52,13 @@ function parseCSV(csvText) {
                 row.gf = parseInt(value);
             } else if (cleanHeader === 'against') {
                 row.ga = parseInt(value);
-            } else if (cleanHeader === 'xga') {
+            } else if (cleanHeader === 'xg') {
                 row.xg = parseFloat(value);
-            } else if (cleanHeader === 'xga against') {
+            } else if (cleanHeader === 'xga') {
                 row.xga = parseFloat(value);
             }
         });
         
-        // Calculate goal difference
         if (row.gf !== undefined && row.ga !== undefined) {
             row.gd = row.gf - row.ga;
         }
@@ -68,201 +69,254 @@ function parseCSV(csvText) {
     return data;
 }
 
-// Function to show error message
 function showErrorMessage(message) {
-    const container = document.querySelector('.container');
-    const errorDiv = document.createElement('div');
-    errorDiv.style.cssText = `
-        background: #f8d7da;
-        color: #721c24;
-        padding: 20px;
-        border-radius: 8px;
-        margin: 20px 0;
-        border: 1px solid #f5c6cb;
-        text-align: center;
+    const tableContainer = document.getElementById('table-container');
+    tableContainer.innerHTML = `
+        <div class="error-message">
+            <h3>⚠️ Data Loading Error</h3>
+            <p>${message}</p>
+        </div>
     `;
-    errorDiv.innerHTML = `
-        <h3>⚠️ Data Loading Error</h3>
-        <p>${message}</p>
-        <p><small>Make sure you've uploaded the files before loading this page.</small></p>
-    `;
-    container.insertBefore(errorDiv, container.firstChild);
 }
 
-function showView(viewName) {
-    // Hide all view contents
-    document.querySelectorAll('.view-content').forEach(content => {
-        content.classList.remove('active');
-    });
+function showSeason(season) {
+    currentSeason = season;
     
-    // Remove active class from all buttons
-    document.querySelectorAll('.toggle-btn').forEach(btn => {
+    // Update main toggle buttons
+    document.querySelectorAll('.main-toggle-btn').forEach(btn => {
         btn.classList.remove('active');
     });
-    
-    // Show selected view
-    document.getElementById(viewName).classList.add('active');
-    
-    // Add active class to clicked button
     event.target.classList.add('active');
+    
+    // Show/hide season views
+    document.querySelectorAll('.season-view').forEach(view => {
+        view.classList.remove('active');
+    });
+    document.getElementById(`season-${season}`).classList.add('active');
+    
+    // Reset table
+    document.getElementById('table-container').innerHTML = `
+        <p style="text-align: center; color: #6c757d; margin-top: 50px;">
+            Choose a model from the filters panel to display predictions.
+        </p>
+    `;
+    document.getElementById('table-title').textContent = 'Select a model to view predictions';
 }
 
-function populateTables() {
-    if (!predictedData2425 || !actualData2425 || !predictedData2526) {
-        console.error('Data not loaded yet');
+function setViewType(type) {
+    currentViewType = type;
+    
+    // Update comparison toggle
+    document.querySelectorAll('.comparison-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    
+    // Update data if model is selected
+    updateData();
+}
+
+function updateData() {
+    const modelSelect = document.getElementById(`model-select-${currentSeason}`);
+    const selectedModel = modelSelect.value;
+    
+    if (!selectedModel) {
+        document.getElementById('table-container').innerHTML = `
+            <p style="text-align: center; color: #6c757d; margin-top: 50px;">
+                Choose a model from the filters panel to display predictions.
+            </p>
+        `;
         return;
     }
 
-    // Get the first (and likely only) scenario from predictions
-    const scenarioKey = Object.keys(predictedData2425)[0];
-    const scenario2425 = predictedData2425[scenarioKey];
+    if (currentSeason === '2425') {
+        update2425Data(selectedModel);
+    } else {
+        update2526Data(selectedModel);
+    }
+}
 
-    // Clear existing table content
-    document.getElementById('predictedTable').innerHTML = '';
-    document.getElementById('actualTable').innerHTML = '';
-    document.getElementById('comparisonTable').innerHTML = '';
-    document.getElementById('predictions2526Table').innerHTML = '';
+function update2425Data(selectedModel) {
+    if (!predictedData2425 || !actualData2425) {
+        showErrorMessage('Data not loaded yet. Please refresh the page.');
+        return;
+    }
 
-    // Populate predicted 24/25 table
-    const predictedTable = document.getElementById('predictedTable');
-    scenario2425.standings.forEach(team => {
-        const row = predictedTable.insertRow();
-        row.innerHTML = `
-            <td>${team.pos}</td>
-            <td class="team-name">${team.team}</td>
-            <td><strong>${team.pts}</strong></td>
-            <td>${team.played}</td>
-            <td>${team.wins}</td>
-            <td>${team.draws}</td>
-            <td>${team.losses}</td>
-            <td>${team.gf}</td>
-            <td>${team.ga}</td>
-            <td>${team.gd > 0 ? '+' : ''}${team.gd}</td>
-        `;
-    });
+    const modelData = predictedData2425[selectedModel];
+    if (!modelData) {
+        showErrorMessage('Selected model data not found.');
+        return;
+    }
 
-    // Populate actual 24/25 table
-    const actualTable = document.getElementById('actualTable');
-    actualData2425.forEach(team => {
-        const row = actualTable.insertRow();
-        row.innerHTML = `
-            <td>${team.pos}</td>
-            <td class="team-name">${team.team}</td>
-            <td><strong>${team.pts}</strong></td>
-            <td>${team.gf}</td>
-            <td>${team.ga}</td>
-            <td>${team.gd > 0 ? '+' : ''}${team.gd}</td>
-            <td>${team.xg}</td>
-            <td>${team.xga}</td>
-        `;
-    });
+    // Update model info
+    document.getElementById('model-description-2425').textContent = modelData.description;
+    document.getElementById('training-seasons-2425').textContent = modelData.model_info.training_seasons.join(', ');
+    document.getElementById('training-matches-2425').textContent = modelData.model_info.training_matches;
+    document.getElementById('model-info-2425').style.display = 'block';
 
-    // Populate comparison table
-    const comparisonTable = document.getElementById('comparisonTable');
+    // Update title
+    document.getElementById('table-title').textContent = `${modelData.label} ${currentViewType === 'comparison' ? '- Comparison with Actual' : '- Predicted Standings'}`;
+
+    // Generate table
+    if (currentViewType === 'comparison') {
+        generateComparisonTable(modelData);
+        updateAccuracyStats(modelData);
+        document.getElementById('stats-summary-2425').style.display = 'block';
+    } else {
+        generatePredictedTable(modelData);
+        document.getElementById('stats-summary-2425').style.display = 'none';
+    }
+}
+
+function update2526Data(selectedModel) {
+    if (!predictedData2526) {
+        showErrorMessage('2025/26 data not loaded yet. Please refresh the page.');
+        return;
+    }
+
+    const modelData = predictedData2526[selectedModel];
+    if (!modelData) {
+        showErrorMessage('Selected model data not found.');
+        return;
+    }
+
+    // Update model info
+    document.getElementById('model-description-2526').textContent = modelData.description;
+    document.getElementById('training-seasons-2526').textContent = modelData.model_info.training_seasons.join(', ');
+    document.getElementById('training-matches-2526').textContent = modelData.model_info.training_matches;
+    document.getElementById('model-info-2526').style.display = 'block';
+
+    // Update title
+    document.getElementById('table-title').textContent = `${modelData.label} - Predicted Standings`;
+
+    // Generate predicted table
+    generatePredictedTable(modelData);
+}
+
+function generateComparisonTable(modelData) {
+    const tableContainer = document.getElementById('table-container');
+    
+    let tableHTML = `
+        <table class="standings-table">
+            <thead>
+                <tr>
+                    <th>Team</th>
+                    <th>Predicted Pos</th>
+                    <th>Actual Pos</th>
+                    <th>Predicted Pts</th>
+                    <th>Actual Pts</th>
+                    <th>Difference</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+
     actualData2425.forEach(actualTeam => {
-        const predictedTeam = scenario2425.standings.find(p => p.team === actualTeam.team);
+        const predictedTeam = modelData.standings.find(p => p.team === actualTeam.team);
         if (predictedTeam) {
-            const row = comparisonTable.insertRow();
             const posDiff = actualTeam.pos - predictedTeam.pos;
             const ptsDiff = actualTeam.pts - predictedTeam.pts;
             
-            let posChangeIcon = '';
+            let posIndicator = '';
             if (posDiff > 0) {
-                posChangeIcon = `<span class="pos-change pos-down">-${posDiff}</span>`;
+                posIndicator = `<span class="pos-indicator pos-down">-${posDiff}</span>`;
             } else if (posDiff < 0) {
-                posChangeIcon = `<span class="pos-change pos-up">+${Math.abs(posDiff)}</span>`;
+                posIndicator = `<span class="pos-indicator pos-up">+${Math.abs(posDiff)}</span>`;
             } else {
-                posChangeIcon = `<span class="pos-change pos-same">=</span>`;
+                posIndicator = `<span class="pos-indicator pos-same">=</span>`;
             }
 
-            row.innerHTML = `
-                <td class="team-name">${actualTeam.team}${posChangeIcon}</td>
-                <td>${predictedTeam.pos}</td>
-                <td>${actualTeam.pos}</td>
-                <td>${predictedTeam.pts}</td>
-                <td><strong>${actualTeam.pts}</strong></td>
-                <td style="color: ${ptsDiff > 0 ? '#28a745' : '#dc3545'}">${ptsDiff > 0 ? '+' : ''}${ptsDiff}</td>
+            tableHTML += `
+                <tr>
+                    <td class="team-name">${actualTeam.team}${posIndicator}</td>
+                    <td>${predictedTeam.pos}</td>
+                    <td><strong>${actualTeam.pos}</strong></td>
+                    <td>${predictedTeam.pts}</td>
+                    <td><strong>${actualTeam.pts}</strong></td>
+                    <td style="color: ${ptsDiff > 0 ? '#28a745' : '#dc3545'}">${ptsDiff > 0 ? '+' : ''}${ptsDiff}</td>
+                </tr>
             `;
         }
     });
 
-    // Populate 25/26 predictions table
-    const predictions2526Table = document.getElementById('predictions2526Table');
-    
-    // Handle both JSON structure possibilities
-    let predictions2526Data;
-    if (predictedData2526.standings) {
-        predictions2526Data = predictedData2526.standings;
-    } else {
-        // If it's wrapped in a scenario object like 24/25 data
-        const scenarioKey2526 = Object.keys(predictedData2526)[0];
-        predictions2526Data = predictedData2526[scenarioKey2526].standings;
-    }
+    tableHTML += `
+            </tbody>
+        </table>
+    `;
 
-    predictions2526Data.forEach(team => {
-        const row = predictions2526Table.insertRow();
-        row.innerHTML = `
-            <td>${team.pos}</td>
-            <td class="team-name">${team.team}</td>
-            <td><strong>${team.pts}</strong></td>
-            <td>${team.played}</td>
-            <td>${team.wins}</td>
-            <td>${team.draws}</td>
-            <td>${team.losses}</td>
-            <td>${team.gf}</td>
-            <td>${team.ga}</td>
-            <td>${team.gd > 0 ? '+' : ''}${team.gd}</td>
+    tableContainer.innerHTML = tableHTML;
+}
+
+function generatePredictedTable(modelData) {
+    const tableContainer = document.getElementById('table-container');
+    
+    let tableHTML = `
+        <table class="standings-table">
+            <thead>
+                <tr>
+                    <th>Pos</th>
+                    <th>Team</th>
+                    <th>Pts</th>
+                    <th>P</th>
+                    <th>W</th>
+                    <th>D</th>
+                    <th>L</th>
+                    <th>GF</th>
+                    <th>GA</th>
+                    <th>GD</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+
+    modelData.standings.forEach(team => {
+        tableHTML += `
+            <tr>
+                <td>${team.pos}</td>
+                <td class="team-name">${team.team}</td>
+                <td><strong>${team.pts}</strong></td>
+                <td>${team.played}</td>
+                <td>${team.wins}</td>
+                <td>${team.draws}</td>
+                <td>${team.losses}</td>
+                <td>${team.gf}</td>
+                <td>${team.ga}</td>
+                <td>${team.gd > 0 ? '+' : ''}${team.gd}</td>
+            </tr>
         `;
     });
 
-    // Update comparison stats
-    updateComparisonStats();
+    tableHTML += `
+            </tbody>
+        </table>
+    `;
+
+    tableContainer.innerHTML = tableHTML;
 }
 
-function updateComparisonStats() {
-    if (!predictedData2425 || !actualData2425) return;
+function updateAccuracyStats(modelData) {
+    if (!actualData2425) return;
 
-    const scenarioKey = Object.keys(predictedData2425)[0];
-    const scenario2425 = predictedData2425[scenarioKey];
-    
-    const predictedTop4 = scenario2425.standings.slice(0, 4);
-    const actualTop4 = actualData2425.slice(0, 4);
-
-    document.getElementById('predictedTop4').innerHTML = predictedTop4.map(team => 
-        `<p>${team.pos}. ${team.team} (${team.pts} pts)</p>`
-    ).join('');
-
-    document.getElementById('actualTop4').innerHTML = actualTop4.map(team => 
-        `<p>${team.pos}. ${team.team} (${team.pts} pts)</p>`
-    ).join('');
-
-    // Updated metrics
-    let withinTwoPositions = 0;
+    let withinThreePositions = 0;
     let totalPointsDiff = 0;
     let top4Correct = 0;
 
     actualData2425.forEach(actualTeam => {
-        const predictedTeam = scenario2425.standings.find(p => p.team === actualTeam.team);
+        const predictedTeam = modelData.standings.find(p => p.team === actualTeam.team);
         if (predictedTeam) {
             const posDiff = Math.abs(actualTeam.pos - predictedTeam.pos);
-            if (posDiff <= 3) withinTwoPositions++;
+            if (posDiff <= 3) withinThreePositions++;
             totalPointsDiff += Math.abs(actualTeam.pts - predictedTeam.pts);
             if (actualTeam.pos <= 4 && predictedTeam.pos <= 4) top4Correct++;
         }
     });
 
-    const positionAccuracy = Math.round((withinTwoPositions / actualData2425.length) * 100);
+    const positionAccuracy = Math.round((withinThreePositions / actualData2425.length) * 100);
     const avgPointsDiff = Math.round(totalPointsDiff / actualData2425.length);
-    const championCorrect = actualData2425[0].team === scenario2425.standings[0].team;
+    const championCorrect = actualData2425[0].team === modelData.standings[0].team;
 
-    document.getElementById('positionAccuracy').textContent = positionAccuracy + '% within ±2';
-    document.getElementById('pointsDiff').textContent =  avgPointsDiff;
-    document.getElementById('top4Accuracy').textContent =  top4Correct + '/4';
-    document.getElementById('championCorrect').textContent =  championCorrect ? '✅' : '❌';
+    document.getElementById('position-accuracy').textContent = positionAccuracy + '%';
+    document.getElementById('top4-correct').textContent = top4Correct + '/4';
+    document.getElementById('champion-correct').textContent = championCorrect ? '✅' : '❌';
+    document.getElementById('avg-points-diff').textContent = avgPointsDiff + ' pts';
 }
-
-
-// Initialize the page
-document.addEventListener('DOMContentLoaded', function() {
-    loadData();
-});
