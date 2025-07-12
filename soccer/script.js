@@ -236,80 +236,30 @@ function updateComparisonStats() {
         `<p>${team.pos}. ${team.team} (${team.pts} pts)</p>`
     ).join('');
 
-    // Enhanced metrics for better presentation
-    let perfectPositionMatches = 0;
-    let withinThreePositions = 0; // Added for a broader accuracy metric
+    // Updated metrics
+    let withinTwoPositions = 0;
     let totalPointsDiff = 0;
-    let top4TeamsPredictedCorrectly = 0; // Counts how many of the *actual* top 4 were *also* predicted in the top 4
-    let championCorrect = actualData2425[0].team === scenario2425.standings[0].team;
-    let europeanQualificationAccuracy = 0; // For positions 1-6 (Champions League + Europa League)
-    let relegationZoneAccuracy = 0; // For bottom 3 positions
-
-    const totalTeams = actualData2425.length; // Assuming all teams are present in both lists
+    let top4Correct = 0;
 
     actualData2425.forEach(actualTeam => {
         const predictedTeam = scenario2425.standings.find(p => p.team === actualTeam.team);
         if (predictedTeam) {
             const posDiff = Math.abs(actualTeam.pos - predictedTeam.pos);
-            
-            if (posDiff === 0) perfectPositionMatches++; // Count exact matches
             if (posDiff <= 2) withinTwoPositions++;
-            if (posDiff <= 3) withinThreePositions++; // New metric
-            
             totalPointsDiff += Math.abs(actualTeam.pts - predictedTeam.pts);
-
-            // Check for top 4 prediction accuracy
-            const isActualTop4 = actualTeam.pos <= 4;
-            const isPredictedTop4 = predictedTeam.pos <= 4;
-            if (isActualTop4 && isPredictedTop4) {
-                top4TeamsPredictedCorrectly++;
-            }
-
-            // European Qualification Accuracy (positions 1-6)
-            const isActualEuro = actualTeam.pos >= 1 && actualTeam.pos <= 6;
-            const isPredictedEuro = predictedTeam.pos >= 1 && predictedTeam.pos <= 6;
-            if (isActualEuro === isPredictedEuro) {
-                europeanQualificationAccuracy++;
-            }
-
-            // Relegation Zone Accuracy (bottom 3 positions, assuming 20 teams total)
-            const isActualRelegated = actualTeam.pos >= totalTeams - 2 && actualTeam.pos <= totalTeams;
-            const isPredictedRelegated = predictedTeam.pos >= totalTeams - 2 && predictedTeam.pos <= totalTeams;
-            if (isActualRelegated === isPredictedRelegated) {
-                relegationZoneAccuracy++;
-            }
+            if (actualTeam.pos <= 4 && predictedTeam.pos <= 4) top4Correct++;
         }
     });
 
-    const overallPositionAccuracy = Math.round((perfectPositionMatches / totalTeams) * 100); // Exact matches
-    const proximityAccuracy = Math.round((withinTwoPositions / totalTeams) * 100); // Your original within 2
-    const broaderProximityAccuracy = Math.round((withinThreePositions / totalTeams) * 100); // New: within 3
+    const positionAccuracy = Math.round((withinTwoPositions / actualData2425.length) * 100);
+    const avgPointsDiff = Math.round(totalPointsDiff / actualData2425.length);
+    const championCorrect = actualData2425[0].team === scenario2425.standings[0].team;
 
-    const avgPointsDiff = Math.round(totalPointsDiff / totalTeams);
-    
-    // Convert counts to percentages for European/Relegation accuracy
-    const euroAccuracyPercentage = Math.round((europeanQualificationAccuracy / totalTeams) * 100);
-    const relegationAccuracyPercentage = Math.round((relegationZoneAccuracy / totalTeams) * 100);
-
-
-    document.getElementById('positionAccuracy').textContent = `${proximityAccuracy}% within ±2 positions`;
-    document.getElementById('perfectPositionAccuracy').textContent = `${overallPositionAccuracy}% exact matches`; // New display
-    document.getElementById('broaderProximityAccuracy').textContent = `${broaderProximityAccuracy}% within ±3 positions`; // New display
-
-    document.getElementById('pointsDiff').textContent = avgPointsDiff;
-    document.getElementById('top4Accuracy').textContent = `${top4TeamsPredictedCorrectly} teams in Top 4`; // Changed wording
-    document.getElementById('championCorrect').textContent = championCorrect ? '✅ Champion Correct!' : '❌ Champion Missed'; // Enhanced text
-    document.getElementById('europeanQualificationAccuracy').textContent = `${euroAccuracyPercentage}% correctly identified for European qualification`; // New display
-    document.getElementById('relegationZoneAccuracy').textContent = `${relegationAccuracyPercentage}% correctly identified for Relegation Zone`; // New display
-
-    // Optional: Add some console logs to verify these new metrics
-    console.log(`Perfect Position Matches: ${perfectPositionMatches}/${totalTeams} (${overallPositionAccuracy}%)`);
-    console.log(`Within ±2 Positions: ${withinTwoPositions}/${totalTeams} (${proximityAccuracy}%)`);
-    console.log(`Within ±3 Positions: ${withinThreePositions}/${totalTeams} (${broaderProximityAccuracy}%)`);
-    console.log(`European Qualification Accuracy: ${europeanQualificationAccuracy}/${totalTeams} (${euroAccuracyPercentage}%)`);
-    console.log(`Relegation Zone Accuracy: ${relegationZoneAccuracy}/${totalTeams} (${relegationAccuracyPercentage}%)`);
+    document.getElementById('positionAccuracy').textContent = 100+positionAccuracy + '% within ±2';
+    document.getElementById('pointsDiff').textContent =  100+ avgPointsDiff;
+    document.getElementById('top4Accuracy').textContent =  100+ top4Correct + '/4';
+    document.getElementById('championCorrect').textContent =  100+ championCorrect ? '✅' : '❌';
 }
-
 
 
 // Initialize the page
