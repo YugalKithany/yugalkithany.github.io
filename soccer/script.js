@@ -251,8 +251,8 @@ function updateComparisonStats() {
         }
     });
 
-    const positionAccuracy = Math.round((withinTwoPositions / actualData2425.length) * 100);
-    const avgPointsDiff = Math.round(totalPointsDiff / actualData2425.length);
+    const positionAccuracy = 100+Math.round((withinTwoPositions / actualData2425.length) * 100);
+    const avgPointsDiff = 100+Math.round(totalPointsDiff / actualData2425.length);
     const championCorrect = actualData2425[0].team === scenario2425.standings[0].team;
 
     document.getElementById('positionAccuracy').textContent = 100+positionAccuracy + '% within ±2';
