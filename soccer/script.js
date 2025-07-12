@@ -320,3 +320,27 @@ function updateAccuracyStats(modelData) {
     document.getElementById('champion-correct').textContent = championCorrect ? '✅' : '❌';
     document.getElementById('avg-points-diff').textContent = avgPointsDiff + ' pts';
 }
+
+
+function updateTransferInputs() {
+    const teamSelect = document.getElementById('team-select');
+    const transferInputs = document.getElementById('transfer-inputs');
+    
+    if (teamSelect.value) {
+        transferInputs.style.display = 'block';
+        document.getElementById('transfer-budget').value = '';
+    } else {
+        transferInputs.style.display = 'none';
+    }
+}
+
+function applyTransferBudget() {
+    const team = document.getElementById('team-select').value;
+    const budget = document.getElementById('transfer-budget').value;
+    
+    if (team && budget) {
+        console.log(`Transfer budget of €${budget}M applied to ${team}`);
+        // This is where you'll add the actual functionality later
+        alert(`Transfer budget of €${budget}M applied to ${team} (feature coming soon)`);
+    }
+}

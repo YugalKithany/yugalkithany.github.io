@@ -311,3 +311,43 @@ body {
         font-size: 0.8em;
     }
 }
+
+
+.header-description {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.main-description {
+    font-size: 1.2em;
+    font-weight: 500;
+    opacity: 0.95;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.sub-description {
+    font-size: 1em;
+    opacity: 0.85;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.data-sources {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.data-sources p {
+    font-size: 0.9em;
+    opacity: 0.9;
+    margin-bottom: 5px;
+    line-height: 1.3;
+}
+
+.data-sources p:last-child {
+    margin-bottom: 0;
+}
