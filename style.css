@@ -12,9 +12,22 @@
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
   --gradient-primary: linear-gradient(135deg, #00d4ff 0%, #4ecdc4 100%);
-  --gradient-secondary: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+  --gradient-secondary: linear-gradient(135deg, #00d4ff 0%, #4ecdc4 100%);
   --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.3);
-  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
+  /* --shadow-card: 0 8px 32px rgba(222, 79, 79, 0.3); */
+
+  /* Light Theme Variables */
+  --light-bg: #f0f0f0;
+  --light-text: #333333;
+  --light-text-gray: #555555;
+  --light-border: #cccccc;
+  --light-glass-bg: rgba(255, 255, 255, 0.7);
+  --light-glass-border: rgba(200, 200, 200, 0.8);
+  --light-navbar-bg: rgba(255, 255, 255, 0.9);
+  --light-shadow-card: 0 8px 32px rgba(0, 0, 0, 0.15);
+  --light-bg-grid-color: rgba(0, 0, 0, 0.05);
+  --light-orb-1-bg: rgba(0, 212, 255, 0.3);
+  --light-orb-2-bg: rgba(222, 79, 79, 0.3);
 }
 
 * {
@@ -59,7 +72,8 @@ body {
   background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
   pointer-events: none;
   z-index: -1;
-  animation: float 6s ease-in-out infinite;
+  animation: orb-wave 20s ease-in-out infinite alternate; /* New animation */
+  animation-play-state: paused; 
 }
 
 .bg-orb.orb-1 {
@@ -71,13 +85,29 @@ body {
 .bg-orb.orb-2 {
   top: 60%;
   right: 10%;
-  animation-delay: 2s;
+  animation-delay: 5s; /* Adjusted delay for alternating movement */
   background: radial-gradient(circle, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(180deg); }
+/* Remove the old @keyframes float */
+
+/* New keyframes for wave-like motion */
+@keyframes orb-wave {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(calc(50vw - 150px), calc(50vh - 150px)) scale(1.05); /* Move towards center */
+  }
+  50% {
+    transform: translate(0, 0) scale(1);
+  }
+  75% {
+    transform: translate(calc(-50vw + 150px), calc(-50vh + 150px)) scale(1.05); /* Move away from center */
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
 }
 
 /* Navigation */
@@ -87,7 +117,7 @@ body {
   left: 0;
   right: 0;
   background: rgba(10, 10, 10, 0.95);
-  backdrop-filter: blur(20px);
+  /* backdrop-filter: blur(20px); */
   border-bottom: 1px solid var(--border-color);
   z-index: 1000;
   transition: all 0.3s ease;
@@ -130,6 +160,8 @@ body {
     width: auto;
     vertical-align: middle;
 }
+
+
 
 .nav-links {
   display: flex;
@@ -256,7 +288,7 @@ body {
   color: var(--text-light);
   font-size: 1.5rem;
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
   text-decoration: none; /* Add this line to remove underlines */
 }
 
@@ -324,7 +356,7 @@ body {
 
 .card {
   background: var(--glass-bg);
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
   border: 1px solid var(--glass-border);
   border-radius: 20px;
   padding: 2rem;
@@ -399,7 +431,7 @@ body {
 
 .quote-card {
     background: var(--glass-bg);
-    backdrop-filter: blur(10px);
+    /* backdrop-filter: blur(10px); */
     border: 1px solid var(--glass-border);
     border-radius: 20px;
     padding: 1.5rem 1rem; /* Reduced padding for smaller size */
@@ -489,7 +521,7 @@ body {
 
 .project-card {
   background: var(--glass-bg);
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
   border: 1px solid var(--glass-border);
   border-radius: 20px;
   overflow: hidden;
@@ -516,14 +548,17 @@ body {
 .project-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-card);
-  border-color: var(--secondary-color);
+  border-color: var(--primary-color);
 }
 
 .project-media {
   width: 100%;
-  height: 250px;
-  object-fit: cover;
+  height: 250px; 
+  object-fit: contain; 
+  /* background-color: var(--bg-darker);  */
   transition: transform 0.3s ease;
+  padding: 1rem; 
+  box-sizing: border-box; 
 }
 
 .project-card:hover .project-media {
@@ -669,4 +704,105 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-color);
+}
+
+
+
+
+
+body.light-theme {
+  --bg-dark: var(--light-bg);
+  --bg-darker: #e0e0e0;
+  --text-light: var(--light-text);
+  --text-gray: var(--light-text-gray);
+  --text-dim: #777777;
+  --border-color: var(--light-border);
+  --glass-bg: var(--light-glass-bg);
+  --glass-border: var(--light-glass-border);
+  --shadow-card: var(--light-shadow-card);
+}
+
+body.light-theme .navbar {
+    background: var(--light-navbar-bg);
+    border-bottom-color: var(--light-border);
+}
+
+body.light-theme .navbar.scrolled {
+    box-shadow: var(--light-shadow-card);
+}
+
+body.light-theme .nav-links a {
+    color: var(--light-text);
+}
+
+body.light-theme .nav-links a:hover {
+    color: var(--primary-color);
+}
+
+body.light-theme .bg-grid {
+  background-image:
+    linear-gradient(var(--light-bg-grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--light-bg-grid-color) 1px, transparent 1px);
+}
+
+body.light-theme .bg-orb.orb-1 {
+  background: radial-gradient(circle, var(--light-orb-1-bg) 0%, transparent 70%);
+}
+
+body.light-theme .bg-orb.orb-2 {
+  background: radial-gradient(circle, var(--light-orb-2-bg) 0%, transparent 70%);
+}
+
+body.light-theme .social-links a {
+    background: var(--light-glass-bg);
+    border: 1px solid var(--light-glass-border);
+    color: var(--light-text);
+}
+
+body.light-theme .social-links a:hover {
+    color: var(--bg-dark); /* Ensure text is dark on hover */
+}
+
+body.light-theme .card,
+body.light-theme .project-card,
+body.light-theme .quote-card {
+    background: var(--light-glass-bg);
+    border-color: var(--light-glass-border);
+}
+
+body.light-theme .card:hover,
+body.light-theme .project-card:hover,
+body.light-theme .quote-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 8px 32px rgba(168, 43, 43, 0.1);
+}
+
+body.light-theme .project-link {
+    color: var(--bg-dark);
+}
+.theme-switcher-button {
+  background: none;
+  border: none;
+  color: var(--text-light); /* Will be var(--light-text) in light theme */
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+  /* padding: 0.5rem;  */
+  border-radius: 50%;
+  display: flex; /* Ensure it behaves like a flex item */
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-switcher-button:hover {
+  color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+body.light-theme .theme-switcher-button {
+  color: var(--light-text);
+}
+
+body.light-theme .theme-switcher-button:hover {
+  color: var(--primary-color);
 }

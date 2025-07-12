@@ -92,18 +92,19 @@ document.querySelectorAll('.fade-in').forEach(el => {
 });
 
 // Parallax effect for background orbs
-window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const parallax1 = document.querySelector('.orb-1');
-    const parallax2 = document.querySelector('.orb-2');
+// window.addEventListener('scroll', function() {
+//     const scrolled = window.pageYOffset;
+//     const parallax1 = document.querySelector('.orb-1');
+//     const parallax2 = document.querySelector('.orb-2');
     
-    if (parallax1) {
-        parallax1.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
-    if (parallax2) {
-        parallax2.style.transform = `translateY(${scrolled * -0.3}px)`;
-    }
-});
+//     if (parallax1) {
+//         parallax1.style.transform = `translateY(${scrolled * 0.5}px)`;
+//     }
+//     if (parallax2) {
+//         parallax2.style.transform = `translateY(${scrolled * -0.3}px)`;
+//     }
+// });
+
 
 // Dynamic cursor effect (optional enhancement)
 document.addEventListener('mousemove', function(e) {
@@ -163,3 +164,59 @@ function throttle(func, limit) {
 window.addEventListener('scroll', throttle(function() {
     // Scroll-dependent animations can be added here
 }, 16)); // ~60fps
+
+// Theme Switcher
+document.addEventListener('DOMContentLoaded', () => {
+    const themeSwitcher = document.getElementById('theme-switcher');
+    const body = document.body;
+
+    // Check for saved theme in localStorage or default to light
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        body.classList.add(savedTheme);
+        if (savedTheme === 'light-theme') {
+            themeSwitcher.innerHTML = '<i class="fas fa-moon"></i>';
+        } else {
+            themeSwitcher.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+    } else {
+        // Default to light theme if no theme is saved
+        body.classList.add('light-theme'); // Changed this line to default to light-theme
+        themeSwitcher.innerHTML = '<i class="fas fa-moon"></i>'; // Set icon for light theme
+        localStorage.setItem('theme', 'light-theme'); // Save light theme as default
+    }
+
+    themeSwitcher.addEventListener('click', () => {
+        if (body.classList.contains('dark-theme')) {
+            body.classList.replace('dark-theme', 'light-theme');
+            themeSwitcher.innerHTML = '<i class="fas fa-moon"></i>';
+            localStorage.setItem('theme', 'light-theme');
+        } else {
+            body.classList.replace('light-theme', 'dark-theme');
+            themeSwitcher.innerHTML = '<i class="fas fa-sun"></i>';
+            localStorage.setItem('theme', 'dark-theme');
+        }
+    });
+});
+
+// Orb Animation on Scroll
+let hasScrolled = false; // Flag to ensure animation starts only once
+
+window.addEventListener('scroll', function() {
+    if (!hasScrolled) {
+        const orb1 = document.querySelector('.orb-1');
+        const orb2 = document.querySelector('.orb-2');
+
+        if (orb1) {
+            orb1.style.animationPlayState = 'running';
+        }
+        if (orb2) {
+            orb2.style.animationPlayState = 'running';
+        }
+        hasScrolled = true; // Set flag to true after animations start
+    }
+});
+
+// Make sure to remove any conflicting orb movement code from previous instructions
+// Remove the entire window.addEventListener('scroll', throttle(function() { ... })); block
+// related to orb movement from the previous response if you still have it.
