@@ -120,6 +120,9 @@
         </p>
     </section>
 
+
+
+
     <section class="section" id="projects">
         <h2 class="section-title">Projects</h2>
         <div class="projects-grid">
@@ -162,6 +165,33 @@
             </div>
 
             <div class="project-card fade-in">
+                <img class="project-media" src="images/laliga.png" alt="La Liga Logo">
+                <div class="project-content">
+                    <h3 class="project-title">LaLigaLens</h3>
+                    <p class="project-description">
+                        • This application predicts La Liga football outcomes and simulates league standings. 
+                          It trains machine learning models (RandomForest, XGBoost, and LightGBM) using historical match data
+                          and team statistics, which includes estimated expected goals (xG). </p>
+                    <p class="project-description">
+                        • It also processes data from multiple past seasons (20/21-23/24) to predict outcomes
+                          for future seasons (24/25-25/26). For the 25/26 season, it uses "real" standings data.                    </p>
+                        <p class="project-description">
+                        • Match and team data sourced from FBref.com, courtesy of Sports Reference LLC, accessed via the soccerdata 
+                          Python package. Custom schedule and standings data compiled by the author.
+                          Modeling powered by scikit-learn, XGBoost, and LightGBM.                    </p>
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">scikit-learn</span>
+                        <span class="tech-tag">XGBoost/LightGBM</span>
+                    </div>
+                    <a href="/soccer/index.html" target="_blank" class="project-link">
+                        LaLigaLens
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
                 <img class="project-media" src="images/rsc5.png" alt="Speculative Out-of-Order RISC-V Processor">
                 <div class="project-content">
                     <h3 class="project-title">Speculative Out-of-Order RISC-V Processor</h3>
@@ -188,6 +218,35 @@
                     <button class="project-link" onclick="window.open('images/ERR block diagram.pdf', '_blank')">
                         Expand PDF
                     </button>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <img class="project-media" src="images/RTAccelerator.png" alt="Ray Tracing Accelerator">
+                <div class="project-content">
+                    <h3 class="project-title">Ray Tracing Hardware Accelerator</h3>
+                    <p class="project-description">
+                        • This project implements a hardware accelerator for the ray-triangle intersection component
+                          of a ray tracing engine, built on a RISC-V core with floating-point support. The accelerator 
+                          achieves a 70.8% performance improvement and 69.2% energy reduction over baseline execution.
+
+                    </p>
+                    <p class="project-description">
+                        • Ray tracing simulates light by casting rays through pixels and determining their interactions
+                          with 3D triangle meshes. While realistic, it incurs a significant computational cost. This 
+                          project presents a hardware accelerator for ray-triangle intersection, implemented as a finite
+                          state machine integrated with a RISC-V core. Using custom floating-point units and parallel
+                          computation, the accelerator significantly reduces clock cycles and energy usage.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">SystemVerilog</span>
+                        <span class="tech-tag">RISC-V RI5CY core</span>
+                        <span class="tech-tag">VCS</span>
+                    </div>
+                    <a href="https://github.com/YugalKithany/RTAccelerator" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i>
+                        GitHub Repo
+                    </a>
                 </div>
             </div>
 
