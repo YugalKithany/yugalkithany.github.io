@@ -24,7 +24,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#yugopoly">Yugopoly</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="/soccer/index.html">LaLigaLLM</a></li>
+                <li><a href="/soccer/index.html">LaLigaLens</a></li>
                 <li><button id="theme-switcher" class="theme-switcher-button" aria-label="Toggle theme"><i class="fas fa-sun"></i></button></li>            </ul>
         </div>
     </nav>
@@ -125,8 +125,17 @@
 
     <section class="section" id="projects">
         <h2 class="section-title">Projects</h2>
+
+<div class="filter-container">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="robotics">Robotics</button>
+    <button class="filter-btn" data-filter="hardware">Hardware</button>
+    <button class="filter-btn" data-filter="software">Software</button>
+    <button class="filter-btn" data-filter="ai-ml">AI/ML</button>
+</div>
+
         <div class="projects-grid">
-            <div class="project-card fade-in">
+            <div class="project-card fade-in" data-tags="software, ai-ml, robotics">
                 <video class="project-media" controls loop muted>
                     <source src="images/499.mp4" type="video/mp4">
                     Your browser does not support the video tag.
@@ -164,7 +173,7 @@
                 </div>
             </div>
 
-            <div class="project-card fade-in">
+            <div class="project-card fade-in" data-tags="software, ai-ml">
                 <img class="project-media" src="images/laliga.png" alt="La Liga Logo">
                 <div class="project-content">
                     <h3 class="project-title">LaLigaLens</h3>
@@ -191,7 +200,7 @@
                 </div>
             </div>
 
-            <div class="project-card fade-in">
+            <div class="project-card fade-in" data-tags="hardware">
                 <img class="project-media" src="images/rsc5.png" alt="Speculative Out-of-Order RISC-V Processor">
                 <div class="project-content">
                     <h3 class="project-title">Speculative Out-of-Order RISC-V Processor</h3>
@@ -221,7 +230,7 @@
                 </div>
             </div>
 
-            <div class="project-card fade-in">
+            <div class="project-card fade-in" data-tags="hardware">
                 <img class="project-media" src="images/RTAccelerator.png" alt="Ray Tracing Accelerator">
                 <div class="project-content">
                     <h3 class="project-title">Ray Tracing Hardware Accelerator</h3>
@@ -250,7 +259,7 @@
                 </div>
             </div>
 
-            <div class="project-card fade-in">
+            <div class="project-card fade-in" data-tags="software, ai-ml">
                 <img class="project-media" src="images/hf-logo.svg" alt="YuLatin: Latin Quote LLM">
                 <div class="project-content">
                     <h3 class="project-title">YuLatin: Latin Quote LLM</h3>
@@ -275,7 +284,7 @@
                 </div>
             </div>
 
-            <div class="project-card fade-in">
+            <div class="project-card fade-in" data-tags="software, ai-ml">
                 <img class="project-media" src="images/maze.png" alt="MazeGest: Gesture-controlled Maze Game">
                 <div class="project-content">
                     <h3 class="project-title">MazeGest: Gesture-controlled Maze Game</h3>
@@ -297,7 +306,7 @@
                 </div>
             </div>
 
-            <div class="project-card fade-in">
+            <div class="project-card fade-in" data-tags="hardware">
                 <img class="project-media" src="images/rsc5.png" alt="Multi-Cycle RISC-V Processor">
                 <div class="project-content">
                     <h3 class="project-title">Multi-Cycle RISC-V Processor</h3>
@@ -320,7 +329,7 @@
                 </div>
             </div>
 
-            <div class="project-card fade-in">
+            <div class="project-card fade-in" data-tags="hardware">
                 <img class="project-media" src="images/LC3.jpg" alt="System Verilog Projects on DE10-Lite FPGA board">
                 <div class="project-content">
                     <h3 class="project-title">System Verilog Projects on DE10-Lite FPGA board</h3>
@@ -349,7 +358,7 @@
                 </div>
             </div>
 
-            <div class="project-card fade-in">
+            <div class="project-card fade-in" data-tags="software, hardware">
                 <img class="project-media" src="images/tux.png" alt="Single Core Unix x86 Kernel">
                 <div class="project-content">
                     <h3 class="project-title">Single Core Unix x86 Kernel</h3>
@@ -372,7 +381,7 @@
                 </div>
             </div>
 
-            <div class="project-card fade-in">
+            <div class="project-card fade-in" data-tags="software, ai-ml">
                 <img class="project-media" src="images/Cuda.png" alt="Convolution Neural Network for Image Classification">
                 <div class="project-content">
                     <h3 class="project-title">Convolution Neural Network for Image Classification</h3>
@@ -398,7 +407,7 @@
                 </div>
             </div>
 
-            <div class="project-card fade-in">
+            <div class="project-card fade-in" data-tags="software, robotics">
                 <video class="project-media" controls loop muted>
                     <source src="images/KnightsProblem470.mp4" type="video/mp4">
                     Your browser does not support the video tag.
@@ -427,7 +436,7 @@
                 </div>
             </div>
 
-            <div class="project-card fade-in">
+            <div class="project-card fade-in" data-tags="software, robotics">
                 <video class="project-media" controls loop muted>
                     <source src="images/486.mov" type="video/mp4">
                     Your browser does not support the video tag.
@@ -475,7 +484,7 @@
                 </div>
             </div>
 
-            <div class="project-card fade-in">
+            <div class="project-card fade-in" data-tags="software">
                 <img class="project-media" src="images/oflights.png" alt="Open Flights Airplane Path Optimization">
                 <div class="project-content">
                     <h3 class="project-title">Open Flights Airplane Path Optimization</h3>

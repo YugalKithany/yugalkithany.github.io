@@ -217,6 +217,31 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Make sure to remove any conflicting orb movement code from previous instructions
-// Remove the entire window.addEventListener('scroll', throttle(function() { ... })); block
-// related to orb movement from the previous response if you still have it.
+
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Filter projects
+            projectCards.forEach(card => {
+                const tags = card.getAttribute('data-tags');
+                
+                if (filter === 'all' || (tags && tags.includes(filter))) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    });
+});

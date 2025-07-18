@@ -250,7 +250,7 @@ body {
 }
 
 .hero-bio em {
-  color: var(--accent-color);
+  color: var(--primary-color);
   font-style: italic;
 }
 
@@ -805,4 +805,63 @@ body.light-theme .theme-switcher-button {
 
 body.light-theme .theme-switcher-button:hover {
   color: var(--primary-color);
+}
+
+
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.filter-btn {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-light);
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: var(--gradient-primary);
+    color: var(--bg-dark);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-glow);
+}
+
+.project-card.hidden {
+  display: none;
+}
+
+/* Light theme filter buttons */
+.light-theme .filter-btn {
+    background: var(--light-glass-bg);
+    border: 1px solid var(--light-border);
+    color: var(--light-text);
+}
+
+.light-theme .filter-btn:hover {
+    border-color: var(--primary-color);
+}
+
+.light-theme .filter-btn.active {
+    background: var(--gradient-primary);
+    color: white;
+}
+
+.dark-theme .project-media[src*="Cuda.png"] {
+    content: url("images/cuda2.png");
 }
