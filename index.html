@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yugal Kithany - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="images/phoenix.ico" type="image/x-icon" />
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6D8DMBE70"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -47,18 +44,23 @@
             <div class="typewriter" id="typewriter" data-type='["Research Assistant", "Software Developer", "Embedded Engineer"]' data-period="1000"></div>
             <div class="hero-bio">
                 Thesis in <em>Control Algorithms for Vision-Based Navigation.</em> Advised by <a href="https://mitras.ece.illinois.edu/" target="_blank">Sayan Mitra</a> <br>
-                Current Courses: Adv Computer Architecture, Machine Learning, Networks.<br>
+                Current Courses: Computer Vision, AI, Databases, Manycore Parallel Algorithms.<br>
                 Interested in: AI/ML, Systems Engineering, Microarchitectures
             </div>
             <div class="social-links">
                 <a href="https://github.com/yugalkithany" target="_blank" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
+                    <!-- <i class="fab fa-github"></i> -->
+                    <img src="images/github.svg" alt="GitHub Logo" style="width: 24px;">
                 </a>
                 <a href="https://linkedin.com/in/yugalkithany" target="_blank" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
+                    <!-- <i class="fab fa-linkedin"></i> -->
+                    <img src="images/linkedin.svg" alt="Linkedin Logo" style="width: 24px;">
+                    
                 </a>
                 <a href="mailto:yugalkithany@gmail.com" aria-label="Email">
-                    <i class="fas fa-envelope"></i>
+                    <!-- <i class="fas fa-envelope"></i> -->
+                    <img src="images/envelope.svg" alt="Envelope" style="width: 24px;">
+                
                 </a>
             </div>
         </div>
@@ -73,24 +75,25 @@
                 <ul>
                     <li>CompE @ UIUC Masters Fa'25</li>
                     <li>CompE @ UIUC BS Fa'24</li>
-                    <li>Software Dev in Prof. Sayan Mitra's Reliable Autonomy Group</li>
-                    <li>RTL Research Assistant in Prof. Dong Kai Wang's Architecture Optimization Lab</li>
+                    <li> <a href="https://mitras.ece.illinois.edu/" target="_blank">Prof. Sayan Mitra's</a> Reliable Autonomy Group: SDE</li>
+                    <li><a href="https://wdongkai.github.io/" target="_blank">Prof. Dong Kai Wang's</a> Architecture Optimization Lab: RTL Researcher</li>
                 </ul>
             </div>
+            
             <div class="card fade-in">
                 <h3>Personal</h3>
                 <ul>
-                    <li>Books: The Giver, 1984, The Thief Lord</li>
-                    <li>Movies: Star Wars, Hercule Poirot Mysteries</li>
+                    <li>Books: The Giver, 1984, Thief Lord</li>
+                    <li>Movies: Star Wars, Hercule Poirot Series</li>
                     <li>Sports: Soccer (Barcelona), Football (Buccaneers), Basketball (Bucks)</li>
                 </ul>
             </div>
             <div class="card fade-in">
                 <h3>Experience</h3>
                 <ul>
-                    <li>Firmware Engineering Intern, Milwaukee Tool, Batteries & Chargers (Summer '24)</li>
-                    <li>Operating Systems Course Assistant, UIUC (2023-2024)</li>
-                    <li>SWE Intern, Federated Hermes, Global Trading & Technology (Summer '23)</li>
+                    <li>Firmware Engineering Intern, Milwaukee Tool</li>
+                    <li>Operating Systems Course Assistant, UIUC</li>
+                    <li>SWE Intern, Federated Hermes</li>
                 </ul>
             </div>
         </div>
@@ -147,28 +150,31 @@
         <div class="projects-grid">
             <div class="project-card fade-in" data-tags="software, ai-ml, robotics">
                 <video class="project-media" controls loop muted>
-                    <source src="images/499.mp4" type="video/mp4">
+                    <source src="images/499.mp4" type="video/mp4" loading="lazy">
                     Your browser does not support the video tag.
                 </video>
                 <div class="project-content">
-                    <h3 class="project-title">Control Algorithms for Vision-Based Navigation<small> Advisor: Sayan Mitra</small></h3>
-                    <p class="project-description">
-                        • Conducted two key drone experiments: (1) <strong>Drone tracking</strong>—an Ego drone followed a Target
-                        drone using a controller
-                        with trajectory tracking and YOLO-8-based perception for dynamic adaptation. (2) <strong>Gate
-                            navigation</strong>—compared PID and
-                        MPC controllers for optimal race performance, using both ground truth and relative gate positions.
-                    </p>
-                    <p class="project-description">
-                        • Developed a predictive drone navigation algorithm using Model Predictive Control (MPC), optimizing flight
-                        paths and reducing trajectory deviation by 25% over PID controllers. Implemented in the CasADi framework
-                        with
-                        IPOPT solver for real-time drone racing scenarios.
-                    </p>
-                    <p class="project-description">
-                        • Integrated Microsoft AirSim for high-fidelity testing of navigation algorithms and efficient dynamic pose
-                        estimation. Utilized <a href="https://msl.stanford.edu/papers/madaan_airsim_2020.pdf/" target="_blank">"AirSim Drone Racing Lab"</a> (Madaan et al. 2020) as base environment for gate racing.
-                    </p>
+                    <h3 class="project-title">Undergraduate Thesis: Control Algorithms for Vision-Based Navigation</h3>
+                        <ul>
+                            <li>
+                            Conducted two key drone experiments:
+                            <ul>
+                                <li>
+                                <strong>Drone tracking:</strong> An Ego drone followed a Target drone using a controller with trajectory tracking and YOLO-8-based perception for dynamic adaptation.
+                                </li>
+                                <li>
+                                <strong>Gate navigation:</strong> Compared PID and MPC controllers for optimal race performance, using both ground truth and relative gate positions.
+                                </li>
+                            </ul>
+                            </li>
+                            <li>
+                            Developed a predictive drone navigation algorithm using Model Predictive Control (MPC), optimizing flight paths and reducing trajectory deviation by 25% over PID controllers. Implemented in the CasADi framework with IPOPT solver for real-time drone racing scenarios.
+                            </li>
+                            <li>
+                            Integrated Microsoft AirSim for high-fidelity testing of navigation algorithms and efficient dynamic pose estimation. Utilized <a href="https://msl.stanford.edu/papers/madaan_airsim_2020.pdf/" target="_blank">"AirSim Drone Racing Lab"</a> (Madaan et al. 2020) as base environment for gate racing.
+                            </li>
+                        </ul>
+
                     <div class="project-tech">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">YOLOv8</span>
@@ -184,7 +190,7 @@
             </div>
 
             <div class="project-card fade-in" data-tags="software, ai-ml">
-                <img class="project-media" src="images/laliga.png" alt="La Liga Logo">
+                <img class="project-media" src="images/laliga.webp" alt="La Liga Logo">
                 <div class="project-content">
                     <h3 class="project-title">LaLigaLens</h3>
                     <p class="project-description">
@@ -211,7 +217,7 @@
             </div>
 
             <div class="project-card fade-in" data-tags="hardware">
-                <img class="project-media" src="images/rsc5.png" alt="Speculative Out-of-Order RISC-V Processor">
+                <img class="project-media" src="images/rsc5.webp" alt="Speculative Out-of-Order RISC-V Processor">
                 <div class="project-content">
                     <h3 class="project-title">Speculative Out-of-Order RISC-V Processor</h3>
                     <p class="project-description">
@@ -241,7 +247,7 @@
             </div>
 
             <div class="project-card fade-in" data-tags="hardware">
-                <img class="project-media" src="images/RTAccelerator.png" alt="Ray Tracing Accelerator">
+                <img class="project-media" src="images/RTAccelerator.webp" alt="Ray Tracing Accelerator">
                 <div class="project-content">
                     <h3 class="project-title">Ray Tracing Hardware Accelerator</h3>
                     <p class="project-description">
@@ -295,7 +301,7 @@
             </div>
 
             <div class="project-card fade-in" data-tags="software, ai-ml">
-                <img class="project-media" src="images/maze.png" alt="MazeGest: Gesture-controlled Maze Game">
+                <img class="project-media" src="images/maze.webp" alt="MazeGest: Gesture-controlled Maze Game">
                 <div class="project-content">
                     <h3 class="project-title">MazeGest: Gesture-controlled Maze Game</h3>
                     <p class="project-description">
@@ -317,7 +323,7 @@
             </div>
 
             <div class="project-card fade-in" data-tags="hardware">
-                <img class="project-media" src="images/rsc5.png" alt="Multi-Cycle RISC-V Processor">
+                <img class="project-media" src="images/rsc5.webp" alt="Multi-Cycle RISC-V Processor">
                 <div class="project-content">
                     <h3 class="project-title">Multi-Cycle RISC-V Processor</h3>
                     <p class="project-description">
@@ -340,7 +346,7 @@
             </div>
 
             <div class="project-card fade-in" data-tags="hardware">
-                <img class="project-media" src="images/LC3.jpg" alt="System Verilog Projects on DE10-Lite FPGA board">
+                <img class="project-media" src="images/LC3.webp" alt="System Verilog Projects on DE10-Lite FPGA">
                 <div class="project-content">
                     <h3 class="project-title">System Verilog Projects on DE10-Lite FPGA board</h3>
                     <p class="project-description">
@@ -369,7 +375,7 @@
             </div>
 
             <div class="project-card fade-in" data-tags="software, hardware">
-                <img class="project-media" src="images/tux.png" alt="Single Core Unix x86 Kernel">
+                <img class="project-media" src="images/tux.webp" alt="Single Core Unix x86 Kernel">
                 <div class="project-content">
                     <h3 class="project-title">Single Core Unix x86 Kernel</h3>
                     <p class="project-description">
@@ -392,7 +398,7 @@
             </div>
 
             <div class="project-card fade-in" data-tags="software, ai-ml">
-                <img class="project-media" src="images/Cuda.png" alt="Convolution Neural Network for Image Classification">
+                <img class="project-media" src="images/Cuda.webp" alt="Convolution Neural Network for Image Classification">
                 <div class="project-content">
                     <h3 class="project-title">Convolution Neural Network for Image Classification</h3>
                     <p class="project-description">
@@ -419,7 +425,7 @@
 
             <div class="project-card fade-in" data-tags="software, robotics">
                 <video class="project-media" controls loop muted>
-                    <source src="images/KnightsProblem470.mp4" type="video/mp4">
+                    <source src="images/KnightsProblem470.mp4" type="video/mp4" loading="lazy">
                     Your browser does not support the video tag.
                 </video>
                 <div class="project-content">
@@ -448,7 +454,7 @@
 
             <div class="project-card fade-in" data-tags="software, robotics">
                 <video class="project-media" controls loop muted>
-                    <source src="images/486.mov" type="video/mp4">
+                    <source src="images/486.mov" type="video/mp4" loading="lazy">
                     Your browser does not support the video tag.
                 </video>
                 <div class="project-content">
@@ -474,7 +480,7 @@
             </div>
 
             <div class="project-card fade-in">
-                <img class="project-media" src="images/210.jpg" alt="Superheterodyne AM Receiver">
+                <img class="project-media" src="images/210.webp" alt="Superheterodyne AM Receiver">
                 <div class="project-content">
                     <h3 class="project-title">Superheterodyne AM Receiver</h3>
                     <p class="project-description">
@@ -495,7 +501,7 @@
             </div>
 
             <div class="project-card fade-in" data-tags="software">
-                <img class="project-media" src="images/sports.png" alt="Sports Market Inefficiency Detection">
+                <img class="project-media" src="images/sports.webp" alt="Sports Market Inefficiency Detection">
                 <div class="project-content">
                     <h3 class="project-title">Sports Market Inefficiency Detection</h3>
                     <p class="project-description">
@@ -518,7 +524,7 @@
 
 
             <div class="project-card fade-in" data-tags="software">
-                <img class="project-media" src="images/oflights.png" alt="Open Flights Airplane Path Optimization">
+                <img class="project-media" src="images/oflights.webp" alt="Open Flights Airplane Path Optimization">
                 <div class="project-content">
                     <h3 class="project-title">Open Flights Airplane Path Optimization</h3>
                     <p class="project-description">
