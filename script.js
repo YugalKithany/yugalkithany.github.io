@@ -175,25 +175,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savedTheme) {
         body.classList.add(savedTheme);
         if (savedTheme === 'light-theme') {
-            themeSwitcher.innerHTML = '<i class="fas fa-moon"></i>';
+            themeSwitcher.innerHTML = '☽';
         } else {
-            themeSwitcher.innerHTML = '<i class="fas fa-sun"></i>';
+            themeSwitcher.innerHTML = '☀';
         }
     } else {
         // Default to light theme if no theme is saved
-        body.classList.add('light-theme'); // Changed this line to default to light-theme
-        themeSwitcher.innerHTML = '<i class="fas fa-moon"></i>'; // Set icon for light theme
-        localStorage.setItem('theme', 'light-theme'); // Save light theme as default
+        body.classList.add('light-theme');
+        themeSwitcher.innerHTML = '☽';
+        localStorage.setItem('theme', 'light-theme');
     }
 
     themeSwitcher.addEventListener('click', () => {
         if (body.classList.contains('dark-theme')) {
             body.classList.replace('dark-theme', 'light-theme');
-            themeSwitcher.innerHTML = '<i class="fas fa-moon"></i>';
+            themeSwitcher.innerHTML = '☽';
             localStorage.setItem('theme', 'light-theme');
         } else {
             body.classList.replace('light-theme', 'dark-theme');
-            themeSwitcher.innerHTML = '<i class="fas fa-sun"></i>';
+            themeSwitcher.innerHTML = '☀';
             localStorage.setItem('theme', 'dark-theme');
         }
     });
@@ -244,4 +244,142 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
+});
+
+
+
+// Keyboard Animation
+document.addEventListener('DOMContentLoaded', function() {
+    const keyboardContainer = document.getElementById('keyboardContainer');
+    const heroContent = document.getElementById('heroContent');
+    const signatureOverlay = document.getElementById('signatureOverlay');
+    
+// Check if mobile device
+    const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    if (isMobile) {
+        // Skip animation on mobile, show content immediately with original layout
+        keyboardContainer.style.display = 'none';
+        heroContent.style.display = 'block';
+        heroContent.style.textAlign = 'center';
+        heroContent.style.opacity = '1';
+        heroContent.style.animation = 'none';
+        return;
+    }
+    
+    // Realistic QWERTY keyboard layout positions matching actual keyboards
+    const keyPositions = {
+        'Q': [0, 0], 'W': [1, 0], 'E': [2, 0], 'R': [3, 0], 'T': [4, 0],
+        'Y': [5, 0], 'U': [6, 0], 'I': [7, 0], 'O': [8, 0], 'P': [9, 0],
+        'A': [0.25, 1], 'S': [1.25, 1], 'D': [2.25, 1], 'F': [3.25, 1], 'G': [4.25, 1],
+        'H': [5.25, 1], 'J': [6.25, 1], 'K': [7.25, 1], 'L': [8.25, 1],
+        'Z': [0.75, 2], 'X': [1.75, 2], 'C': [2.75, 2], 'V': [3.75, 2], 'B': [4.75, 2],
+        'N': [5.75, 2], 'M': [6.75, 2]
+    };
+    
+    const name = 'YUGALKITHANY';
+    let currentIndex = 0;
+    let lines = [];
+    
+    function createLine(from, to) {
+        const keyboard = document.querySelector('.keyboard');
+        const line = document.createElement('div');
+        line.className = 'line';
+        
+        const fromPos = keyPositions[from];
+        const toPos = keyPositions[to];
+        
+        if (!fromPos || !toPos) return;
+        
+        const fromX = fromPos[0] * 70 + 30;
+        const fromY = fromPos[1] * 70 + 30;
+        const toX = toPos[0] * 70 + 30;
+        const toY = toPos[1] * 70 + 30;
+        
+        const length = Math.sqrt(Math.pow(toX - fromX, 2) + Math.pow(toY - fromY, 2));
+        const angle = Math.atan2(toY - fromY, toX - fromX) * 180 / Math.PI;
+        
+        line.style.width = length + 'px';
+        line.style.left = fromX + 'px';
+        line.style.top = fromY + 'px';
+        line.style.transform = `rotate(${angle}deg)`;
+        line.style.transformOrigin = '0 50%';
+        
+        keyboard.appendChild(line);
+        return line;
+    }
+    
+    function animateKeyboard() {
+        keyboardContainer.style.animation = 'fadeInKeyboard 0.3s ease-out forwards';
+        
+        const interval = setInterval(() => {
+            if (currentIndex >= name.length) {
+                clearInterval(interval);
+                setTimeout(showSignatureOverlay, 300);
+                return;
+            }
+            
+            const currentLetter = name[currentIndex];
+            const key = document.querySelector(`[data-key="${currentLetter}"]`);
+            
+            if (key) {
+                key.classList.add('active');
+                
+                if (currentIndex > 0) {
+                    const prevLetter = name[currentIndex - 1];
+                    const line = createLine(prevLetter, currentLetter);
+                    if (line) {
+                        lines.push(line);
+                        setTimeout(() => line.classList.add('active'), 25);
+                    }
+                }
+            }
+            
+            currentIndex++;
+        }, 120);
+    }
+    
+    function showSignatureOverlay() {
+        // Fade out keyboard, fade in signature
+        keyboardContainer.style.transition = 'opacity 0.8s ease';
+        keyboardContainer.style.opacity = '0';
+        
+        signatureOverlay.style.opacity = '1';
+        
+        setTimeout(transitionToFinalLayout, 1000);
+    }
+    
+    function transitionToFinalLayout() {
+        // Hide keyboard container
+        keyboardContainer.style.display = 'none';
+        
+        // Show hero content with animation
+        heroContent.style.display = 'flex';
+        heroContent.classList.add('animated');
+        
+        setTimeout(() => {
+            heroContent.style.animation = 'slideInContent 0.6s ease-out forwards';
+            heroContent.style.opacity = '1';
+        }, 50);
+    }
+    
+    // Start the animation after a brief delay
+    setTimeout(animateKeyboard, 300);
+    
+    // Initially hide hero content
+    heroContent.style.display = 'none';
+});
+
+// Handle window resize
+window.addEventListener('resize', function() {
+    const isMobileNow = window.innerWidth <= 768;
+    const heroContent = document.getElementById('heroContent');
+    const keyboardContainer = document.getElementById('keyboardContainer');
+    
+    if (isMobileNow) {
+        keyboardContainer.style.display = 'none';
+        heroContent.style.display = 'block';
+        heroContent.style.textAlign = 'center';
+        heroContent.style.opacity = '1';
+    }
 });

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yugal Kithany - Portfolio</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="images/phoenix.ico" type="image/x-icon" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6D8DMBE70"></script>
@@ -37,8 +38,50 @@
         </div>
     </nav>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
+<section class="hero" id="home">
+<div class="keyboard-container" id="keyboardContainer">
+    <div class="keyboard" id="keyboard">
+        <!-- Top row -->
+        <div class="key" data-key="Q" style="grid-column: 1; grid-row: 1;">Q</div>
+        <div class="key" data-key="W" style="grid-column: 2; grid-row: 1;">W</div>
+        <div class="key" data-key="E" style="grid-column: 3; grid-row: 1;">E</div>
+        <div class="key" data-key="R" style="grid-column: 4; grid-row: 1;">R</div>
+        <div class="key" data-key="T" style="grid-column: 5; grid-row: 1;">T</div>
+        <div class="key" data-key="Y" style="grid-column: 6; grid-row: 1;">Y</div>
+        <div class="key" data-key="U" style="grid-column: 7; grid-row: 1;">U</div>
+        <div class="key" data-key="I" style="grid-column: 8; grid-row: 1;">I</div>
+        <div class="key" data-key="O" style="grid-column: 9; grid-row: 1;">O</div>
+        <div class="key" data-key="P" style="grid-column: 10; grid-row: 1;">P</div>
+        
+        <!-- Middle row (offset) -->
+        <div class="key" data-key="A" style="grid-column: 1; grid-row: 2; margin-left: 15px;">A</div>
+        <div class="key" data-key="S" style="grid-column: 2; grid-row: 2; margin-left: 15px;">S</div>
+        <div class="key" data-key="D" style="grid-column: 3; grid-row: 2; margin-left: 15px;">D</div>
+        <div class="key" data-key="F" style="grid-column: 4; grid-row: 2; margin-left: 15px;">F</div>
+        <div class="key" data-key="G" style="grid-column: 5; grid-row: 2; margin-left: 15px;">G</div>
+        <div class="key" data-key="H" style="grid-column: 6; grid-row: 2; margin-left: 15px;">H</div>
+        <div class="key" data-key="J" style="grid-column: 7; grid-row: 2; margin-left: 15px;">J</div>
+        <div class="key" data-key="K" style="grid-column: 8; grid-row: 2; margin-left: 15px;">K</div>
+        <div class="key" data-key="L" style="grid-column: 9; grid-row: 2; margin-left: 15px;">L</div>
+        
+        <!-- Bottom row (larger offset) -->
+        <div class="key" data-key="Z" style="grid-column: 1; grid-row: 3; margin-left: 45px;">Z</div>
+        <div class="key" data-key="X" style="grid-column: 2; grid-row: 3; margin-left: 45px;">X</div>
+        <div class="key" data-key="C" style="grid-column: 3; grid-row: 3; margin-left: 45px;">C</div>
+        <div class="key" data-key="V" style="grid-column: 4; grid-row: 3; margin-left: 45px;">V</div>
+        <div class="key" data-key="B" style="grid-column: 5; grid-row: 3; margin-left: 45px;">B</div>
+        <div class="key" data-key="N" style="grid-column: 6; grid-row: 3; margin-left: 45px;">N</div>
+        <div class="key" data-key="M" style="grid-column: 7; grid-row: 3; margin-left: 45px;">M</div>
+    </div>
+    <div class="signature-overlay" id="signatureOverlay">
+        <img src="images/signature1.svg" alt="Signature" class="signature-image light-mode-signature">
+        <img src="images/signature2.svg" alt="Signature" class="signature-image dark-mode-signature" style="display: none;">
+    </div>
+</div>
+</div>
+    
+    <div class="hero-content" id="heroContent">
+        <div class="hero-left">
             <h1 class="hero-title">Yugal Kithany</h1>
             <p class="hero-subtitle">Masters in ECE • UIUC</p>
             <div class="typewriter" id="typewriter" data-type='["Research Assistant", "Software Developer", "Embedded Engineer"]' data-period="1000"></div>
@@ -49,23 +92,24 @@
             </div>
             <div class="social-links">
                 <a href="https://github.com/yugalkithany" target="_blank" aria-label="GitHub">
-                    <!-- <i class="fab fa-github"></i> -->
                     <img src="images/github.svg" alt="GitHub Logo" style="width: 24px;">
                 </a>
                 <a href="https://linkedin.com/in/yugalkithany" target="_blank" aria-label="LinkedIn">
-                    <!-- <i class="fab fa-linkedin"></i> -->
                     <img src="images/linkedin.svg" alt="Linkedin Logo" style="width: 24px;">
-                    
                 </a>
                 <a href="mailto:yugalkithany@gmail.com" aria-label="Email">
-                    <!-- <i class="fas fa-envelope"></i> -->
                     <img src="images/envelope.svg" alt="Envelope" style="width: 24px;">
-                
                 </a>
             </div>
         </div>
-        <div class="scroll-indicator"></div>
-    </section>
+        <div class="hero-right">
+            <img src="images/signature1.svg" alt="Portfolio Preview" class="hero-image light-mode-image">
+            <img src="images/signature2.svg" alt="Portfolio Preview" class="hero-image dark-mode-image" style="display: none;">
+        </div>
+
+    </div>
+    <div class="scroll-indicator"></div>
+</section>
 
     <section class="section" id="about">
         <h2 class="section-title">About</h2>
@@ -240,9 +284,9 @@
                         <span class="tech-tag">Synopsys</span>
                         <span class="tech-tag">Verilator</span>
                     </div>
-                    <button class="project-link" onclick="window.open('images/ERR block diagram.pdf', '_blank')">
+                    <a href="images/ERR block diagram.pdf" target="_blank" class="project-link">
                         Expand PDF
-                    </button>
+                    </a>
                 </div>
             </div>
 
