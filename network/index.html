@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YK</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="shortcut icon" href="../images/phoenix.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-section="0">
+    <!-- Section 0: Minimal Academic Landing -->
+    <section class="academic-section" data-section="0">
+        <div class="academic-container">
+            <h1>Yugal Kithany</h1>
+
+            <p><strong>Work in Progress:</strong> My favorite player genre is holding midfielder, specifically the tempo-controllers / press-breaking archetype (Busquets). I enjoy analyzing rest defenses, and watching Pedri-esque players dismantle them. This leads me to my current project:  
+            Graph Network Analysis on games using ML — predicting a team's pass network before they score, so teams can defend better regardless of “on paper” formation.  
+            Inspired by <a href="https://www.youtube.com/watch?v=zf8XzyBnqXk&list=WL&index=6" target="_blank">this video</a>.
+            </p>
+
+
+        </div>
+    </section>
+
+    <!-- Section 0.5 -->
+    <section class="todo-section" data-section="0.5">
+        <div class="todo-container">
+            <div class="todo-card">
+                <div class="todo-header">
+                    <div class="todo-icon">📝</div>
+                    <h2>Research Progress</h2>
+                </div>
+                <div class="todo-list">
+                    <div class="todo-item completed">
+                        <div class="checkbox checked">✓</div>
+                        <span>Find football match data (2018 season + WC)</span>
+                    </div>
+                    <div class="todo-item completed">
+                        <div class="checkbox checked">✓</div>
+                        <span>Build network analysis pipeline</span>
+                    </div>
+                    <div class="todo-item">
+                        <div class="checkbox"></div>
+                        <span>Train ML model for pass prediction leading to scoring opportunity (need better GPU)</span>
+                    </div>
+                    <div class="todo-item">
+                        <div class="checkbox"></div>
+                        <span>Test on La Liga this season</span>
+                    </div>
+                    <div class="todo-item completed">
+                        <div class="checkbox checked">✓</div>
+                        <span>Create FE for interactive visualizations with some LLMs</span>
+                    </div>
+                    <div class="todo-item">
+                        <div class="checkbox"></div>
+                        <span>Findings write-up</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 1: Data Visualization Landing -->
+    <section class="viz-section" data-section="1">
+        <div id="threejs-container"></div>
+        <div class="viz-hero">
+            <h1>I'll add some cool findings here</h1>
+            <p>Wow very interactive</p>
+        </div>
+        <div class="charts-container">
+            <div class="chart-card">
+                <h3 class="chart-title">To the Moon</h3>
+                <canvas id="chart1"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3 class="chart-title">Some Pie CHart</h3>
+                <canvas id="chart2"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 1.5 -->
+    <section class="code-section" data-section="1.5">
+        <div class="code-container">
+            <div class="code-window">
+                <div class="code-header">
+                    <div class="traffic-lights">
+                        <div class="light red"></div>
+                        <div class="light yellow"></div>
+                        <div class="light green"></div>
+                    </div>
+                    <div class="window-title">pass_network_analysis.py</div>
+                </div>
+                <div class="code-content">
+                    <pre><code><span class="comment"># Football Pass Network Analysis</span>
+    <span class="keyword">import</span> pandas <span class="keyword">as</span> pd
+    <span class="keyword">import</span> networkx <span class="keyword">as</span> nx
+    <span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier
+
+    <span class="keyword">def</span> <span class="function">analyze_pass_network</span>(match_data):
+        <span class="string">"""Predict team's pass network before scoring"""</span>
+        
+        <span class="comment"># Create network graph from pass data</span>
+        G = nx.DiGraph()
+        <span class="keyword">for</span> pass_event <span class="keyword">in</span> match_data:
+            G.add_edge(pass_event[<span class="string">'from_player'</span>], 
+                    pass_event[<span class="string">'to_player'</span>],
+                    weight=<span class="number">1</span>)
+        
+        <span class="comment"># Extract network features</span>
+        features = extract_network_features(G)
+        
+        <span class="keyword">return</span> predict_scoring_pattern(features)
+
+    <span class="comment"># Load match data from figshare dataset</span>
+    df = pd.read_csv(<span class="string">'soccer_matches.csv'</span>)
+    results = analyze_pass_network(df)</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Streamlit-style Chat Interface -->
+    <section class="chat-section" data-section="2">
+        <div class="streamlit-header">
+            <h1 class="streamlit-title">
+                <div class="chat-icon">💬</div>
+                Chatbot
+            </h1>
+        </div>
+        
+        <div class="chat-main" id="chat-main">
+            <div class="chat-message">
+                <div class="message-avatar assistant-avatar">🤖</div>
+                <div class="message-content">
+                    <p>How can I help you?</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-container" id="input-container">
+            <div class="input-wrapper">
+                <textarea class="chat-input" placeholder="Your message" rows="1" id="chat-input"></textarea>
+                <button class="send-button" id="send-button">▶</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Research Paper -->
+    <section class="paper-section" data-section="3">
+        <div class="paper-container">
+            <h1 class="paper-title">Some Neat Writeup</h1>
+            <div class="paper-authors">Yugal Kithany</div>
+            <div class="paper-affiliation">Football Fan</div>
+            
+            <div class="paper-abstract">
+                <h3>Abstract</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+
+            <div class="paper-content">
+                <h2>1. Introduction</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+
+                <h2>2. Methodology</h2>
+                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+
+                <div class="equation">
+                    f(x) = ∑<sub>i=1</sub><sup>n</sup> w<sub>i</sub> × x<sub>i</sub> + β
+                </div>
+
+                <h2>3. Results and Analysis</h2>
+                <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
+
+                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+
+                <h2>4. Conclusion</h2>
+                <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+            </div>
+
+            <div class="references">
+                <h2>References</h2>
+                <div class="reference">[1] Pappalardo, Luca; Massucco, Emanuele (2019). Soccer match event dataset. figshare. Collection. https://doi.org/10.6084/m9.figshare.c.4415000.</div>
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+
+</body>
+</html>
