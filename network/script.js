@@ -65,71 +65,75 @@ function initThreeJS() {
 // Initialize Chart.js charts
 function initCharts() {
     // Chart 1: Line chart
-    const ctx1 = document.getElementById('chart1').getContext('2d');
-    new Chart(ctx1, {
-        type: 'line',
-        data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-            datasets: [{
-                label: 'Performance',
-                data: [0, 15, 30, 45, 60, 90],
-                borderColor: '#10b981',
-                backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                tension: 0.4,
-                fill: true
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    labels: { color: 'white' }
-                }
+    const ctx1 = document.getElementById('chart1');
+    if (ctx1) {
+        new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Performance',
+                    data: [0, 15, 30, 45, 60, 90],
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
             },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: { color: 'white' },
-                    grid: { color: 'rgba(255,255,255,0.1)' }
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: { color: 'white' }
+                    }
                 },
-                x: {
-                    ticks: { color: 'white' },
-                    grid: { color: 'rgba(255,255,255,0.1)' }
-                }
-            }
-        }
-    });
-
-    // Chart 2: Doughnut chart
-    const ctx2 = document.getElementById('chart2').getContext('2d');
-    new Chart(ctx2, {
-        type: 'doughnut',
-        data: {
-            labels: ['AI/ML', 'Data Science', 'Web Dev', 'Mobile'],
-            datasets: [{
-                data: [35, 25, 25, 15],
-                backgroundColor: [
-                    '#4f46e5',
-                    '#7c3aed',
-                    '#06b6d4',
-                    '#10b981'
-                ],
-                borderWidth: 0
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: { 
-                        color: 'white',
-                        padding: 20
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: 'white' },
+                        grid: { color: 'rgba(255,255,255,0.1)' }
+                    },
+                    x: {
+                        ticks: { color: 'white' },
+                        grid: { color: 'rgba(255,255,255,0.1)' }
                     }
                 }
             }
-        }
-    });
+        });
+    }
+
+    // Chart 2: Doughnut chart
+    const ctx2 = document.getElementById('chart2');
+    if (ctx2) {
+        new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ['AI/ML', 'Data Science', 'Web Dev', 'Mobile'],
+                datasets: [{
+                    data: [35, 25, 25, 15],
+                    backgroundColor: [
+                        '#4f46e5',
+                        '#7c3aed',
+                        '#06b6d4',
+                        '#10b981'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { 
+                            color: 'white',
+                            padding: 20
+                        }
+                    }
+                }
+            }
+        });
+    }
 }
 
 // Chat input functionality with specific responses
@@ -138,6 +142,8 @@ function initChat() {
     const sendButton = document.querySelector('.send-button');
     const chatMain = document.querySelector('.chat-main');
     const inputContainer = document.querySelector('.input-container');
+    
+    if (!input || !sendButton || !chatMain) return;
     
     let messageCount = 0;
     let tokensExhausted = false;
@@ -234,16 +240,111 @@ function initChat() {
     });
 }
 
-// Section snapping functionality
-let isScrolling = false;
-let scrollTimeout;
-
-// Replace the initSectionSnapping function with this updated version:
-
+// Fixed Section snapping functionality
 function initSectionSnapping() {
     const sections = document.querySelectorAll('section');
     let currentSection = 0;
-    const snapThreshold = 100; // pixels to scroll before snapping
+    let isSnapping = false;
+    let lastScrollTime = 0;
+    
+    function snapToSection(sectionIndex) {
+        if (sectionIndex >= 0 && sectionIndex < sections.length && !isSnapping) {
+            isSnapping = true;
+            currentSection = sectionIndex;
+            
+            sections[sectionIndex].scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            document.body.setAttribute('data-section', sectionIndex);
+            updateNavArrows();
+            
+            setTimeout(() => {
+                isSnapping = false;
+            }, 1000);
+        }
+    }
+    
+    function updateNavArrows() {
+        const upArrow = document.getElementById('upArrow');
+        const downArrow = document.getElementById('downArrow');
+        
+        if (upArrow && downArrow) {
+            upArrow.style.display = currentSection === 0 ? 'none' : 'flex';
+            downArrow.style.display = currentSection === sections.length - 1 ? 'none' : 'flex';
+        }
+    }
+    
+    function handleWheel(e) {
+        if (isSnapping) {
+            e.preventDefault();
+            return;
+        }
+        
+        const currentTime = Date.now();
+        if (currentTime - lastScrollTime < 100) return; // Throttle wheel events
+        lastScrollTime = currentTime;
+        
+        // For dashboard and paper sections, allow free scrolling
+        if (sections[currentSection].classList.contains('dashboard-section') || 
+            sections[currentSection].classList.contains('paper-section')) {
+            return;
+        }
+        
+        if (Math.abs(e.deltaY) > 50) {
+            e.preventDefault();
+            
+            if (e.deltaY > 0 && currentSection < sections.length - 1) {
+                snapToSection(currentSection + 1);
+            } else if (e.deltaY < 0 && currentSection > 0) {
+                snapToSection(currentSection - 1);
+            }
+        }
+    }
+    
+    function handleScroll() {
+        if (isSnapping) return;
+        
+        // Find the section that's most visible
+        let mostVisible = 0;
+        let maxVisibility = 0;
+        
+        sections.forEach((section, index) => {
+            const rect = section.getBoundingClientRect();
+            const visibility = Math.max(0, Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0));
+            
+            if (visibility > maxVisibility) {
+                maxVisibility = visibility;
+                mostVisible = index;
+            }
+        });
+        
+        if (mostVisible !== currentSection) {
+            currentSection = mostVisible;
+            document.body.setAttribute('data-section', currentSection);
+            updateNavArrows();
+        }
+    }
+    
+    // Event listeners
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Initialize
+    snapToSection(0);
+}
+
+function initNavArrows() {
+    const upArrow = document.getElementById('upArrow');
+    const downArrow = document.getElementById('downArrow');
+    const sections = document.querySelectorAll('section');
+    
+    if (!upArrow || !downArrow) return;
+    
+    function getCurrentSection() {
+        return parseInt(document.body.getAttribute('data-section')) || 0;
+    }
     
     function snapToSection(sectionIndex) {
         if (sectionIndex >= 0 && sectionIndex < sections.length) {
@@ -252,111 +353,41 @@ function initSectionSnapping() {
                 block: 'start'
             });
             document.body.setAttribute('data-section', sectionIndex);
-            currentSection = sectionIndex;
+            updateNavArrows();
         }
     }
     
-    // Special handling for the paper section (allow free scrolling)
-    function isPaperSection(sectionIndex) {
-        return sections[sectionIndex] && sections[sectionIndex].classList.contains('paper-section');
+    function updateNavArrows() {
+        const current = getCurrentSection();
+        upArrow.style.display = current === 0 ? 'none' : 'flex';
+        downArrow.style.display = current === sections.length - 1 ? 'none' : 'flex';
     }
     
-    function handleScroll() {
-        if (isScrolling) return;
-        
-        const scrollTop = window.scrollY;
-        let targetSection = currentSection;
-        
-        // Find which section we're currently in
-        sections.forEach((section, index) => {
-            const sectionTop = section.offsetTop;
-            const sectionBottom = sectionTop + section.offsetHeight;
-            
-            if (scrollTop >= sectionTop - window.innerHeight/3 && 
-                scrollTop < sectionBottom - window.innerHeight/3) {
-                targetSection = index;
-            }
-        });
-        
-        // If we're in the paper section, allow free scrolling
-        if (isPaperSection(targetSection)) {
-            currentSection = targetSection;
-            document.body.setAttribute('data-section', targetSection);
-            return;
-        }
-        
-        // For other sections, check if we've scrolled enough to snap
-        const currentSectionElement = sections[currentSection];
-        const currentSectionTop = currentSectionElement.offsetTop;
-        const scrollDistance = Math.abs(scrollTop - currentSectionTop);
-        
-        if (scrollDistance > snapThreshold && targetSection !== currentSection) {
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                isScrolling = true;
-                snapToSection(targetSection);
-                setTimeout(() => {
-                    isScrolling = false;
-                }, 800);
-            }, 150);
-        }
-    }
+    upArrow.addEventListener('click', () => {
+        const current = getCurrentSection();
+        if (current > 0) snapToSection(current - 1);
+    });
     
-    function handleWheel(e) {
-        // Allow free scrolling in paper section
-        if (isPaperSection(currentSection)) {
-            return;
-        }
-        
-        if (isScrolling) {
-            e.preventDefault();
-            return;
-        }
-        
-        // Only snap if scroll is significant enough
-        if (Math.abs(e.deltaY) > 10) {
-            e.preventDefault();
-            isScrolling = true;
-            
-            if (e.deltaY > 0 && currentSection < sections.length - 1) {
-                snapToSection(currentSection + 1);
-            } else if (e.deltaY < 0 && currentSection > 0) {
-                snapToSection(currentSection - 1);
-            }
-            
-            setTimeout(() => {
-                isScrolling = false;
-            }, 800);
-        }
-    }
+    downArrow.addEventListener('click', () => {
+        const current = getCurrentSection();
+        if (current < sections.length - 1) snapToSection(current + 1);
+    });
     
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    
-    // Initialize with first section
-    snapToSection(0);
+    // Initial update
+    updateNavArrows();
 }
+
 // Initialize everything when page loads
 document.addEventListener('DOMContentLoaded', () => {
-    initThreeJS();
-    initCharts();
+    // Only init ThreeJS and Charts if their containers exist
+    if (document.getElementById('threejs-container')) {
+        initThreeJS();
+    }
+    if (document.getElementById('chart1') || document.getElementById('chart2')) {
+        initCharts();
+    }
+    
+    initNavArrows();
     initChat();
     initSectionSnapping();
 });
-
-// Smooth scroll effect on sections - removed since we now have section snapping
-// window.addEventListener('scroll', () => {
-//     const sections = document.querySelectorAll('section');
-//     sections.forEach((section, index) => {
-//         const rect = section.getBoundingClientRect();
-//         const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-        
-//         if (isVisible) {
-//             section.style.opacity = '1';
-//             section.style.transform = 'translateY(0)';
-//         } else {
-//             section.style.opacity = '0.8';
-//             section.style.transform = 'translateY(20px)';
-//         }
-//     });
-// });
