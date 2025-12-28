@@ -525,10 +525,34 @@
             if (section !== 'projects' && projectsExpanded) {
                 collapseProjects();
             }
+            gtag('event', 'page_view', {
+                page_title: section,
+                page_location: window.location.href,
+                page_path: '#' + section
+            });
             
             return false;
         }
 
+        document.querySelectorAll('a[target="_blank"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                gtag('event', 'click', {
+                    event_category: 'outbound',
+                    event_label: this.href,
+                    transport_type: 'beacon'
+                });
+            });
+        });
+        document.querySelectorAll('.project-link a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const projectTitle = this.closest('.project').querySelector('.project-title').textContent;
+                gtag('event', 'project_click', {
+                    event_category: 'engagement',
+                    event_label: projectTitle,
+                    value: 1
+                });
+            });
+        });
         function updateProjectVisibility() {
             const allProjects = document.querySelectorAll('.project');
             const viewMoreBtn = document.getElementById('viewMoreBtn');
@@ -606,6 +630,10 @@
             
             filterRadios.forEach(radio => {
                 radio.addEventListener('change', function() {
+                    gtag('event', 'filter_change', {
+                        event_category: 'projects',
+                        event_label: this.value
+                    });
                     const filter = this.value;
                     const allProjects = document.querySelectorAll('.project');
                     
